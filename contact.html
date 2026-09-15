@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - LA TUFFIERE - Gîte dans le Doubs</title>
+<meta name="description" content="Contactez le gîte La Tuffière à Vuillafans (Doubs) : téléphone, e-mail, formulaire de contact et plan d'accès.">
+<link rel="icon" href="images/favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="La Tuffière"></a>
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="gite.html">Gîte</a></li>
+        <li><a href="table-dhotes.html">Table d'hôtes</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="activites.html">Activités</a></li>
+        <li><a href="contact.html" class="is-active">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Permuter le menu" aria-expanded="false"><span></span></button>
+    <a href="contact.html" class="btn btn-light header-cta">Réserver</a>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="hero hero-small">
+    <div class="hero-slider">
+      <div class="hero-slide is-active" style="background-image:url('images/hero-4-olympus.jpg')"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-kicker">La Tuffière</span>
+      <h1>Contact</h1>
+      <div class="divider-line"></div>
+      <p class="lead">N'hésitez pas à nous contacter pour toute demande</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-layout">
+      <div data-animate="fade-left">
+        <span class="eyebrow">Informations</span>
+        <h2>Nos coordonnées</h2>
+        <ul class="contact-info-list">
+          <li>
+            <span class="icon">&#128205;</span>
+            <div><strong>Adresse</strong>1 chemin de Montgesoye,<br>25840 VUILLAFANS</div>
+          </li>
+          <li>
+            <span class="icon">&#128222;</span>
+            <div>
+              <strong>Téléphone</strong>
+              <a href="tel:0381609676">03 81 60 96 76</a><br>
+              <a href="tel:0616618178">06 16 61 81 78</a>
+            </div>
+          </li>
+          <li>
+            <span class="icon">&#9993;</span>
+            <div><strong>Email</strong><a href="mailto:latuffiere2@wanadoo.fr">latuffiere2@wanadoo.fr</a></div>
+          </li>
+          <li>
+            <span class="icon">&#128337;</span>
+            <div><strong>Horaires</strong>Lundi – Vendredi : 08:00 – 18:00</div>
+          </li>
+          <li>
+            <span class="icon">&#128279;</span>
+            <div>
+              <strong>Réseaux</strong>
+              <a href="https://www.facebook.com/chrisetbene/" target="_blank" rel="noopener">Facebook</a>
+              ·
+              <a href="https://www.google.com/maps/place/G%C3%AEte+La+Tuffi%C3%A8re/@47.0684357,6.204781,15z" target="_blank" rel="noopener">Google my Business</a>
+            </div>
+          </li>
+        </ul>
+
+        <iframe class="map-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=1+chemin+de+Montgesoye,+25840+Vuillafans&output=embed"
+          title="Localisation du gîte La Tuffière"></iframe>
+      </div>
+
+      <div data-animate="fade-right">
+        <h2>Envoyez-nous un message</h2>
+        <form class="contact-form">
+          <div>
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" required>
+          </div>
+          <div>
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone">
+          </div>
+          <div>
+            <label for="sujet">Sujet</label>
+            <select id="sujet" name="sujet">
+              <option value="">Choisir…</option>
+              <option value="Réservation">Réservation</option>
+              <option value="Demande d'information">Demande d'information</option>
+              <option value="Évènement / Devis">Évènement / Devis</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <p class="form-note">En envoyant ce message, votre client mail par défaut s'ouvrira pré-rempli à destination de latuffiere2@wanadoo.fr.</p>
+          <button type="submit" class="btn btn-accent">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="images/logo.png" alt="La Tuffière" class="footer-logo">
+        <p>Gîte de charme au cœur de la Vallée de la Loue, dans le massif du Jura. Bénédicte et Christian vous accueillent.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/chrisetbene/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="https://share.google/q7xGJVCA5Tao4Slqo" target="_blank" rel="noopener" aria-label="Google">G</a>
+        </div>
+      </div>
+      <div class="footer-col footer-nav">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="gite.html">Gîte</a></li>
+          <li><a href="table-dhotes.html">Table d'hôtes</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="activites.html">Activités</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <ul>
+          <li>1 chemin de Montgesoye<br>25840 VUILLAFANS</li>
+          <li><a href="tel:0381609676">03 81 60 96 76</a></li>
+          <li><a href="tel:0616618178">06 16 61 81 78</a></li>
+          <li><a href="mailto:latuffiere2@wanadoo.fr">latuffiere2@wanadoo.fr</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">La Tuffière — Mentions légales et politique de confidentialité / Plan du site</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
