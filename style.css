@@ -241,7 +241,7 @@ p { margin: 0 0 1em; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.site-header { animation: headerReveal 0.7s ease both; }
+.site-header { animation: headerReveal 0.7s ease; }
 @keyframes headerReveal {
   from { opacity: 0; transform: translateY(-18px); }
   to { opacity: 1; transform: translateY(0); }
