@@ -207,6 +207,10 @@ p { margin: 0 0 1em; }
   text-align: center;
 }
 .hero-small { min-height: 46vh; }
+@media (max-width: 600px) {
+  .hero { min-height: 62vh; }
+  .hero-small { min-height: 40vh; }
+}
 
 .hero-slider { position: absolute; inset: 0; }
 .hero-slide {
