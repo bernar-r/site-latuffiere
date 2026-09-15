@@ -8,7 +8,7 @@
 <link rel="icon" href="images/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,12 +29,13 @@
       </ul>
     </nav>
     <button class="nav-toggle" id="nav-toggle" aria-label="Permuter le menu" aria-expanded="false"><span></span></button>
-    <a href="contact.html" class="btn btn-light header-cta">Réserver</a>
+    <a href="contact.html" class="btn btn-light-outline header-cta">Réserver</a>
   </div>
 </header>
 
 <main id="contenu">
 
+  <!-- HERO SLIDER -->
   <section class="hero">
     <div class="hero-slider">
       <div class="hero-slide is-active" style="background-image:url('images/hero-1-facade.jpg')"></div>
@@ -42,18 +43,25 @@
       <div class="hero-slide" style="background-image:url('images/hero-3.jpeg')"></div>
       <div class="hero-slide" style="background-image:url('images/hero-4-olympus.jpg')"></div>
     </div>
-    <div class="hero-content">
+    <button class="hero-arrow hero-arrow-prev" aria-label="Image précédente">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="hero-arrow hero-arrow-next" aria-label="Image suivante">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+    <div class="hero-content" data-animate="fade-up">
       <h1>Le repère des motards, randonneurs et pêcheurs dans le Doubs : votre prochain hébergement</h1>
     </div>
     <div class="hero-dots"></div>
   </section>
 
-  <section class="section text-center">
-    <div class="container" style="max-width:760px;" data-animate="fade-up">
-      <span class="eyebrow" style="color:var(--color-accent);text-transform:uppercase;letter-spacing:3.3px;font-size:11px;font-weight:600;">Gîte convivial — Vallée de la Loue, Franche-Comté</span>
-      <h2>Un hébergement labélisé dans le Doubs pour vous accueillir toute l'année</h2>
+  <!-- INTRO SECTION -->
+  <section class="section section-intro text-center">
+    <div class="container" data-animate="fade-up">
+      <span class="eyebrow">Gîte convivial — Vallée de la Loue, Franche-Comté</span>
+      <h2 class="intro-title">Un hébergement labélisé dans le Doubs pour vous accueillir toute l'année</h2>
       <div class="divider-line"></div>
-      <p>Chez <strong>Bénédicte et Christian</strong>, entre rivières, nature et sentiers de randonnées, un endroit riche en activités nature au cœur du massif du <strong>Jura</strong>.</p>
+      <p class="intro-lead">Chez <strong>Bénédicte et Christian</strong>, entre rivières, nature et sentiers de randonnées, un endroit riche en activités nature au cœur du massif du <strong>Jura</strong>.</p>
       <div class="hero-actions">
         <a href="gite.html" class="btn btn-accent">Découvrir le gîte</a>
         <a href="#" class="btn btn-accent" data-open-dispo>Voir nos disponibilités</a>
@@ -61,113 +69,409 @@
     </div>
   </section>
 
+  <!-- RUBAN 5 PHOTOS (Full width) -->
   <section style="padding:0;">
-    <div class="gallery-grid" style="max-width:none;margin:0;padding:0;gap:0;grid-template-columns:repeat(5,1fr);">
-      <img src="images/home-gallery-1.jpg" alt="La Tuffière" data-animate="fade-up" style="aspect-ratio:4/3;object-fit:cover;width:100%;">
-      <img src="images/home-gallery-2.jpg" alt="Cascade près de La Tuffière" data-animate="fade-up" style="aspect-ratio:4/3;object-fit:cover;width:100%;">
-      <img src="images/home-gallery-3.jpg" alt="Randonnée et vaches dans le Doubs" data-animate="fade-up" style="aspect-ratio:4/3;object-fit:cover;width:100%;">
-      <img src="images/home-gallery-4.jpg" alt="Randonnée dans la vallée de la Loue" data-animate="fade-up" style="aspect-ratio:4/3;object-fit:cover;width:100%;">
-      <img src="images/home-gallery-5.jpg" alt="Randonnée dans les vignes" data-animate="fade-up" style="aspect-ratio:4/3;object-fit:cover;width:100%;">
+    <div class="ribbon-gallery">
+      <div class="ribbon-item"><img src="images/home-gallery-1.jpg" alt="La Tuffière" loading="lazy"></div>
+      <div class="ribbon-item"><img src="images/home-gallery-2.jpg" alt="Cascade près de La Tuffière" loading="lazy"></div>
+      <div class="ribbon-item"><img src="images/home-gallery-3.jpg" alt="Randonnée et vaches dans le Doubs" loading="lazy"></div>
+      <div class="ribbon-item"><img src="images/home-gallery-4.jpg" alt="Randonnée dans la vallée de la Loue" loading="lazy"></div>
+      <div class="ribbon-item"><img src="images/home-gallery-5.jpg" alt="Randonnée dans les vignes" loading="lazy"></div>
     </div>
   </section>
 
-  <section class="section section-alt">
+  <!-- À PROPOS (FOND BLANC) -->
+  <section class="section">
     <div class="container two-col">
-      <div data-animate="fade-left">
+      <div class="two-col-content" data-animate="fade-left">
         <span class="eyebrow">à propos</span>
         <h2>Un lieu reposant pour votre séjour</h2>
-        <p>Convivialité et confort sont les deux points que nous souhaitons vous offrir de <strong>la Tuffière</strong>, votre Gîte de France dans le Doubs. À l'orée du village de Vuillafans, une bâtisse au milieu d'un grand parc arboré vous accueille pour une halte ou un séjour, ou simplement un anniversaire, un repas de famille.</p>
+        <p>Convivialité et confort sont les deux points que nous souhaitons vous offrir de <strong>la Tuffière</strong>, votre Gîte de France dans le Doubs. À l’orée du village de Vuillafans, une bâtisse au milieu d’un grand parc arboré vous accueille pour une halte ou un séjour, ou simplement un anniversaire, un repas de famille.</p>
         <p>Le gîte est situé dans un endroit tranquille à proximité du village, à 200m de la rivière, sur des sentiers de randonnées. Vous pourrez apprécier le calme de la terrasse, profiter du terrain de boules et du terrain de volley.</p>
-        <p>Ce <strong>gîte en Franche-Comté</strong> peut accueillir jusqu'à <strong>35 personnes</strong> en chambres doubles ou multiples avec salle de bains et toilettes.</p>
+        <p>Ce <strong>gîte en Franche-Comté</strong> peut accueillir jusqu’à <strong>35 personnes</strong> en chambres doubles ou multiples avec salle de bains et toilettes.</p>
       </div>
-      <div data-animate="fade-right">
-        <img src="images/home-tables-exterieures.jpg" alt="Tables extérieures ombragées du gîte La Tuffière">
+      <div class="two-col-img" data-animate="fade-right">
+        <img src="images/home-tables-exterieures.jpg" alt="Tables extérieures ombragées du gîte La Tuffière" loading="lazy">
       </div>
     </div>
   </section>
 
-  <section class="section section-photo" style="background-image:url('images/bg-labels-cta.jpg');">
+  <!-- NOS LABELS (FOND PHOTO SOMBRE) -->
+  <section class="section-labels" style="background-image:url('images/bg-labels-cta.jpg');">
     <div class="container">
-      <div class="section-header" data-animate="fade-up">
+      <div class="labels-header" data-animate="fade-up">
         <span class="eyebrow">Nos labels</span>
         <h2>Hébergements motards, randonneurs et pêcheurs</h2>
         <p>Nous sommes labellisés hébergement pêche, Relais St Pierre et Motard bienvenue ! Pensez à réserver pour vos sorties pêche&nbsp;… Nos amis les motards sont aussi les bienvenus à La Tuffière.</p>
       </div>
-      <div class="grid grid-3">
-        <div class="card" data-animate="fade-up">
-          <img src="images/logo-gites-de-france.png" alt="Logo Gîtes de France" class="card-icon">
-          <h3><a href="https://www.gites-de-france.com/" target="_blank" rel="noopener">Gîtes de France</a></h3>
-          <p>Hébergement labellisé Gîtes de France, gage de qualité et d'authenticité.</p>
+      <div class="labels-grid">
+        <div class="label-card" data-animate="fade-up">
+          <img src="images/logo-gites-de-france.png" alt="Logo Gîtes de France" class="label-icon">
+          <h3><a href="https://www.gites-de-france.com/fr/search?f%5B0%5D=type%3A36172&seed=4658d321&data-ori=ADSWFNGFFR" target="_blank" rel="noopener">Gîtes de France</a></h3>
+          <p>Hébergement labellisé Gîtes de France, gage de qualité et d’authenticité</p>
         </div>
-        <div class="card" data-animate="fade-up">
-          <img src="images/logo-motards.png" alt="Logo Motard Bienvenue" class="card-icon">
+        <div class="label-card" data-animate="fade-up">
+          <img src="images/logo-motards.png" alt="Logo Motard Bienvenue" class="label-icon">
           <h3><a href="https://www.doubs.travel/sejourner/hebergements/tous-les-hebergements/les-structures-labellises-motards-bienvenue/" target="_blank" rel="noopener">Motard Bienvenue</a></h3>
-          <p>Accueil adapté pour les motards de passage ou en séjour.</p>
+          <p>Accueil adapté pour les motards de passage ou en séjour</p>
         </div>
-        <div class="card" data-animate="fade-up">
-          <img src="images/logo-relais-saint-pierre.png" alt="Logo Relais Saint Pierre" class="card-icon">
+        <div class="label-card" data-animate="fade-up">
+          <img src="images/logo-relais-saint-pierre.png" alt="Logo Relais Saint Pierre" class="label-icon">
           <h3><a href="https://www.doubs.travel/sejourner/hebergements/tous-les-hebergements/hebergements-relais-saint-pierre/" target="_blank" rel="noopener">Label Pêche</a></h3>
-          <p>Relais St Pierre — hébergement labellisé pêche au bord de la Loue.</p>
+          <p>Relais St Pierre — hébergement labellisé pêche au bord de la Loue</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- TABLE D'HÔTES (FOND BEIGE DOUX) -->
   <section class="section section-alt">
     <div class="container two-col">
-      <div data-animate="fade-left">
-        <img src="images/home-instagram.jpg" alt="Moment convivial partagé à La Tuffière">
+      <div class="two-col-img" data-animate="fade-left">
+        <img src="images/home-instagram.jpg" alt="Moment convivial partagé à La Tuffière" loading="lazy">
       </div>
-      <div data-animate="fade-right">
+      <div class="two-col-content" data-animate="fade-right">
         <span class="eyebrow">Table d'hôtes</span>
         <h2>Partage et convivialité</h2>
-        <p>Le partage et l'échange sont primordiaux à la Tuffière. Bénédicte et Christian sont toujours présents pour vous aider à constituer votre séjour et vous apporter des compléments pour mieux connaître et apprécier notre région.</p>
+        <p>Le partage et l’échange sont primordiaux à la Tuffière. Bénédicte et Christian sont toujours présents pour vous aider à constituer votre séjour et vous apporter des compléments pour mieux connaître et apprécier notre région.</p>
         <p>Le soir, vous pourrez vous désaltérer sur la terrasse et déguster une cuisine saine et régionale à partir de produits locaux.</p>
-        <a href="table-dhotes.html" class="btn btn-accent">Découvrir la table d'hôte</a>
+        <a href="table-dhotes.html" class="btn btn-accent" style="margin-top:12px;">Découvrir la table d'hôte</a>
       </div>
     </div>
   </section>
 
-  <section class="section section-photo section-photo-quote text-center" style="background-image:url('images/bg-quote.jpg');padding:64px 0;">
+  <!-- CITATION BANDEAU -->
+  <section class="section-quote" style="background-image:url('images/bg-quote.jpg');">
     <div class="container" data-animate="fade-up">
-      <p class="quote" style="color:#fff;">"Un endroit riche en activités nature, un bon moyen pour faire le plein d'oxygène"</p>
+      <p class="quote-text">"Un endroit riche en activités nature, un bon moyen pour faire le plein d'oxygène"</p>
     </div>
   </section>
 
-  <section class="section text-center">
-    <div class="container" data-animate="fade-up">
-      <span class="eyebrow">Témoignages</span>
-      <h2>Avis de nos hôtes</h2>
-      <div class="rating" style="color:#f5b400;letter-spacing:4px;">★★★★★</div>
-      <p style="font-weight:600;color:var(--color-text-dark);">4.8/5 sur Google</p>
+  <!-- TÉMOIGNAGES & AVIS GOOGLE (AVEC TOUS LES AVIS RÉELS) -->
+  <section class="section-reviews">
+    <div class="container">
+      <div class="reviews-header" data-animate="fade-up">
+        <span class="eyebrow">Témoignages</span>
+        <h2>Avis de nos hôtes</h2>
+        <div class="reviews-stars" aria-label="Note 5 étoiles sur 5">
+          <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="reviews-score">4.8/5 sur Google</p>
+      </div>
+
+      <!-- Elfsight Google Reviews (si domaine actif en ligne) -->
+      <div class="elfsight-app-f95532ad-1d47-4bc0-b109-936710c6a781" data-elfsight-app-lazy></div>
+
+      <!-- Carrousel d'avis Google complet & fidèle -->
+      <div class="reviews-carousel-container" data-animate="fade-up">
+        <div class="reviews-track">
+
+          <!-- Avis 1 : AMIENS Annie -->
+          <div class="review-card-wrapper">
+            <div class="review-card">
+              <div class="review-card-top">
+                <div class="reviewer-info">
+                  <div class="reviewer-avatar" style="background:#b33939;">A</div>
+                  <div class="reviewer-details">
+                    <span class="reviewer-name">AMIENS Annie</span>
+                    <span class="review-date">il y a 1 mois</span>
+                  </div>
+                </div>
+                <div class="google-badge">
+                  <svg class="google-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+                  <span>Google</span>
+                </div>
+              </div>
+              <div class="review-card-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div class="review-body">
+                <p>Excellent séjour au gîte de la Tuffière. Emplacement calme avec parking. Un extérieur où l'on peut manger. De nombreux jeux à notre disposition (volley, pétanque...). Des propriétaires exceptionnels à nos petits soins, attentionnés et dévoués. Merci à eux. Très bonne cuisine, tout fait maison. Nous recommandons ce gîte à 200%.</p>
+              </div>
+              <div class="review-card-footer">
+                <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT25oSmIzQlhkV1ZmZUV0NmNIRTNWVkJQZUdNeGRHYxAB!2m1!1s0x0:0x72f8bb8bd8d0e131!3m1!1s2@1:CAIQACodChtycF9oOnhJb3BXdWVfeEt6cHE3VVBPeGMxdGc%7C%7C" target="_blank" rel="noopener">Voir l'avis sur Google Maps &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 2 : Yassine Boufrayoua -->
+          <div class="review-card-wrapper">
+            <div class="review-card">
+              <div class="review-card-top">
+                <div class="reviewer-info">
+                  <div class="reviewer-avatar" style="background:#227093;">Y</div>
+                  <div class="reviewer-details">
+                    <span class="reviewer-name">Yassine Boufrayoua</span>
+                    <span class="review-date">il y a 4 mois</span>
+                  </div>
+                </div>
+                <div class="google-badge">
+                  <svg class="google-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+                  <span>Google</span>
+                </div>
+              </div>
+              <div class="review-card-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div class="review-body">
+                <p>Petit coin de paradis, un havre de paix...</p>
+              </div>
+              <div class="review-card-footer">
+                <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2tKUlNXWnBZbHBGUjJsb2IzZHlkWHBCV2paU1dsRRAB!2m1!1s0x0:0x72f8bb8bd8d0e131!3m1!1s2@1:CAIQACodChtycF9oOkJRSWZpYlpFR2lob3dydXpBWjZSWlE%7C%7C" target="_blank" rel="noopener">Voir l'avis sur Google Maps &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 3 : Elisabeth Fumeaux -->
+          <div class="review-card-wrapper">
+            <div class="review-card">
+              <div class="review-card-top">
+                <div class="reviewer-info">
+                  <div class="reviewer-avatar" style="background:#218c74;">E</div>
+                  <div class="reviewer-details">
+                    <span class="reviewer-name">Elisabeth Fumeaux</span>
+                    <span class="review-date">il y a 5 mois</span>
+                  </div>
+                </div>
+                <div class="google-badge">
+                  <svg class="google-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+                  <span>Google</span>
+                </div>
+              </div>
+              <div class="review-card-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div class="review-body">
+                <p>Super gîte, jolie découverte en sortie famille. On l'avait privatisé. Chambres propres et toutes avec salle de bain. Nourriture ⭐️⭐️⭐️⭐️⭐️ un vrai régal. Merci chef. Soirée flammenkuches une tuerie. Des hôtes sympas et à l'écoute. Je vous recommande ce gîte à 100%.</p>
+              </div>
+              <div class="review-card-footer">
+                <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT201WloyTk1hV05UZUVaTlltbERXVGxLTUdWV1IxRRAB!2m1!1s0x0:0x72f8bb8bd8d0e131!3m1!1s2@1:CAIQACodChtycF9oOm5ZZ2NMaWNTeEZNYmlDWTlKMGVWR1E%7C%7C" target="_blank" rel="noopener">Voir l'avis sur Google Maps &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 4 : Nekolas -->
+          <div class="review-card-wrapper">
+            <div class="review-card">
+              <div class="review-card-top">
+                <div class="reviewer-info">
+                  <div class="reviewer-avatar" style="background:#706fd3;">N</div>
+                  <div class="reviewer-details">
+                    <span class="reviewer-name">Nekolas</span>
+                    <span class="review-date">il y a 1 an</span>
+                  </div>
+                </div>
+                <div class="google-badge">
+                  <svg class="google-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+                  <span>Google</span>
+                </div>
+              </div>
+              <div class="review-card-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div class="review-body">
+                <p>Superbe endroit, les propriétaires des lieux sont très sympathiques. Mention spéciale à l’âne présent sur les lieux qui est très mignon.</p>
+              </div>
+              <div class="review-card-footer">
+                <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2xvdGJsWjJRV0Z1T1cxRVlscEhVakZ4VVc1blFuYxAB!2m1!1s0x0:0x72f8bb8bd8d0e131!3m1!1s2@1:CAIQACodChtycF9oOlotblZ2QWFuOW1EYlpHUjFxUW5nQnc%7C%7C" target="_blank" rel="noopener">Voir l'avis sur Google Maps &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 5 : Anne-Sophie Roussel -->
+          <div class="review-card-wrapper">
+            <div class="review-card">
+              <div class="review-card-top">
+                <div class="reviewer-info">
+                  <div class="reviewer-avatar" style="background:#cd6133;">A</div>
+                  <div class="reviewer-details">
+                    <span class="reviewer-name">Anne-Sophie Roussel</span>
+                    <span class="review-date">il y a 1 an</span>
+                  </div>
+                </div>
+                <div class="google-badge">
+                  <svg class="google-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+                  <span>Google</span>
+                </div>
+              </div>
+              <div class="review-card-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div class="review-body">
+                <p>Nous avons passé un excellent week end familial au gîte. Bénédicte et Christian sont très bienveillants et professionnels. La cuisine est faite maison à quasi 100% et elle est authentique et d'excellente qualité. Coup de coeur spécial pour le petit déjeuner. A recommander à 200%.</p>
+              </div>
+              <div class="review-card-footer">
+                <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT25WTWRtWjFZbGxsYlY5VFQyOVpTMlpqTjJ4Uk1XYxAB!2m1!1s0x0:0x72f8bb8bd8d0e131!3m1!1s2@1:CAIQACodChtycF9oOnVMdmZ1YlllbV9TT29ZS2ZjN2xRMWc%7C%7C" target="_blank" rel="noopener">Voir l'avis sur Google Maps &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 6 : Marie Brisset -->
+          <div class="review-card-wrapper">
+            <div class="review-card">
+              <div class="review-card-top">
+                <div class="reviewer-info">
+                  <div class="reviewer-avatar" style="background:#b33939;">M</div>
+                  <div class="reviewer-details">
+                    <span class="reviewer-name">Marie Brisset</span>
+                    <span class="review-date">il y a 1 an</span>
+                  </div>
+                </div>
+                <div class="google-badge">
+                  <svg class="google-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+                  <span>Google</span>
+                </div>
+              </div>
+              <div class="review-card-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div class="review-body">
+                <p>Merci Bénédicte et Christian, accueil chaleureux, toujours à notre écoute. Nous avons passé 5 merveilleux jours. Continuez. Nous n'attendons pas 7 ans pour revenir Groupe JP Grenier. À bientôt Marie Gabrielle 😉</p>
+              </div>
+              <div class="review-card-footer">
+                <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2pJeVgwMURPVWRaVEU1WlUwaFlla1pqYzBZdGNIYxAB!2m1!1s0x0:0x72f8bb8bd8d0e131!3m1!1s2@1:CAIQACodChtycF9oOjIyX01DOUdZTE5ZU0hYekZjc0YtcHc%7C%7C" target="_blank" rel="noopener">Voir l'avis sur Google Maps &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 7 : Patricia ABART -->
+          <div class="review-card-wrapper">
+            <div class="review-card">
+              <div class="review-card-top">
+                <div class="reviewer-info">
+                  <div class="reviewer-avatar" style="background:#10ac84;">P</div>
+                  <div class="reviewer-details">
+                    <span class="reviewer-name">patricia ABART</span>
+                    <span class="review-date">il y a 1 an</span>
+                  </div>
+                </div>
+                <div class="google-badge">
+                  <svg class="google-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+                  <span>Google</span>
+                </div>
+              </div>
+              <div class="review-card-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div class="review-body">
+                <p>Accueil parfait, disponibilité, amabilité. Lieu très calme la nuit. Très bien placé. Plats délicieux. Merci à vous deux.</p>
+              </div>
+              <div class="review-card-footer">
+                <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT21GNWNrUlpkMWt6TVZOTFgwaDVTMHhQY25ReFdVRRAB!2m1!1s0x0:0x72f8bb8bd8d0e131!3m1!1s2@1:CAIQACodChtycF9oOmF5ckRZd1kzMVNLX0h5S0xPcnQxWUE%7C%7C" target="_blank" rel="noopener">Voir l'avis sur Google Maps &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avis 8 : Jehan-Philippe Contesse -->
+          <div class="review-card-wrapper">
+            <div class="review-card">
+              <div class="review-card-top">
+                <div class="reviewer-info">
+                  <div class="reviewer-avatar" style="background:#575fcf;">J</div>
+                  <div class="reviewer-details">
+                    <span class="reviewer-name">Jehan-Philippe Contesse</span>
+                    <span class="review-date">il y a 1 an</span>
+                  </div>
+                </div>
+                <div class="google-badge">
+                  <svg class="google-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+                  <span>Google</span>
+                </div>
+              </div>
+              <div class="review-card-stars">
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div class="review-body">
+                <p>Avec un groupe de 26 élèves de Seconde, nous avons été très bien accueillis. L'emplacement est super pour découvrir une magnifique région (randonnées, La Loue, Ornans, etc.). Chris et Bene sont très gentils, très efficaces...</p>
+                <button type="button" class="review-read-more" data-full="Avec un groupe de 26 élèves de Seconde, nous avons été très bien accueillis. L'emplacement est super pour découvrir une magnifique région (randonnées, La Loue, Ornans, etc.). Chris et Bene sont très gentils, très efficaces. Ils nous ont préparés d'excellents repas et pique-niques, tout fait maison, avec des ingrédients locaux. Les chambres sont très propres et équipées de douches et toilettes eux-aussi très propres. Les espaces extérieurs sont grands et très agréables. Nous avons passé un super moment pendant 3 jours et 2 nuits avec nos élèves. Un grand merci !">Lire la suite</button>
+              </div>
+              <div class="review-card-footer">
+                <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT25wQ1NVMDRPVVpJWW0xS2NIaFZXblJOU2tkRVYxRRAB!2m1!1s0x0:0x72f8bb8bd8d0e131!3m1!1s2@1:CAIQACodChtycF9oOnpCSU04OUZIYm1KcHhVWnRNSkdEV1E%7C%7C" target="_blank" rel="noopener">Voir l'avis sur Google Maps &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Contrôles du carrousel -->
+      <div class="reviews-controls" data-animate="fade-up">
+        <button class="reviews-arrow reviews-arrow-prev" aria-label="Avis précédents">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="reviews-dots"></div>
+        <button class="reviews-arrow reviews-arrow-next" aria-label="Avis suivants">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
     </div>
   </section>
 
-  <section class="cta-band section-photo" style="background-image:url('images/bg-labels-cta.jpg');">
+  <!-- BANDEAU CTA FINAL -->
+  <section class="section-cta" style="background-image:url('images/bg-labels-cta.jpg');">
     <div class="container" data-animate="fade-up">
       <h2>Venez sans plus attendre découvrir notre gîte</h2>
       <p>Un endroit riche en activités nature, un bon moyen pour faire le plein d'oxygène.</p>
       <div class="hero-actions">
-        <a href="contact.html" class="btn btn-cta">Nous contacter</a>
-        <a href="tarifs.html" class="btn btn-cta">Voir les tarifs</a>
+        <a href="contact.html" class="btn btn-cta-green">Nous contacter</a>
+        <a href="tarifs.html" class="btn btn-cta-outline">Voir les tarifs</a>
       </div>
     </div>
   </section>
 
 </main>
 
+<!-- MODALE DISPONIBILITÉS OFFICIELLES GÎTES DE FRANCE / TOURINSOFT -->
 <div class="modal dispo-modal">
   <div class="modal-box">
     <button class="modal-close" aria-label="Fermer">&times;</button>
     <h2>Planning des disponibilités</h2>
     <p class="modal-sub">Widget officiel Gîtes de France / Tourinsoft, mis à jour directement par le gîte.</p>
     <div style="position:relative;">
-      <div class="dispo-loader"><div><div class="spinner"></div><p style="font-size:14px;">Chargement des disponibilités…</p></div></div>
+      <div class="dispo-loader"><div><div class="spinner"></div><p style="font-size:14px;color:#6B5D4D;">Chargement des disponibilités…</p></div></div>
       <iframe class="dispo-iframe" data-src="https://wcf.tourinsoft.com/Syndication/decibelles-data/c03a5d77-24d5-40e9-8393-08d8ac3e8524/object/HCOBFC025345000122/" title="Disponibilités du gîte La Tuffière" loading="lazy"></iframe>
     </div>
   </div>
 </div>
 
+<!-- FOOTER SOMBRE FIDÈLE -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
@@ -175,8 +479,12 @@
         <img src="images/logo.png" alt="La Tuffière" class="footer-logo">
         <p>Gîte de charme au cœur de la Vallée de la Loue, dans le massif du Jura. Bénédicte et Christian vous accueillent.</p>
         <div class="social-links">
-          <a href="https://www.facebook.com/chrisetbene/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
-          <a href="https://share.google/q7xGJVCA5Tao4Slqo" target="_blank" rel="noopener" aria-label="Google">G</a>
+          <a href="https://www.facebook.com/chrisetbene/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://share.google/q7xGJVCA5Tao4Slqo" target="_blank" rel="noopener" aria-label="Google">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm-1-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm5 7h-2v-3c0-.55-.45-1-1-1s-1 .45-1 1v3h-2v-6h2v1.1c.42-.65 1.15-1.1 2-1.1 1.66 0 3 1.34 3 3v3z"/></svg>
+          </a>
         </div>
       </div>
       <div class="footer-col footer-nav">
