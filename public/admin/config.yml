@@ -55,6 +55,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Titre de la formule", name: "name", widget: "string" }
+              - { label: "Prix et formule", name: "price", widget: "string", required: false }
               - { label: "Description", name: "description", widget: "text" }
           - { label: "Mention Allergènes", name: "allergenNote", widget: "string" }
 
