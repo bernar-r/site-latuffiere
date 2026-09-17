@@ -6,7 +6,7 @@
       "conditions": [
         "Seulement sur réservation",
         "Menu unique pour tous",
-        "Inclus dans la demi-pension (au choix : Menu Tradition ou Tartes Flambées à volonté) — tarif +10% hors demi-pension",
+        "Inclus dans la demi-pension — tarif +10% hors demi-pension",
         "Supplément fromage : 5 €"
       ],
       "sections": [
@@ -108,8 +108,8 @@
     }
   ],
   "flammekueche": {
-    "name": "Menu Tartes Flambées Franc-Comtoises",
-    "description": "Tartes flambées Franc-Comtoises à volonté, salées avec salade verte et sucrées."
+    "name": "Menu Tartes flambées",
+    "description": "Tartes flambées Franc-Comtoises, salées avec salade verte et sucrées."
   },
   "allergenNote": "Allergènes sur demande auprès de la Direction."
 }

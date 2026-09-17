@@ -46,7 +46,6 @@ const heroSlides = [
         <div class="food-highlights">
           <span class="food-badge">🥓 Charcuteries fumées du Haut-Doubs</span>
           <span class="food-badge">🧀 Comté &amp; Morbier Bio</span>
-          <span class="food-badge">🔥 Tartes flambées salées &amp; sucrées</span>
           <span class="food-badge">🍰 Pâtisseries &amp; desserts 100% maison</span>
           <span class="food-badge">🍷 Vins du Jura (Arbois, Savagnin)</span>
         </div>
@@ -120,62 +119,29 @@ const heroSlides = [
       <p>Prix par personne. Menus proposés uniquement sur réservation — nous consulter pour les allergies et régimes particuliers.</p>
 
       <div class="menus-grid">
-        <article class="menu-card">
-          <h3>{menus[0].name}</h3>
-          <p class="menu-price">{menus[0].price}</p>
-          <ul class="menu-conditions">
-            {menus[0].conditions.map((c) => <li>{c}</li>)}
-          </ul>
-          {menus[0].sections.map((section) => (
-            <div class="menu-section">
-              <h4>{section.title}</h4>
-              <ul>
-                {section.items.map((item) => <li>{item}</li>)}
-              </ul>
-            </div>
-          ))}
-        </article>
-
-        <article class="menu-card">
-          <h3>{flammekueche.name}</h3>
-          <p class="menu-price">Formule à volonté</p>
-          <ul class="menu-conditions">
-            <li>Seulement sur réservation</li>
-            <li>Menu unique pour tous</li>
-            <li>Au choix pour le dîner : soit Menu Tradition, soit Tartes Flambées à volonté</li>
-            <li>Inclus dans la demi-pension — tarif +10% hors demi-pension</li>
-          </ul>
-          <div class="menu-section">
-            <h4>Plats</h4>
-            <ul>
-              <li>Tartes flambées salées Franc-Comtoises à volonté (lardons fumés, oignons, Comté...)</li>
-              <li>Servies bien chaudes avec salade verte</li>
+        {menus.map((menu) => (
+          <article class="menu-card">
+            <h3>{menu.name}</h3>
+            <p class="menu-price">{menu.price}</p>
+            <ul class="menu-conditions">
+              {menu.conditions.map((c) => <li>{c}</li>)}
             </ul>
-          </div>
-          <div class="menu-section">
-            <h4>Desserts</h4>
-            <ul>
-              <li>Tartes flambées sucrées à volonté (pommes fondantes, cannelle, caramélisées au four)</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <h3>{menus[1].name}</h3>
-          <p class="menu-price">{menus[1].price}</p>
-          <ul class="menu-conditions">
-            {menus[1].conditions.map((c) => <li>{c}</li>)}
-          </ul>
-          {menus[1].sections.map((section) => (
-            <div class="menu-section">
-              <h4>{section.title}</h4>
-              <ul>
-                {section.items.map((item) => <li>{item}</li>)}
-              </ul>
-            </div>
-          ))}
-        </article>
+            {menu.sections.map((section) => (
+              <div class="menu-section">
+                <h4>{section.title}</h4>
+                <ul>
+                  {section.items.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            ))}
+          </article>
+        ))}
       </div>
+
+      <article class="menu-card menu-card-flamme">
+        <h3>{flammekueche.name}</h3>
+        <p>{flammekueche.description}</p>
+      </article>
 
       <p class="allergen-note">{allergenNote}</p>
     </div>
@@ -301,11 +267,11 @@ const heroSlides = [
   }
   .menus-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
     margin-top: 28px;
   }
-  @media (max-width: 960px) {
+  @media (max-width: 860px) {
     .menus-grid { grid-template-columns: 1fr; }
   }
   .menu-card {
@@ -344,7 +310,12 @@ const heroSlides = [
     margin: 0;
     padding-left: 20px;
   }
-
+  .menu-section li { margin-bottom: 4px; }
+  .menu-card-flamme {
+    margin-top: 28px;
+    text-align: center;
+    border-color: var(--color-rust);
+  }
   .allergen-note {
     margin-top: 20px;
     font-size: 0.85rem;
