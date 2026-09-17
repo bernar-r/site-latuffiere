@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: bernar-r/site-latuffiere
   branch: main
 
 # Dossier où sont stockées les images téléversées
