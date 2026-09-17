@@ -53,10 +53,43 @@ const activities = [
     linkHref: "https://musee-courbet.fr/",
   },
 ];
+
+const landmarks = [
+  {
+    name: "Lods",
+    distance: "3 km · 5 min",
+    desc: "Classé parmi les « Plus Beaux Villages de France ». Maisons vigneronnes médiévales en gradins, Musée de la Vigne et du Vin et pont de pierre sur la Loue."
+  },
+  {
+    name: "Ornans",
+    distance: "10 km · 10 min",
+    desc: "La « Venise comtoise », patrie de Gustave Courbet. Musée Courbet, maisons historiques sur pilotis au bord de la Loue, commerces et Via Ferrata de la Roche du Mont."
+  },
+  {
+    name: "Source de la Loue",
+    distance: "18 km · 20 min",
+    desc: "Résurgence vauclusienne spectaculaire jaillissant d'une falaise calcaire de 100 m de haut à Ouhans. Belvédères panoramiques et départs de grands sentiers."
+  },
+  {
+    name: "Gouffre de Poudrey & Dino-Zoo",
+    distance: "22 km · 25 min",
+    desc: "La plus vaste salle souterraine aménagée de France (spectacle son & lumière) et parc de loisirs familial préhistorique de 15 hectares à Charbonnières-les-Sapins."
+  },
+  {
+    name: "Pontarlier & Haut-Doubs",
+    distance: "34 km · 35 min",
+    desc: "Capitale de l'absinthe aux portes de la Suisse, forteresse du Château de Joux, mont d'Or et proximité des grands lacs de Saint-Point et de Remoray."
+  },
+  {
+    name: "Besançon & Citadelle",
+    distance: "36 km · 40 min",
+    desc: "Capitale régionale d'Art et d'Histoire, chef-d'œuvre de Vauban inscrit au patrimoine mondial de l'UNESCO, Musée du Temps et boucle de la rivière Doubs."
+  }
+];
 ---
 <BaseLayout
-  title="Activités & Découverte — Gîte La Tuffière, Vallée de la Loue (Doubs)"
-  description="Pêche à la mouche, balades moto, randonnées, canoë-kayak, spéléo et musées : explorez toutes les richesses de la vallée de la Loue depuis le gîte La Tuffière."
+  title="Activités Vallée de la Loue & Ornans | Gîte La Tuffière"
+  description="Pêche à la mouche, balades moto, canoë, rando et musées : explorez la vallée de la Loue, Ornans et le Doubs depuis le gîte La Tuffière à Vuillafans."
 >
   <PageHero
     image="/images/activites-hero-2.jpeg"
@@ -121,6 +154,31 @@ const activities = [
           loading="lazy"
           style="border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.12);"
         >
+      </div>
+    </div>
+  </section>
+
+  <!-- REPÈRES GÉOGRAPHIQUES & DISTANCES CLÉS (SEO LOCAL DOUBS / LOUE) -->
+  <section class="section">
+    <div class="container">
+      <div style="text-align:center;max-width:780px;margin:0 auto 36px;">
+        <span class="eyebrow">Situation géographique &amp; Excursions</span>
+        <h2>Au carrefour des grands sites du Doubs</h2>
+        <p>
+          Implanté à Vuillafans au cœur de la haute vallée de la Loue, le gîte La Tuffière est le point de départ idéal pour rayonner vers les sites naturels, patrimoniaux et gastronomiques incontournables de Franche-Comté.
+        </p>
+      </div>
+
+      <div class="landmarks-grid">
+        {landmarks.map((place) => (
+          <div class="landmark-card">
+            <div class="landmark-header">
+              <h3 class="landmark-title">{place.name}</h3>
+              <span class="landmark-badge">📍 {place.distance}</span>
+            </div>
+            <p class="landmark-desc">{place.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>

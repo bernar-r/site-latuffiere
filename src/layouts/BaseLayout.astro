@@ -29,6 +29,39 @@ const faqStructuredData = faq && faq.length > 0 ? {
   }))
 } : null;
 
+const pageNames: Record<string, string> = {
+  "gite": "Le Gîte & Chambres",
+  "le-gite": "Le Gîte & Chambres",
+  "table-dhotes": "Table d'Hôtes",
+  "activites": "Activités & Région",
+  "tarifs": "Tarifs",
+  "galerie": "Galerie Photos",
+  "contact": "Contact & Accès",
+  "mentions-legales": "Mentions Légales"
+};
+
+const cleanPath = Astro.url.pathname.replace(/^\/|\/$/g, "");
+const currentPageName = pageNames[cleanPath];
+
+const breadcrumbStructuredData = currentPageName ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://latuffiere.pro/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": currentPageName,
+      "item": canonicalUrl.toString()
+    }
+  ]
+} : null;
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "BedAndBreakfast",
@@ -135,6 +168,9 @@ const structuredData = {
 
   <!-- Données Structurées Schema.org JSON-LD pour Google Rich Results -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  {breadcrumbStructuredData && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructuredData)} />
+  )}
   {faqStructuredData && (
     <script type="application/ld+json" set:html={JSON.stringify(faqStructuredData)} />
   )}
