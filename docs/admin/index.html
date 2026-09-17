@@ -9,9 +9,9 @@
   <style>
     :root {
       --color-brand-green: #233b28;
-      --color-brand-green-hover: #1b3020;
+      --color-brand-green-hover: #192c1e;
       --color-rust: #b5622e;
-      --color-rust-hover: #934a1e;
+      --color-rust-hover: #8f461b;
       --color-sand: #faf7f2;
       --color-sand-dark: #ebdcd0;
       --color-text: #2f2721;
@@ -33,17 +33,17 @@
       color: var(--color-text);
     }
 
-    /* BARRE D'OUTILS SUPÉRIEURE FLOTTANTE / STICKY */
+    /* BARRE SUPÉRIEURE FLOTTANTE ULTRA-CLAIRE POUR LES PARENTS */
     #editor-toolbar {
-      height: 56px;
+      height: 60px;
       background: var(--color-brand-green);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 16px;
-      border-bottom: 2px solid rgba(181, 98, 46, 0.4);
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+      padding: 0 20px;
+      border-bottom: 2px solid rgba(181, 98, 46, 0.45);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22);
       z-index: 1000;
       position: relative;
     }
@@ -56,44 +56,42 @@
 
     .brand-title {
       font-weight: 700;
-      font-size: 14.5px;
+      font-size: 15px;
       letter-spacing: 0.02em;
       color: #f7e8d6;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       white-space: nowrap;
     }
 
     .brand-badge {
-      background: rgba(181, 98, 46, 0.35);
+      background: rgba(181, 98, 46, 0.4);
       border: 1px solid #b5622e;
       color: #fde8d7;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 999px;
-      letter-spacing: 0.03em;
     }
 
-    /* ONGLET DE NAVIGATION ENTRE PAGES DU SITE */
+    /* ONGLETS DE NAVIGATION SIMPLES */
     .toolbar-center {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       overflow-x: auto;
-      max-width: 50%;
       padding: 4px 0;
     }
 
     .nav-tab {
-      background: rgba(255, 255, 255, 0.09);
-      color: #f0dec9;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.1);
+      color: #f3e5d7;
+      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 999px;
-      padding: 6px 13px;
-      font-size: 12.5px;
-      font-weight: 500;
+      padding: 7px 15px;
+      font-size: 13px;
+      font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -104,7 +102,7 @@
     }
 
     .nav-tab:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.22);
       color: #fff;
     }
 
@@ -112,21 +110,20 @@
       background: var(--color-rust);
       border-color: var(--color-rust);
       color: #fff;
-      font-weight: 700;
-      box-shadow: 0 2px 8px rgba(181, 98, 46, 0.4);
+      box-shadow: 0 2px 10px rgba(181, 98, 46, 0.45);
     }
 
-    /* ACTIONS DROITE (ENREGISTRER, COMPTEUR, PARAMÈTRES) */
+    /* ACTIONS À DROITE : ENREGISTRER & AIDE */
     .toolbar-right {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .dirty-badge {
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 600;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
@@ -137,28 +134,28 @@
 
     .dirty-badge.is-clean {
       background: rgba(76, 175, 80, 0.2);
-      color: #a5d6a7;
+      color: #c8e6c9;
       border: 1px solid rgba(76, 175, 80, 0.4);
     }
 
     .dirty-badge.is-dirty {
-      background: rgba(255, 152, 0, 0.25);
-      color: #ffe082;
-      border: 1px solid rgba(255, 152, 0, 0.5);
+      background: #ff9800;
+      color: #fff;
+      box-shadow: 0 0 12px rgba(255, 152, 0, 0.6);
       animation: pulseAlert 2s infinite;
     }
 
     @keyframes pulseAlert {
-      0% { transform: scale(0.98); }
-      50% { transform: scale(1.02); }
-      100% { transform: scale(0.98); }
+      0% { transform: scale(0.97); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(0.97); }
     }
 
     .btn-action {
       font-family: inherit;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 600;
-      padding: 7px 14px;
+      padding: 8px 16px;
       border-radius: 999px;
       cursor: pointer;
       border: none;
@@ -173,12 +170,14 @@
     .btn-save {
       background: var(--color-rust);
       color: #fff;
-      box-shadow: 0 2px 10px rgba(181, 98, 46, 0.4);
+      box-shadow: 0 3px 12px rgba(181, 98, 46, 0.45);
+      font-size: 13.5px;
     }
 
     .btn-save:hover:not(:disabled) {
       background: var(--color-rust-hover);
       transform: translateY(-1px);
+      box-shadow: 0 5px 15px rgba(181, 98, 46, 0.55);
     }
 
     .btn-save:disabled {
@@ -189,22 +188,17 @@
     .btn-secondary {
       background: rgba(255, 255, 255, 0.12);
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.22);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.22);
-    }
-
-    .btn-icon-only {
-      padding: 6px 9px;
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.25);
     }
 
     /* CONTENEUR PLEIN ÉCRAN POUR LE SITE */
     #site-viewport-wrapper {
       width: 100vw;
-      height: calc(100vh - 56px);
+      height: calc(100vh - 60px);
       position: relative;
       background: #faf7f2;
     }
@@ -216,6 +210,38 @@
       display: block;
       background: #faf7f2;
     }
+
+    /* BANDEAU D'AIDE RAPIDE (DISSIPABLE) */
+    #tip-banner {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      background: rgba(35, 59, 40, 0.92);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      pointer-events: auto;
+      transition: opacity 0.3s ease;
+    }
+    #tip-banner button {
+      background: transparent;
+      border: none;
+      color: #f7e8d6;
+      cursor: pointer;
+      font-size: 14px;
+      opacity: 0.7;
+      padding: 0 4px;
+    }
+    #tip-banner button:hover { opacity: 1; }
 
     /* NOTIFICATION FLOTTANTE (TOAST) */
     #toast-notification {
@@ -254,7 +280,7 @@
       border-color: #ef5350;
     }
 
-    /* MODALES DE PARAMÉTRAGE & GUIDE */
+    /* MODALES SIMPLES */
     .tuffiere-modal {
       position: fixed;
       inset: 0;
@@ -274,64 +300,94 @@
     .modal-box {
       background: #fff;
       color: var(--color-text);
-      border-radius: 16px;
-      max-width: 620px;
+      border-radius: 18px;
+      max-width: 540px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
-      padding: 30px;
+      padding: 32px;
       box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35);
       position: relative;
     }
 
+    .modal-box.text-center {
+      text-align: center;
+    }
+
     .modal-box h2 {
-      font-size: 1.35rem;
-      margin-bottom: 8px;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
       color: var(--color-brand-green);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .modal-box p {
-      font-size: 0.93rem;
+    .modal-sub {
+      font-size: 0.95rem;
       line-height: 1.55;
       color: #554436;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .modal-form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      text-align: left;
     }
 
     .modal-form-group label {
       display: block;
-      font-weight: 600;
-      font-size: 0.88rem;
-      margin-bottom: 6px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
       color: #3b2e24;
     }
 
     .modal-form-group input {
       width: 100%;
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid #d4c2b2;
-      font-size: 0.95rem;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1.5px solid #d4c2b2;
+      font-size: 1rem;
       font-family: inherit;
     }
 
     .modal-form-group input:focus {
       outline: none;
       border-color: var(--color-rust);
-      box-shadow: 0 0 0 3px rgba(181, 98, 46, 0.2);
+      box-shadow: 0 0 0 4px rgba(181, 98, 46, 0.2);
+    }
+
+    .modal-checkbox-group {
+      margin-bottom: 22px;
+      text-align: left;
+    }
+
+    .modal-checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: #5a493b;
+      cursor: pointer;
+    }
+
+    .modal-checkbox-group input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+      accent-color: var(--color-rust);
     }
 
     .modal-actions {
       display: flex;
       justify-content: flex-end;
-      gap: 10px;
+      gap: 12px;
       margin-top: 24px;
+    }
+
+    .modal-actions.center {
+      justify-content: center;
     }
 
     .guide-step {
@@ -342,6 +398,7 @@
       margin-bottom: 12px;
       display: flex;
       gap: 12px;
+      text-align: left;
     }
 
     .guide-step-num {
@@ -372,109 +429,166 @@
 
     @media (max-width: 900px) {
       .brand-title span:not(.brand-badge) { display: none; }
-      .toolbar-center { max-width: 60%; }
+      .toolbar-center { max-width: 55%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BARRE SUPÉRIEURE D'ÉDITION DIRECTE -->
+  <!-- BARRE SUPÉRIEURE ÉPURÉE ET ACCUEILLANTE -->
   <header id="editor-toolbar">
     <div class="toolbar-left">
       <div class="brand-title">
         <span>🏡 Gîte La Tuffière</span>
-        <span class="brand-badge">✏️ Mode Édition Directe</span>
+        <span class="brand-badge">Mode Édition</span>
       </div>
     </div>
 
-    <nav class="toolbar-center" aria-label="Pages modifiables">
-      <button type="button" class="nav-tab is-active" data-path="/table-dhotes/" data-title="Table d'hôtes">
+    <!-- ONGLETS POUR NAVIGUER FACILEMENT -->
+    <nav class="toolbar-center" aria-label="Pages à modifier">
+      <button type="button" class="nav-tab is-active" data-path="/table-dhotes/" title="Modifier les plats et menus du soir">
         🍽️ Table d'hôtes &amp; Menus
       </button>
-      <button type="button" class="nav-tab" data-path="/tarifs/" data-title="Tarifs 2026">
+      <button type="button" class="nav-tab" data-path="/tarifs/" title="Modifier les tarifs des chambres et repas">
         💶 Grille des Tarifs
       </button>
-      <button type="button" class="nav-tab" data-path="/contact/" data-title="FAQ & Contact">
-        ❓ FAQ &amp; Contact
+      <button type="button" class="nav-tab" data-path="/contact/" title="Modifier les questions fréquentes">
+        ❓ Questions Fréquentes (FAQ)
       </button>
-      <button type="button" class="nav-tab" data-path="/" data-title="Accueil">
+      <button type="button" class="nav-tab" data-path="/" title="Voir la page d'accueil">
         🏠 Accueil
       </button>
     </nav>
 
+    <!-- ACTIONS PRINCIPALES -->
     <div class="toolbar-right">
       <span class="dirty-badge is-clean" id="dirty-status">
         <span>✅ Tout est à jour</span>
       </span>
 
-      <button type="button" class="btn-action btn-save" id="btn-save-changes" title="Publier vos modifications sur internet">
-        <span>💾 Enregistrer &amp; Publier</span>
+      <button type="button" class="btn-action btn-save" id="btn-save-changes" title="Enregistrer et publier sur le site">
+        <span>💾 Enregistrer</span>
       </button>
 
-      <button type="button" class="btn-action btn-secondary btn-icon-only" id="btn-reload-page" title="Recharger la page (annuler les modifications non enregistrées)">
-        🔄
+      <button type="button" class="btn-action btn-secondary" id="btn-reload-page" title="Annuler les modifications récentes et recharger">
+        <span>↩️ Annuler</span>
       </button>
 
-      <button type="button" class="btn-action btn-secondary" id="btn-open-guide" title="Comment modifier le site ?">
-        📖 Guide
+      <button type="button" class="btn-action btn-secondary" id="btn-open-guide" title="Comment ça marche ?">
+        <span>❓ Aide</span>
       </button>
 
-      <button type="button" class="btn-action btn-secondary btn-icon-only" id="btn-open-token" title="Configurer la clé GitHub">
-        🔑
-      </button>
-
-      <a href="/" target="_blank" rel="noopener" class="btn-action btn-secondary" title="Voir le site public dans un nouvel onglet">
-        ↗ Site public
+      <a href="/" target="_blank" rel="noopener" class="btn-action btn-secondary" title="Ouvrir le site internet normal dans un nouvel onglet">
+        <span>↗ Voir le site</span>
       </a>
     </div>
   </header>
 
-  <!-- APERÇU DIRECT ET ÉDITABLE EN PLEIN ÉCRAN -->
+  <!-- APERÇU DU SITE EN PLEIN ÉCRAN -->
   <main id="site-viewport-wrapper">
-    <iframe id="site-frame" src="/table-dhotes/" title="Éditeur visuel interactif du site La Tuffière"></iframe>
+    <!-- Petite bulle d'astuce rassurante -->
+    <div id="tip-banner">
+      <span>💡 <strong>Astuce :</strong> Cliquez directement sur n'importe quel texte ou tarif pour le modifier.</span>
+      <button type="button" id="btn-close-tip" title="Masquer l'astuce">✕</button>
+    </div>
+
+    <iframe id="site-frame" src="/table-dhotes/" title="Site La Tuffière en mode direct"></iframe>
   </main>
 
-  <!-- TOAST NOTIFICATION FLOTTANT -->
-  <div id="toast-notification" role="status" aria-live="polite">
-    <span id="toast-icon">ℹ️</span>
-    <span id="toast-message">Message</span>
+  <!-- MODALE UNIQUE ET SIMPLE QUAND ON CLIQUE SUR ENREGISTRER (DEMANDE JUSTE LE JETON) -->
+  <div id="save-modal" class="tuffiere-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-box">
+      <h2>💾 Enregistrer vos modifications</h2>
+      <p class="modal-sub">
+        Pour mettre en ligne vos nouveaux plats ou tarifs sur <strong>latuffiere.pro</strong>, entrez simplement votre <strong>clé d'accès</strong> (jeton) :
+      </p>
+
+      <form id="save-token-form">
+        <div class="modal-form-group">
+          <label for="save-token-input">🔑 Votre clé d'accès (Jeton GitHub) :</label>
+          <input
+            type="password"
+            id="save-token-input"
+            placeholder="Collez votre jeton ici (ex : ghp_...)"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="modal-checkbox-group">
+          <label>
+            <input type="checkbox" id="save-token-remember" checked />
+            <span>Mémoriser sur cet ordinateur (vous n'aurez plus besoin de la retaper)</span>
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-action btn-secondary" id="btn-cancel-save">
+            Annuler
+          </button>
+          <button type="submit" class="btn-action btn-save" id="btn-submit-save">
+            <span>🚀 Valider et Mettre en ligne</span>
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 
-  <!-- MODALE DU GUIDE POUR BÉNÉDICTE & CHRISTIAN -->
+  <!-- MODALE DE SUCCÈS CHALEUREUSE APRÈS ENREGISTREMENT -->
+  <div id="success-modal" class="tuffiere-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-box text-center">
+      <div style="font-size: 52px; margin-bottom: 12px;">🎉</div>
+      <h2 style="justify-content: center;">C'est enregistré avec succès !</h2>
+      <p style="font-size: 1.02rem; line-height: 1.6; color: #4a3c31; margin-bottom: 26px;">
+        Bravo Bénédicte &amp; Christian ! Vos modifications ont été envoyées.<br>
+        Le site internet s'actualise automatiquement en tâche de fond : vos nouveaux tarifs et menus seront visibles pour tout le monde d'ici <strong>1 à 2 minutes</strong> sur <strong>latuffiere.pro</strong>.
+      </p>
+      <div class="modal-actions center">
+        <button type="button" class="btn-action btn-save" id="btn-close-success" style="padding: 10px 24px; font-size: 14px;">
+          Parfait, merci !
+        </button>
+        <a href="/" target="_blank" rel="noopener" class="btn-action btn-secondary" style="padding: 10px 18px;">
+          ↗ Voir le site en vrai
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALE DU GUIDE D'AIDE FACILE -->
   <div id="guide-modal" class="tuffiere-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-box">
-      <h2>📖 Mode d'emploi — Comment modifier votre site ?</h2>
-      <p>Bonjour Bénédicte &amp; Christian ! Vous êtes directement sur votre site internet en mode écriture.</p>
+      <h2>📖 Comment modifier votre site ?</h2>
+      <p class="modal-sub">C'est très simple, vous êtes directement sur votre site en mode écriture :</p>
 
       <div class="guide-step">
         <div class="guide-step-num">1</div>
         <div class="guide-step-body">
           <h4>Choisissez la page en haut</h4>
-          <p>Cliquez sur <strong>🍽️ Table d'hôtes</strong> pour vos plats et menus, <strong>💶 Grille des Tarifs</strong> pour vos prix, ou <strong>❓ FAQ</strong> pour les questions pratiques.</p>
+          <p>Cliquez sur <strong>🍽️ Table d'hôtes</strong> pour les plats, <strong>💶 Grille des Tarifs</strong> pour les prix, ou <strong>❓ Questions Fréquentes</strong> pour la FAQ.</p>
         </div>
       </div>
 
       <div class="guide-step">
         <div class="guide-step-num">2</div>
         <div class="guide-step-body">
-          <h4>Cliquez directement sur un texte ou un prix</h4>
-          <p>Chaque élément modifiable s'entoure d'un cadre vert lorsque vous cliquez dessus. Tapez simplement vos nouveaux plats ou tarifs au clavier comme dans un document texte.</p>
+          <h4>Cliquez directement sur un plat ou un prix</h4>
+          <p>Le texte s'entoure d'un cadre vert. Tapez simplement vos modifications au clavier, exactement comme dans Word.</p>
         </div>
       </div>
 
       <div class="guide-step">
         <div class="guide-step-num">3</div>
         <div class="guide-step-body">
-          <h4>Ajoutez ou supprimez facilement</h4>
-          <p>Utilisez les boutons <strong>« + Ajouter un plat »</strong> sous les entrées, plats ou desserts, ou cliquez sur la petite corbeille <strong>🗑️</strong> à droite d'un plat pour l'effacer.</p>
+          <h4>Ajoutez ou supprimez des plats</h4>
+          <p>Cliquez sur les boutons <strong>« ➕ Ajouter un plat »</strong> sous les entrées, plats ou desserts, ou sur la corbeille <strong>🗑️</strong> pour effacer un plat.</p>
         </div>
       </div>
 
       <div class="guide-step">
         <div class="guide-step-num">4</div>
         <div class="guide-step-body">
-          <h4>Cliquez sur « 💾 Enregistrer &amp; Publier »</h4>
-          <p>Dès que vous avez terminé, cliquez sur le bouton orange <strong>« Enregistrer &amp; Publier »</strong> en haut à droite. Vos modifications seront visibles pour tous vos clients sur internet en 1 à 2 minutes !</p>
+          <h4>Cliquez sur « 💾 Enregistrer » en haut à droite</h4>
+          <p>La fenêtre vous demande votre clé d'accès la première fois, puis vos modifications sont publiées en ligne automatiquement !</p>
         </div>
       </div>
 
@@ -486,30 +600,13 @@
     </div>
   </div>
 
-  <!-- MODALE CONFIGURATION DU JETON GITHUB -->
-  <div id="token-modal" class="tuffiere-modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-box">
-      <h2>🔑 Clé d'accès GitHub (Publication)</h2>
-      <p>Cette clé permet d'enregistrer directement vos modifications sur le site hébergé sur GitHub. Elle est conservée sur votre ordinateur.</p>
-
-      <div class="modal-form-group">
-        <label for="gh-token-input">Jeton personnel GitHub (Personal Access Token) :</label>
-        <input type="password" id="gh-token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
-      </div>
-
-      <div class="modal-form-group">
-        <label for="gh-repo-input">Dépôt GitHub :</label>
-        <input type="text" id="gh-repo-input" value="bernar-r/site-latuffiere" />
-      </div>
-
-      <div class="modal-actions">
-        <button type="button" class="btn-action btn-secondary" id="btn-cancel-token">Annuler</button>
-        <button type="button" class="btn-action btn-save" id="btn-save-token">Enregistrer la clé</button>
-      </div>
-    </div>
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-notification" role="status" aria-live="polite">
+    <span id="toast-icon">ℹ️</span>
+    <span id="toast-message">Message</span>
   </div>
 
-  <!-- MOTEUR PRINCIPAL D'ÉDITION DIRECTE ET SYNCHRONISATION GITHUB -->
+  <!-- MOTEUR DE MODIFICATION ET SAUVEGARDE GITHUB -->
   <script>
     (function () {
       const frame = document.getElementById('site-frame');
@@ -517,30 +614,38 @@
       const dirtyStatus = document.getElementById('dirty-status');
       const btnSave = document.getElementById('btn-save-changes');
       const btnReload = document.getElementById('btn-reload-page');
-      const toast = document.getElementById('toast-notification');
-      const toastMsg = document.getElementById('toast-message');
-      const toastIcon = document.getElementById('toast-icon');
+
+      const tipBanner = document.getElementById('tip-banner');
+      const btnCloseTip = document.getElementById('btn-close-tip');
+
+      const saveModal = document.getElementById('save-modal');
+      const saveTokenForm = document.getElementById('save-token-form');
+      const saveTokenInput = document.getElementById('save-token-input');
+      const saveTokenRemember = document.getElementById('save-token-remember');
+      const btnCancelSave = document.getElementById('btn-cancel-save');
+      const btnSubmitSave = document.getElementById('btn-submit-save');
+
+      const successModal = document.getElementById('success-modal');
+      const btnCloseSuccess = document.getElementById('btn-close-success');
 
       const guideModal = document.getElementById('guide-modal');
       const btnOpenGuide = document.getElementById('btn-open-guide');
       const btnCloseGuide = document.getElementById('btn-close-guide');
 
-      const tokenModal = document.getElementById('token-modal');
-      const btnOpenToken = document.getElementById('btn-open-token');
-      const btnCancelToken = document.getElementById('btn-cancel-token');
-      const btnSaveToken = document.getElementById('btn-save-token');
-      const tokenInput = document.getElementById('gh-token-input');
-      const repoInput = document.getElementById('gh-repo-input');
+      const toast = document.getElementById('toast-notification');
+      const toastMsg = document.getElementById('toast-message');
+      const toastIcon = document.getElementById('toast-icon');
 
       let unsavedCount = 0;
       let activePath = '/table-dhotes/';
 
-      // Récupération du token GitHub (tuffiere_gh_token ou sveltia-cms)
-      function getGitHubToken() {
+      // Configuration GitHub pré-établie (aucune question technique aux parents)
+      const GITHUB_REPO = 'bernar-r/site-latuffiere';
+      const GITHUB_BRANCH = 'main';
+
+      function getSavedToken() {
         const direct = localStorage.getItem('tuffiere_gh_token');
         if (direct) return direct;
-
-        // Récupération rétro-compatible Sveltia CMS
         const sveltiaUser = localStorage.getItem('sveltia-cms.user');
         if (sveltiaUser) {
           try {
@@ -551,19 +656,10 @@
         return '';
       }
 
-      function setGitHubToken(token) {
-        localStorage.setItem('tuffiere_gh_token', token.trim());
-      }
-
-      function getGitHubRepo() {
-        return (localStorage.getItem('tuffiere_gh_repo') || 'bernar-r/site-latuffiere').trim();
-      }
-
-      // Gestion de l'état "modifié"
       function markDirty() {
         unsavedCount++;
         dirtyStatus.className = 'dirty-badge is-dirty';
-        dirtyStatus.innerHTML = '<span>🟡 ' + unsavedCount + ' modif(s) en attente</span>';
+        dirtyStatus.innerHTML = '<span>🟡 ' + unsavedCount + ' modif(s) prête(s)</span>';
       }
 
       function markClean() {
@@ -572,7 +668,6 @@
         dirtyStatus.innerHTML = '<span>✅ Tout est à jour</span>';
       }
 
-      // Notifications Toast
       let toastTimer;
       function showToast(message, type = 'info', icon = 'ℹ️') {
         clearTimeout(toastTimer);
@@ -584,12 +679,17 @@
         }, 5000);
       }
 
+      // Masquer l'astuce
+      btnCloseTip.addEventListener('click', () => {
+        tipBanner.style.display = 'none';
+      });
+
       // Navigation entre onglets
       tabs.forEach(tab => {
         tab.addEventListener('click', () => {
           if (unsavedCount > 0) {
-            const confirmLeave = confirm('Vous avez des modifications non enregistrées sur cette page. Voulez-vous vraiment changer de page sans enregistrer ?');
-            if (!confirmLeave) return;
+            const ok = confirm('Vous avez des modifications non enregistrées sur cette page. Voulez-vous vraiment changer de page sans enregistrer ?');
+            if (!ok) return;
           }
           tabs.forEach(t => t.classList.remove('is-active'));
           tab.classList.add('is-active');
@@ -599,49 +699,37 @@
         });
       });
 
+      // Annuler / Recharger
       btnReload.addEventListener('click', () => {
         if (unsavedCount > 0) {
-          if (!confirm('Voulez-vous annuler vos modifications récentes et recharger la page ?')) return;
+          if (!confirm('Voulez-vous annuler vos modifications récentes et remettre la page comme au début ?')) return;
         }
         markClean();
         frame.src = frame.src;
       });
 
-      // Modale Guide
+      // Guide d'aide
       btnOpenGuide.addEventListener('click', () => guideModal.classList.add('is-open'));
       btnCloseGuide.addEventListener('click', () => guideModal.classList.remove('is-open'));
       guideModal.addEventListener('click', (e) => { if (e.target === guideModal) guideModal.classList.remove('is-open'); });
 
-      // Modale Token
-      btnOpenToken.addEventListener('click', () => {
-        tokenInput.value = getGitHubToken();
-        repoInput.value = getGitHubRepo();
-        tokenModal.classList.add('is-open');
-      });
-      btnCancelToken.addEventListener('click', () => tokenModal.classList.remove('is-open'));
-      btnSaveToken.addEventListener('click', () => {
-        setGitHubToken(tokenInput.value);
-        localStorage.setItem('tuffiere_gh_repo', repoInput.value.trim());
-        tokenModal.classList.remove('is-open');
-        showToast('Clé d’accès GitHub enregistrée avec succès !', 'success', '🔑');
-      });
-      tokenModal.addEventListener('click', (e) => { if (e.target === tokenModal) tokenModal.classList.remove('is-open'); });
+      // Modale de succès
+      btnCloseSuccess.addEventListener('click', () => successModal.classList.remove('is-open'));
+      successModal.addEventListener('click', (e) => { if (e.target === successModal) successModal.classList.remove('is-open'); });
 
-      // INJECTION DU MOTEUR D'ÉDITION DIRECTE DANS L'IFRAME
+      // INJECTION DU MOTEUR D'ÉDITION DIRECTE DANS LE SITE
       frame.addEventListener('load', () => {
         let doc;
         try {
           doc = frame.contentDocument || frame.contentWindow?.document;
         } catch (e) {
-          console.warn("Impossible d'accéder au DOM de l'iframe", e);
           return;
         }
         if (!doc || !doc.body) return;
 
-        // 1. Injection des styles visuels de modification directe
+        // Styles injectés dans la page pour rendre la modification évidente et rassurante
         const styleEl = doc.createElement('style');
         styleEl.textContent = `
-          /* Repères visuels pour l'édition in-place */
           .tuffiere-editable {
             outline: 1.5px dashed rgba(181, 98, 46, 0.45) !important;
             border-radius: 4px !important;
@@ -651,53 +739,53 @@
           }
           .tuffiere-editable:hover {
             outline: 2px dashed #b5622e !important;
-            background-color: rgba(181, 98, 46, 0.05) !important;
+            background-color: rgba(181, 98, 46, 0.06) !important;
           }
           .tuffiere-editable:focus {
             outline: 2px solid #2e7d32 !important;
             background-color: rgba(46, 125, 50, 0.08) !important;
-            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2) !important;
+            box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.2) !important;
           }
 
-          /* Boutons d'action pour listes de plats / questions */
-          .tuffiere-item-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-          }
+          /* Bouton ajouter un plat / question */
           .tuffiere-btn-add {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            margin-top: 8px;
-            padding: 4px 10px;
-            font-size: 11.5px;
-            font-weight: 600;
+            gap: 6px;
+            margin-top: 10px;
+            padding: 7px 14px;
+            font-size: 12.5px;
+            font-weight: 700;
             color: #b5622e;
             background: #faf7f2;
-            border: 1px dashed #b5622e;
-            border-radius: 6px;
+            border: 1.5px dashed #b5622e;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.15s;
+            transition: all 0.2s ease;
           }
           .tuffiere-btn-add:hover {
             background: #b5622e;
             color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(181, 98, 46, 0.25);
           }
+
+          /* Bouton corbeille pour supprimer un plat */
           .tuffiere-btn-del {
             background: transparent;
             border: none;
             cursor: pointer;
-            font-size: 13px;
-            opacity: 0.3;
-            transition: opacity 0.15s;
-            padding: 2px 4px;
+            font-size: 13.5px;
+            opacity: 0.35;
+            transition: all 0.15s ease;
+            padding: 3px 6px;
             border-radius: 4px;
+            margin-left: 8px;
           }
           .tuffiere-btn-del:hover {
             opacity: 1;
             background: #ffebee;
+            transform: scale(1.15);
           }
         `;
         doc.head.appendChild(styleEl);
@@ -714,31 +802,22 @@
           });
         }
 
-        // Configuration spécifique selon la page chargée
         const currentPath = frame.contentWindow.location.pathname;
 
-        // PAGE 1 : TABLE D'HÔTES (/table-dhotes/)
+        // 1. PAGE TABLE D'HÔTES
         if (currentPath.includes('table-dhotes')) {
           const menuCards = doc.querySelectorAll('.menu-card:not(.menu-card-flamme)');
           menuCards.forEach(card => {
-            // Titre & prix
-            const title = card.querySelector('h3');
-            const price = card.querySelector('.menu-price');
-            makeEditable(title);
-            makeEditable(price);
+            makeEditable(card.querySelector('h3'));
+            makeEditable(card.querySelector('.menu-price'));
 
-            // Conditions
             const condList = card.querySelector('.menu-conditions');
             if (condList) {
-              condList.querySelectorAll('li').forEach(li => {
-                makeEditable(li);
-              });
-
-              // Bouton ajouter une condition
+              condList.querySelectorAll('li').forEach(li => makeEditable(li));
               const addCondBtn = doc.createElement('button');
               addCondBtn.type = 'button';
               addCondBtn.className = 'tuffiere-btn-add tuffiere-ignore';
-              addCondBtn.textContent = '+ Ajouter une condition / remarque';
+              addCondBtn.textContent = '➕ Ajouter une condition ou remarque';
               addCondBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const newLi = doc.createElement('li');
@@ -751,28 +830,24 @@
               condList.after(addCondBtn);
             }
 
-            // Sections de plats (Entrées, Plats, Desserts)
             const sections = card.querySelectorAll('.menu-section');
             sections.forEach(sec => {
-              const secTitle = sec.querySelector('h4');
-              makeEditable(secTitle);
-
+              makeEditable(sec.querySelector('h4'));
               const ul = sec.querySelector('ul');
               if (ul) {
-                function setupDishItem(li) {
+                function setupDish(li) {
                   makeEditable(li);
-
-                  // Bouton supprimer le plat
                   if (!li.querySelector('.tuffiere-btn-del')) {
                     const delBtn = doc.createElement('button');
                     delBtn.type = 'button';
                     delBtn.className = 'tuffiere-btn-del tuffiere-ignore';
-                    delBtn.title = 'Supprimer ce plat';
+                    delBtn.title = 'Supprimer ce plat de la carte';
                     delBtn.textContent = '🗑️';
                     delBtn.contentEditable = 'false';
                     delBtn.addEventListener('click', (ev) => {
                       ev.stopPropagation();
-                      if (confirm('Voulez-vous supprimer ce plat de la carte ?')) {
+                      const dishName = li.childNodes[0]?.textContent?.trim() || 'ce plat';
+                      if (confirm(`Voulez-vous supprimer « ${dishName} » de la carte ?`)) {
                         li.remove();
                         markDirty();
                       }
@@ -781,20 +856,25 @@
                   }
                 }
 
-                ul.querySelectorAll('li').forEach(setupDishItem);
+                ul.querySelectorAll('li').forEach(setupDish);
 
-                // Bouton ajouter un plat
                 const addDishBtn = doc.createElement('button');
                 addDishBtn.type = 'button';
                 addDishBtn.className = 'tuffiere-btn-add tuffiere-ignore';
-                addDishBtn.textContent = '+ Ajouter un plat dans cette section';
+                addDishBtn.textContent = '➕ Ajouter un plat dans cette section';
                 addDishBtn.addEventListener('click', (e) => {
                   e.preventDefault();
                   const newLi = doc.createElement('li');
                   newLi.textContent = 'Nouveau plat du terroir...';
                   ul.appendChild(newLi);
-                  setupDishItem(newLi);
+                  setupDish(newLi);
                   newLi.focus();
+                  // Sélectionner le texte par défaut pour faciliter la frappe
+                  const range = doc.createRange();
+                  range.selectNodeContents(newLi.childNodes[0]);
+                  const sel = frame.contentWindow.getSelection();
+                  sel.removeAllRanges();
+                  sel.addRange(range);
                   markDirty();
                 });
                 ul.after(addDishBtn);
@@ -802,7 +882,6 @@
             });
           });
 
-          // Carte Tartes Flambées
           const flammeCard = doc.querySelector('.menu-card-flamme');
           if (flammeCard) {
             makeEditable(flammeCard.querySelector('h3'));
@@ -810,14 +889,12 @@
             makeEditable(flammeCard.querySelector('p:not(.menu-price)'));
           }
 
-          // Mention Allergènes
           const allergen = doc.querySelector('.allergen-note');
           if (allergen) makeEditable(allergen);
         }
 
-        // PAGE 2 : TARIFS 2026 (/tarifs/)
+        // 2. PAGE TARIFS
         else if (currentPath.includes('tarifs')) {
-          // Tableaux de tarifs (Nuitées et Demi-Pension)
           doc.querySelectorAll('.price-table tbody tr').forEach(row => {
             const labelCell = row.cells[0]?.querySelector('strong') || row.cells[0];
             const priceCell = row.cells[1];
@@ -825,25 +902,21 @@
             makeEditable(priceCell);
           });
 
-          // Tarifs enfants, taxe et randonneurs
           doc.querySelectorAll('.tarifs-card div p, .tarifs-note').forEach(p => {
             makeEditable(p);
           });
 
-          // Tarifs Groupes
           doc.querySelectorAll('.group-rate-card').forEach(card => {
-            const price = card.querySelector('.group-rate-price');
-            const paragraphs = card.querySelectorAll('p:not(.group-rate-price)');
-            makeEditable(price);
-            paragraphs.forEach(p => makeEditable(p));
+            makeEditable(card.querySelector('.group-rate-price'));
+            card.querySelectorAll('p:not(.group-rate-price)').forEach(p => makeEditable(p));
           });
         }
 
-        // PAGE 3 : CONTACT & FAQ (/contact/)
+        // 3. PAGE FAQ
         else if (currentPath.includes('contact')) {
           const faqAccordion = doc.querySelector('.faq-accordion');
           if (faqAccordion) {
-            function setupFaqItem(item) {
+            function setupFaq(item) {
               const q = item.querySelector('.faq-question span:first-child');
               const a = item.querySelector('.faq-answer p');
               makeEditable(q);
@@ -855,8 +928,8 @@
                 delBtn.className = 'tuffiere-btn-del tuffiere-ignore';
                 delBtn.textContent = '🗑️ Supprimer cette question';
                 delBtn.style.fontSize = '12px';
-                delBtn.style.marginTop = '8px';
                 delBtn.style.color = '#c62828';
+                delBtn.style.marginTop = '10px';
                 delBtn.addEventListener('click', (ev) => {
                   ev.stopPropagation();
                   if (confirm('Voulez-vous supprimer cette question de la FAQ ?')) {
@@ -868,15 +941,14 @@
               }
             }
 
-            faqAccordion.querySelectorAll('.faq-item').forEach(setupFaqItem);
+            faqAccordion.querySelectorAll('.faq-item').forEach(setupFaq);
 
-            // Bouton ajouter une question FAQ
             const addFaqBtn = doc.createElement('button');
             addFaqBtn.type = 'button';
             addFaqBtn.className = 'tuffiere-btn-add tuffiere-ignore';
-            addFaqBtn.textContent = '+ Ajouter une nouvelle question / réponse à la FAQ';
-            addFaqBtn.style.fontSize = '13px';
-            addFaqBtn.style.padding = '8px 14px';
+            addFaqBtn.textContent = '➕ Ajouter une nouvelle question / réponse à la FAQ';
+            addFaqBtn.style.fontSize = '13.5px';
+            addFaqBtn.style.padding = '9px 16px';
             addFaqBtn.addEventListener('click', (e) => {
               e.preventDefault();
               const newDetails = doc.createElement('details');
@@ -884,7 +956,7 @@
               newDetails.open = true;
               newDetails.innerHTML = `
                 <summary class="faq-question">
-                  <span>Nouvelle question fréquente...</span>
+                  <span>Nouvelle question pratique...</span>
                   <span class="faq-chevron" aria-hidden="true">▾</span>
                 </summary>
                 <div class="faq-answer">
@@ -892,7 +964,7 @@
                 </div>
               `;
               faqAccordion.appendChild(newDetails);
-              setupFaqItem(newDetails);
+              setupFaq(newDetails);
               newDetails.querySelector('.faq-question span')?.focus();
               markDirty();
             });
@@ -900,7 +972,7 @@
           }
         }
 
-        // PAGE 4 : ACCUEIL
+        // 4. PAGE ACCUEIL
         else {
           doc.querySelectorAll('.hero-lead, .lead, h2, h3, .section-intro p').forEach(el => {
             makeEditable(el);
@@ -908,15 +980,43 @@
         }
       });
 
-      // FONCTION DE SÉRIALISATION ET D'ENREGISTREMENT SUR GITHUB
-      btnSave.addEventListener('click', async () => {
-        const token = getGitHubToken();
+      // DÉCLENCHEMENT DE L'ENREGISTREMENT : OUVERTURE DE LA MODALE QUI DEMANDE LE JETON
+      btnSave.addEventListener('click', () => {
+        saveTokenInput.value = getSavedToken();
+        saveModal.classList.add('is-open');
+        setTimeout(() => {
+          saveTokenInput.focus();
+          if (saveTokenInput.value) saveTokenInput.select();
+        }, 100);
+      });
+
+      btnCancelSave.addEventListener('click', () => {
+        saveModal.classList.remove('is-open');
+      });
+
+      saveModal.addEventListener('click', (e) => {
+        if (e.target === saveModal) saveModal.classList.remove('is-open');
+      });
+
+      // VALIDATION DU FORMULAIRE D'ENREGISTREMENT
+      saveTokenForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const token = saveTokenInput.value.trim();
         if (!token) {
-          tokenModal.classList.add('is-open');
-          showToast('Veuillez renseigner votre clé d’accès GitHub pour publier.', 'error', '🔑');
+          alert("Veuillez renseigner votre jeton d'accès pour enregistrer.");
           return;
         }
 
+        if (saveTokenRemember.checked) {
+          localStorage.setItem('tuffiere_gh_token', token);
+        }
+
+        saveModal.classList.remove('is-open');
+        await performSave(token);
+      });
+
+      // ENREGISTREMENT EFFECTIF SUR GITHUB
+      async function performSave(token) {
         let doc;
         try {
           doc = frame.contentDocument || frame.contentWindow?.document;
@@ -930,7 +1030,7 @@
         let targetFilePath = '';
         let updatedData = null;
 
-        // CAS 1 : TABLE D'HÔTES (src/data/menus.json)
+        // TABLE D'HÔTES
         if (currentPath.includes('table-dhotes')) {
           targetFilePath = 'src/data/menus.json';
           const menuCards = doc.querySelectorAll('.menu-card:not(.menu-card-flamme)');
@@ -940,7 +1040,11 @@
             const name = card.querySelector('h3')?.textContent.trim() || '';
             const price = card.querySelector('.menu-price')?.textContent.trim() || '';
             const conditions = Array.from(card.querySelectorAll('.menu-conditions li:not(.tuffiere-ignore)'))
-              .map(li => li.childNodes[0]?.textContent?.trim() || li.textContent.trim())
+              .map(li => {
+                const clone = li.cloneNode(true);
+                clone.querySelectorAll('.tuffiere-ignore').forEach(n => n.remove());
+                return clone.textContent.trim();
+              })
               .filter(Boolean);
 
             const sections = [];
@@ -948,7 +1052,6 @@
               const title = sec.querySelector('h4')?.textContent.trim() || '';
               const items = Array.from(sec.querySelectorAll('ul li:not(.tuffiere-ignore)'))
                 .map(li => {
-                  // Nettoyer le texte sans le bouton corbeille
                   const clone = li.cloneNode(true);
                   clone.querySelectorAll('.tuffiere-ignore').forEach(n => n.remove());
                   return clone.textContent.trim();
@@ -973,7 +1076,7 @@
           updatedData = { menus, flammekueche, allergenNote };
         }
 
-        // CAS 2 : TARIFS (src/data/tarifs.json)
+        // TARIFS
         else if (currentPath.includes('tarifs')) {
           targetFilePath = 'src/data/tarifs.json';
           const cards = doc.querySelectorAll('.tarifs-grid-2 .tarifs-card');
@@ -1032,7 +1135,7 @@
           };
         }
 
-        // CAS 3 : FAQ (src/data/faq.json)
+        // FAQ
         else if (currentPath.includes('contact')) {
           targetFilePath = 'src/data/faq.json';
           const faq = [];
@@ -1049,21 +1152,18 @@
         }
 
         if (!targetFilePath || !updatedData) {
-          showToast("Cette page n'est pas configurée pour l'enregistrement direct des données.", 'error', '⚠️');
+          showToast("Cette page n'est pas modifiable directement.", 'error', '⚠️');
           return;
         }
 
-        // Envoi du commit via GitHub REST API
-        const repo = getGitHubRepo();
-        const branch = 'main';
-        const fileUrl = `https://api.github.com/repos/${repo}/contents/${targetFilePath}?ref=${branch}`;
+        const fileUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${targetFilePath}?ref=${GITHUB_BRANCH}`;
 
         btnSave.disabled = true;
         btnSave.innerHTML = '<span>⏳ Enregistrement...</span>';
-        showToast('Connexion à GitHub et enregistrement en cours...', 'info', '⏳');
+        showToast('Enregistrement de vos modifications en cours...', 'info', '⏳');
 
         try {
-          // 1. Récupération du SHA actuel du fichier
+          // 1. Obtenir le SHA actuel du fichier
           const getRes = await fetch(fileUrl, {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -1072,12 +1172,12 @@
           });
 
           if (getRes.status === 401 || getRes.status === 403) {
-            tokenModal.classList.add('is-open');
-            throw new Error('Clé GitHub invalide ou expirée. Veuillez vérifier votre jeton.');
+            saveModal.classList.add('is-open');
+            throw new Error('Votre clé d’accès (jeton) semble incorrecte ou expirée. Veuillez vérifier votre clé.');
           }
 
           if (!getRes.ok) {
-            throw new Error('Impossible de lire le fichier sur GitHub : ' + getRes.statusText);
+            throw new Error('Erreur de connexion au site : ' + getRes.statusText);
           }
 
           const fileMeta = await getRes.json();
@@ -1087,8 +1187,8 @@
           const jsonString = JSON.stringify(updatedData, null, 2) + '\n';
           const base64Content = btoa(unescape(encodeURIComponent(jsonString)));
 
-          // 3. Envoi du PUT commit
-          const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/${targetFilePath}`, {
+          // 3. Envoi du commit
+          const putRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${targetFilePath}`, {
             method: 'PUT',
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -1096,32 +1196,32 @@
               'Accept': 'application/vnd.github.v3+json'
             },
             body: JSON.stringify({
-              message: `Mise à jour directe : ${targetFilePath} [Éditeur visuel La Tuffière]`,
+              message: `Mise à jour : ${targetFilePath} [Éditeur La Tuffière]`,
               content: base64Content,
               sha: currentSha,
-              branch: branch
+              branch: GITHUB_BRANCH
             })
           });
 
           if (!putRes.ok) {
             const errData = await putRes.json().catch(() => ({}));
-            throw new Error('Erreur lors de l’enregistrement GitHub : ' + (errData.message || putRes.statusText));
+            throw new Error('Erreur lors de l’enregistrement : ' + (errData.message || putRes.statusText));
           }
 
           // Succès !
           markClean();
-          showToast('🎉 Félicitations ! Vos modifications sont enregistrées et seront publiées sur le site d’ici 1 minute.', 'success', '✅');
-          alert("🎉 Parfait !\n\nVos modifications ont été enregistrées avec succès sur le site.\n\nLe site internet La Tuffière s'actualise automatiquement en tâche de fond. Vos visiteurs verront la nouvelle version dans 1 à 2 minutes !");
+          showToast('Vos modifications ont bien été enregistrées !', 'success', '✅');
+          successModal.classList.add('is-open');
 
         } catch (err) {
           console.error(err);
-          showToast(err.message || 'Erreur inconnue', 'error', '❌');
-          alert('⚠️ Erreur lors de l’enregistrement :\n\n' + err.message);
+          showToast(err.message || 'Une erreur est survenue', 'error', '❌');
+          alert('⚠️ Attention :\n\n' + err.message);
         } finally {
           btnSave.disabled = false;
-          btnSave.innerHTML = '<span>💾 Enregistrer &amp; Publier</span>';
+          btnSave.innerHTML = '<span>💾 Enregistrer</span>';
         }
-      });
+      }
     })();
   </script>
 </body>
