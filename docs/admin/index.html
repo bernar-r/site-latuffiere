@@ -454,6 +454,10 @@
         <span>❓ Aide</span>
       </button>
 
+      <button type="button" class="btn-action btn-secondary" id="btn-forget-token" title="Effacer la clé d'accès mémorisée sur ce navigateur" style="display: none;">
+        <span>🔒 Oublier la clé</span>
+      </button>
+
       <a href="/" target="_blank" rel="noopener" class="btn-action btn-secondary" title="Voir le site public">
         <span>↗ Voir le site</span>
       </a>
@@ -597,6 +601,7 @@
       const guideModal = document.getElementById('guide-modal');
       const btnOpenGuide = document.getElementById('btn-open-guide');
       const btnCloseGuide = document.getElementById('btn-close-guide');
+      const btnForgetToken = document.getElementById('btn-forget-token');
 
       const toast = document.getElementById('toast-notification');
       const toastMsg = document.getElementById('toast-message');
@@ -619,6 +624,26 @@
           } catch (e) {}
         }
         return '';
+      }
+
+      function updateAuthUI() {
+        const token = getSavedToken();
+        if (btnForgetToken) {
+          btnForgetToken.style.display = token ? 'inline-flex' : 'none';
+        }
+      }
+      updateAuthUI();
+
+      if (btnForgetToken) {
+        btnForgetToken.addEventListener('click', () => {
+          if (confirm("Voulez-vous effacer la clé d'accès mémorisée sur cet ordinateur ?\n\n(Elle sera supprimée de ce navigateur. Vous pourrez la recoller la prochaine fois pour enregistrer.)")) {
+            localStorage.removeItem('tuffiere_gh_token');
+            localStorage.removeItem('sveltia-cms.user');
+            saveTokenInput.value = '';
+            updateAuthUI();
+            showToast("Clé d'accès effacée de ce navigateur.", "info", "🔒");
+          }
+        });
       }
 
       function markDirty() {
@@ -915,7 +940,9 @@
 
       // OUVERTURE DE LA MODALE D'ENREGISTREMENT (DEMANDE LE JETON)
       btnSave.addEventListener('click', () => {
-        saveTokenInput.value = getSavedToken();
+        const saved = getSavedToken();
+        saveTokenInput.value = saved;
+        saveTokenRemember.checked = !!saved;
         saveModal.classList.add('is-open');
         setTimeout(() => {
           saveTokenInput.focus();
@@ -942,7 +969,11 @@
 
         if (saveTokenRemember.checked) {
           localStorage.setItem('tuffiere_gh_token', token);
+        } else {
+          localStorage.removeItem('tuffiere_gh_token');
+          localStorage.removeItem('sveltia-cms.user');
         }
+        updateAuthUI();
 
         saveModal.classList.remove('is-open');
         await performSave(token);
