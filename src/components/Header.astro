@@ -6,13 +6,28 @@ const path = Astro.url.pathname;
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="logo"><img src="/images/logo.png" alt="Gîte La Tuffière" width="104" height="52"></a>
-    <nav class="main-nav" id="main-nav">
+
+    <!-- Nav desktop : toujours dans le DOM, jamais dependante d'un <details> ferme (fiabilite cross-navigateur). -->
+    <nav class="main-nav main-nav-desktop">
       <ul>
         {nav.map((item) => (
           <li><a href={item.href} class={path === item.href ? "is-active" : ""}>{item.label}</a></li>
         ))}
       </ul>
     </nav>
+
+    <!-- Nav mobile : <details> gere nativement l'ouverture/fermeture, sans JavaScript. -->
+    <details class="nav-details" id="nav-details">
+      <summary class="nav-toggle" aria-label="Ouvrir le menu">☰</summary>
+      <nav class="main-nav main-nav-mobile" id="main-nav">
+        <ul>
+          {nav.map((item) => (
+            <li><a href={item.href} class={path === item.href ? "is-active" : ""}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </details>
+
     <div class="header-actions">
       <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline" data-open-dispo>
         <span class="label-full">Voir les disponibilités</span>
@@ -23,7 +38,6 @@ const path = Astro.url.pathname;
         <span class="label-short" aria-hidden="true">Appeler</span>
       </a>
     </div>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">☰</button>
   </div>
 </header>
 
@@ -33,17 +47,12 @@ const path = Astro.url.pathname;
 </div>
 
 <script>
-  const toggle = document.getElementById("nav-toggle");
-  const nav = document.getElementById("main-nav");
-  if (toggle && nav) {
-    toggle.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
-    nav.querySelectorAll("a").forEach((link) => {
+  // <details> gere nativement l'ouverture/fermeture (fonctionne sans JS) ; on ferme juste au clic sur un lien.
+  const details = document.getElementById("nav-details");
+  if (details) {
+    details.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        nav.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
+        details.removeAttribute("open");
       });
     });
   }

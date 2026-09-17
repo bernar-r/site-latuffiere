@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+<BaseLayout
+  title="Page introuvable — Gîte La Tuffière"
+  description="Cette page n'existe pas ou plus. Retrouvez l'accueil du gîte La Tuffière à Vuillafans."
+>
+  <section class="section" style="text-align:center;padding:100px 0;">
+    <div class="container">
+      <span class="eyebrow">Erreur 404</span>
+      <h1>Page introuvable</h1>
+      <p>La page que vous cherchez n'existe pas ou a été déplacée.</p>
+      <div class="hero-actions" style="margin-top:24px;">
+        <a href="/" class="btn btn-primary">Retour à l'accueil</a>
+        <a href={site.phoneHref} class="btn btn-outline">Appeler le {site.phone}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

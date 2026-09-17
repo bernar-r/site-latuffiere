@@ -148,25 +148,40 @@ p { margin: 0 0 1em; }
   gap: 10px;
   align-items: center;
 }
-.nav-toggle {
+
+/* Nav desktop, toujours dans le flux normal du header */
+.main-nav-desktop { flex: 1; }
+
+/* Nav mobile : contenu du <details>, cache par defaut (comportement natif du navigateur) */
+.nav-details {
   display: none;
+}
+.nav-toggle {
   background: none;
   border: none;
   cursor: pointer;
+  list-style: none;
 }
+.nav-toggle::-webkit-details-marker { display: none; }
 
 @media (max-width: 1080px) {
-  .main-nav {
+  .main-nav-desktop { display: none; }
+  .nav-details { display: block; }
+  .nav-toggle {
+    display: block;
+    font-size: 1.4rem;
+    padding: 6px 10px;
+  }
+  .main-nav-mobile {
     position: fixed;
     inset: 0;
+    top: 76px;
     background: var(--color-bg);
-    display: none;
+    display: flex;
     flex-direction: column;
-    padding: 90px 24px 24px;
+    padding: 24px;
   }
-  .main-nav.is-open { display: flex; }
-  .main-nav ul { flex-direction: column; gap: 18px; }
-  .nav-toggle { display: block; }
+  .main-nav-mobile ul { flex-direction: column; gap: 18px; }
   .header-actions { display: none; }
 }
 
