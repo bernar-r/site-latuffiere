@@ -89,10 +89,10 @@ p { margin: 0 0 1em; }
   font-family: var(--font-body);
 }
 .btn-primary {
-  background: var(--color-rust);
+  background: var(--color-rust-dark);
   color: #fff;
 }
-.btn-primary:hover { background: var(--color-rust-dark); }
+.btn-primary:hover { background: #7a3e1c; }
 
 .btn-outline {
   background: transparent;
@@ -141,7 +141,7 @@ p { margin: 0 0 1em; }
 }
 .main-nav a.is-active,
 .main-nav a:hover {
-  color: var(--color-rust);
+  color: var(--color-rust-dark);
 }
 .header-actions {
   display: flex;
