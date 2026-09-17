@@ -1,27 +1,6 @@
-// Données centralisées : coordonnées, navigation, labels — modifiées ici, répercutées partout.
+import siteData from "./site.json";
 
-export const site = {
-  name: "Gîte La Tuffière",
-  tagline: "Vuillafans · Vallée de la Loue · Doubs",
-  phone: "03 81 60 96 76",
-  phoneHref: "tel:0381609676",
-  phoneSecondary: "06 16 61 81 78",
-  phoneSecondaryHref: "tel:0616618178",
-  email: "latuffiere2@wanadoo.fr",
-  address: {
-    line1: "1 chemin de Montgesoye",
-    line2: "25840 Vuillafans",
-  },
-  // À confirmer avec Bénédicte & Christian (horaires week-end ?)
-  hours: "Lundi – Vendredi : 08h00 – 18h00",
-  facebook: "https://www.facebook.com/chrisetbene/",
-  googleMaps: "https://www.google.com/maps/place/G%C3%AEte+La+Tuffi%C3%A8re/@47.0684357,6.204781,15z",
-  capacity: "Capacité d'accueil : 35 personnes",
-  tagline: "Le repère des motards, randonneurs et pêcheurs dans le Doubs : votre prochain hébergement",
-  // Widget officiel Gîtes de France / Tourinsoft — URL réelle, ne pas modifier sans vérification.
-  dispoIframeUrl:
-    "https://wcf.tourinsoft.com/Syndication/decibelles-data/c03a5d77-24d5-40e9-8393-08d8ac3e8524/object/HCOBFC025345000122/",
-};
+export const site = siteData;
 
 export const nav = [
   { label: "Accueil", href: "/" },

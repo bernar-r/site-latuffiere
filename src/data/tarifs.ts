@@ -1,41 +1,11 @@
-// Tarifs réels 2026 (transcrits depuis la fiche tarifs du gîte — à valider/mettre à jour avec Bénédicte & Christian).
-export const nightRates = [
-  { label: "Chambre individuelle", price: "61,00 €" },
-  { label: "Chambre double (par personne)", price: "47,50 €" },
-  { label: "Chambre de 3 ou 4 (par personne)", price: "42,00 €" },
-];
+import tarifsData from "./tarifs.json";
 
-export const childRate = "Enfant (3 à 11 ans) dans la chambre des parents : 31,50 €";
-export const touristTax = "+ Taxe de séjour : 0,83 € / adulte / nuit à partir de 18 ans";
-
-// Table d'hôtes en demi-pension (hors boissons) — hors hébergement : +10%
-export const halfBoardMenus = [
-  { label: "Menu tradition, plat + dessert", price: "20,00 €" },
-  { label: "Menu tradition, entrée + plat + dessert", price: "25,00 €" },
-  { label: "Menu tradition, entrée + plat + fromage + dessert", price: "30,00 €" },
-  { label: "Menu enfant (< 12 ans), plat + dessert", price: "13,00 €" },
-  { label: "Menu dégustation", price: "41,00 €" },
-];
-
-export const packedLunch = "Panier repas randonneur à emporter : 12,90 €, à consommer à l'extérieur du gîte.";
-
-export const groupRates = [
-  {
-    label: "20 adultes minimum, sur 3 nuits consécutives",
-    price: "65,00 € / personne / nuit",
-    note: "Demi-pension, menu tradition (entrée, plat, dessert)",
-  },
-  {
-    label: "25 adultes minimum, sur 2 nuits consécutives",
-    price: "65,00 € / personne / nuit",
-    note: "Demi-pension, menu tradition (entrée, plat, dessert)",
-  },
-  {
-    label: "30 adultes minimum, pour 1 nuit",
-    price: "67,00 € / personne / nuit",
-    note: "Demi-pension, menu tradition (entrée, plat, dessert)",
-  },
-];
+export const nightRates = tarifsData.nightRates;
+export const childRate = tarifsData.childRate;
+export const touristTax = tarifsData.touristTax;
+export const halfBoardMenus = tarifsData.halfBoardMenus;
+export const packedLunch = tarifsData.packedLunch;
+export const groupRates = tarifsData.groupRates;
 
 export const drinks = {
   nonAlcoholic: [

@@ -1,0 +1,96 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Dossier où sont stockées les images téléversées
+media_folder: "public/images"
+public_folder: "/images"
+
+locale: "fr"
+
+collections:
+  - name: "content"
+    label: "Contenus du Gîte"
+    delete: false
+    files:
+      - name: "site"
+        label: "Coordonnées & Informations"
+        file: "src/data/site.json"
+        fields:
+          - { label: "Nom du gîte", name: "name", widget: "string" }
+          - { label: "Sous-titre / Accroche", name: "tagline", widget: "string" }
+          - { label: "Téléphone fixe", name: "phone", widget: "string" }
+          - { label: "Téléphone portable", name: "phoneSecondary", widget: "string" }
+          - { label: "E-mail de contact", name: "email", widget: "string" }
+          - label: "Adresse postale"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "Rue / Chemin", name: "line1", widget: "string" }
+              - { label: "Code postal & Ville", name: "line2", widget: "string" }
+          - { label: "Horaires / Disponibilité d'accueil", name: "hours", widget: "string" }
+          - { label: "Capacité d'accueil", name: "capacity", widget: "string" }
+          - { label: "Lien page Facebook", name: "facebook", widget: "string" }
+
+      - name: "menus"
+        label: "Menus & Table d'hôtes"
+        file: "src/data/menus.json"
+        fields:
+          - label: "Menus"
+            name: "menus"
+            widget: "list"
+            fields:
+              - { label: "Nom du menu", name: "name", widget: "string" }
+              - { label: "Prix et formule", name: "price", widget: "string" }
+              - { label: "Conditions / Remarques", name: "conditions", widget: "list", field: { label: "Condition", widget: "string" } }
+              - label: "Sections (Entrées, Plats, Desserts)"
+                name: "sections"
+                widget: "list"
+                fields:
+                  - { label: "Titre de la section", name: "title", widget: "string" }
+                  - { label: "Plats", name: "items", widget: "list", field: { label: "Intitulé du plat", widget: "string" } }
+          - label: "Formule Tartes flambées"
+            name: "flammekueche"
+            widget: "object"
+            fields:
+              - { label: "Titre de la formule", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - { label: "Mention Allergènes", name: "allergenNote", widget: "string" }
+
+      - name: "tarifs"
+        label: "Grille des Tarifs"
+        file: "src/data/tarifs.json"
+        fields:
+          - label: "Tarifs des Nuitées"
+            name: "nightRates"
+            widget: "list"
+            fields:
+              - { label: "Type de chambre / hébergement", name: "label", widget: "string" }
+              - { label: "Prix affiché", name: "price", widget: "string" }
+          - { label: "Tarif Enfant", name: "childRate", widget: "string" }
+          - { label: "Taxe de séjour", name: "touristTax", widget: "string" }
+          - label: "Formules Repas & Demi-pension"
+            name: "halfBoardMenus"
+            widget: "list"
+            fields:
+              - { label: "Intitulé formule", name: "label", widget: "string" }
+              - { label: "Prix", name: "price", widget: "string" }
+          - { label: "Panier repas randonneur", name: "packedLunch", widget: "string" }
+          - label: "Tarifs Groupes"
+            name: "groupRates"
+            widget: "list"
+            fields:
+              - { label: "Condition de groupe", name: "label", widget: "string" }
+              - { label: "Prix par personne / nuit", name: "price", widget: "string" }
+              - { label: "Remarque / détails", name: "note", widget: "string" }
+
+      - name: "gallery"
+        label: "Galerie Photos"
+        file: "src/data/gallery.json"
+        fields:
+          - label: "Photos du gîte"
+            name: "photos"
+            widget: "list"
+            fields:
+              - { label: "Photo", name: "src", widget: "image" }
+              - { label: "Description / Titre", name: "alt", widget: "string" }
