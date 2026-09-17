@@ -258,6 +258,7 @@ p { margin: 0 0 1em; }
 }
 
 .hero-small {
+  width: 100%;
   aspect-ratio: 21 / 9;
   min-height: 260px;
   max-height: 480px;
