@@ -46,7 +46,7 @@ const heroSlides = [
         <div class="food-highlights">
           <span class="food-badge">🥓 Charcuteries fumées du Haut-Doubs</span>
           <span class="food-badge">🧀 Comté &amp; Morbier Bio</span>
-          <span class="food-badge" style="background:#fff4eb;border-color:#e08b52;color:#933f17;font-weight:600;">🔥 Tartes flambées salées &amp; sucrées</span>
+          <span class="food-badge" style="background:#fff4eb;border-color:#e08b52;color:#933f17;font-weight:600;">🔥 Tartes flambées à volonté (salées &amp; sucrées)</span>
           <span class="food-badge">🍰 Pâtisseries &amp; desserts 100% maison</span>
           <span class="food-badge">🍷 Vins du Jura (Arbois, Savagnin)</span>
         </div>
@@ -119,6 +119,14 @@ const heroSlides = [
       <h2>Cartes 2026</h2>
       <p>Prix par personne. Menus proposés uniquement sur réservation — nous consulter pour les allergies et régimes particuliers.</p>
 
+      <div class="meal-choice-banner">
+        <div class="meal-choice-icon">🍽️</div>
+        <div>
+          <strong>Au choix pour votre dîner au gîte (demi-pension) :</strong><br />
+          Pour le repas du soir, vous pouvez choisir pour votre tablée soit le <strong>Menu Tradition</strong> (entrée, plat, dessert régionaux), soit notre <strong>Menu Tartes Flambées Franc-Comtoises à volonté</strong> (salées avec salade verte et sucrées) !
+        </div>
+      </div>
+
       <div class="menus-grid">
         {menus.map((menu) => (
           <article class="menu-card">
@@ -142,8 +150,8 @@ const heroSlides = [
       <!-- MENU TARTES FLAMBÉES FRANC-COMTOISES (MIS EN VALEUR) -->
       <article class="flamme-featured-card">
         <div class="flamme-badge-header">
-          <span class="flamme-pill">🔥 La Spécialité Conviviale</span>
-          <span class="flamme-tag">Soirées festives, clubs &amp; groupes</span>
+          <span class="flamme-pill">🔥 Formule À Volonté</span>
+          <span class="flamme-tag">Au choix : Menu Tradition ou Tartes Flambées</span>
         </div>
 
         <div class="flamme-main">
@@ -154,13 +162,17 @@ const heroSlides = [
             </p>
           </div>
 
+          <div class="flamme-choice-callout">
+            <span>✨ <strong>Formule au choix :</strong> pour votre dîner, optez soit pour le Menu Tradition, soit pour ce grand repas convivial de Tartes Flambées Franc-Comtoises servies <strong>à volonté</strong> de l'entrée au dessert !</span>
+          </div>
+
           <div class="flamme-details-grid">
             <div class="flamme-detail-box">
               <div class="flamme-detail-icon">🥗</div>
               <div class="flamme-detail-info">
-                <h4>1. Les Tartes Flambées Salées</h4>
+                <h4>1. Les Tartes Flambées Salées — À volonté</h4>
                 <p>
-                  Pâte extra fine et croustillante, crème onctueuse, oignons et garnitures du terroir franc-comtois (lardons fumés du Haut-Doubs, Comté affiné...). <strong>Servies bien chaudes au fur et à mesure, accompagnées d'une fraîche salade verte.</strong>
+                  Pâte extra fine et croustillante, crème onctueuse, oignons et garnitures du terroir franc-comtois (lardons fumés du Haut-Doubs, Comté affiné...). <strong>Servies bien chaudes au fur et à mesure et à volonté, accompagnées d'une fraîche salade verte.</strong>
                 </p>
               </div>
             </div>
@@ -168,9 +180,9 @@ const heroSlides = [
             <div class="flamme-detail-box">
               <div class="flamme-detail-icon">🍏</div>
               <div class="flamme-detail-info">
-                <h4>2. Les Tartes Flambées Sucrées</h4>
+                <h4>2. Les Tartes Flambées Sucrées — À volonté</h4>
                 <p>
-                  Pour terminer le repas tout en douceur : <strong>la tarte flambée se savoure aussi en version sucrée pour le dessert !</strong> Garnie de pommes fondantes, subtilement relevée d'une touche de cannelle et caramélisée au four.
+                  Pour terminer le repas tout en douceur : <strong>la formule à volonté continue avec les tartes flambées sucrées pour le dessert !</strong> Garnies de pommes fondantes, subtilement relevées d'une touche de cannelle et caramélisées au four.
                 </p>
               </div>
             </div>
@@ -178,7 +190,7 @@ const heroSlides = [
 
           <div class="flamme-footer">
             <div class="flamme-footer-info">
-              <span>ℹ️ Formule conviviale servie <strong>uniquement sur réservation</strong> pour vos tablées et séjours.</span>
+              <span>ℹ️ Formule servie <strong>à volonté sur réservation</strong> pour vos tablées, séjours de groupes, clubs et familles.</span>
             </div>
             <a href={site.phoneHref} class="btn btn-primary btn-sm">Réserver votre soirée tarte flambée</a>
           </div>
@@ -352,7 +364,25 @@ const heroSlides = [
     margin: 0;
     padding-left: 20px;
   }
-  .menu-section li { margin-bottom: 4px; }
+  .meal-choice-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fdf6ec;
+    border: 1px solid #ebd9cb;
+    border-left: 4px solid var(--color-rust);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-top: 18px;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    color: #4a382a;
+    line-height: 1.5;
+  }
+  .meal-choice-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
   .flamme-featured-card {
     margin-top: 36px;
     background: linear-gradient(145deg, #ffffff 0%, #fff9f4 100%);
@@ -361,6 +391,16 @@ const heroSlides = [
     padding: 32px;
     box-shadow: 0 8px 30px rgba(184, 91, 53, 0.1);
     position: relative;
+  }
+  .flamme-choice-callout {
+    background: #ffffff;
+    border: 1px dashed #dca57e;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 22px;
+    font-size: 0.95rem;
+    color: #633215;
+    line-height: 1.5;
   }
   .flamme-badge-header {
     display: flex;

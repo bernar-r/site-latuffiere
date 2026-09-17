@@ -42,17 +42,17 @@
     {
       "label": "20 adultes minimum, sur 3 nuits consécutives",
       "price": "65,00 € / personne / nuit",
-      "note": "Demi-pension, menu tradition (entrée, plat, dessert)"
+      "note": "Demi-pension, au choix : Menu tradition ou Tartes flambées à volonté"
     },
     {
       "label": "25 adultes minimum, sur 2 nuits consécutives",
       "price": "65,00 € / personne / nuit",
-      "note": "Demi-pension, menu tradition (entrée, plat, dessert)"
+      "note": "Demi-pension, au choix : Menu tradition ou Tartes flambées à volonté"
     },
     {
       "label": "30 adultes minimum, pour 1 nuit",
       "price": "67,00 € / personne / nuit",
-      "note": "Demi-pension, menu tradition (entrée, plat, dessert)"
+      "note": "Demi-pension, au choix : Menu tradition ou Tartes flambées à volonté"
     }
   ]
 }
