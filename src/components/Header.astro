@@ -5,37 +5,46 @@ const path = Astro.url.pathname;
 ---
 <header class="site-header">
   <div class="header-inner">
-    <a href="/" class="logo"><img src="/images/logo.png" alt="Gîte La Tuffière" width="104" height="52"></a>
+    <a href="/" class="logo" aria-label="Gîte La Tuffière — Retour à l'accueil">
+      <img src="/images/logo.png" alt="Gîte La Tuffière" width="104" height="52">
+    </a>
 
-    <!-- Nav desktop : toujours dans le DOM, jamais dependante d'un <details> ferme (fiabilite cross-navigateur). -->
-    <nav class="main-nav main-nav-desktop">
-      <ul>
+    <!-- Nav desktop : toujours sur une seule ligne garantie -->
+    <nav class="main-nav main-nav-desktop" aria-label="Navigation principale">
+      <ul class="nav-desktop-list">
         {nav.map((item) => (
-          <li><a href={item.href} class={path === item.href ? "is-active" : ""}>{item.label}</a></li>
+          <li class="nav-item">
+            <a href={item.href} class={path === item.href ? "is-active" : ""}>
+              {item.label}
+            </a>
+          </li>
         ))}
       </ul>
     </nav>
 
-    <!-- Nav mobile : <details> gere nativement l'ouverture/fermeture, sans JavaScript. -->
+    <!-- Nav mobile : <details> natif avec accordéon -->
     <details class="nav-details" id="nav-details">
       <summary class="nav-toggle" aria-label="Ouvrir le menu">☰</summary>
-      <nav class="main-nav main-nav-mobile" id="main-nav">
+      <nav class="main-nav main-nav-mobile" id="main-nav" aria-label="Menu mobile">
         <ul>
           {nav.map((item) => (
-            <li><a href={item.href} class={path === item.href ? "is-active" : ""}>{item.label}</a></li>
+            <li>
+              <a href={item.href} class={path === item.href ? "is-active" : ""}>
+                {item.label}
+              </a>
+            </li>
           ))}
         </ul>
       </nav>
     </details>
 
+    <!-- Actions d'en-tête compactes et tactiles -->
     <div class="header-actions">
-      <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline" data-open-dispo>
-        <span class="label-full">Voir les disponibilités</span>
-        <span class="label-short" aria-hidden="true">Dispos</span>
+      <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline btn-header-dispo" data-open-dispo>
+        <span>Disponibilités</span>
       </a>
-      <a href={site.phoneHref} class="btn btn-primary">
-        <span class="label-full">Appeler {site.phone}</span>
-        <span class="label-short" aria-hidden="true">Appeler</span>
+      <a href={site.phoneHref} class="btn btn-primary btn-header-call">
+        <span>📞 {site.phone}</span>
       </a>
     </div>
   </div>
@@ -47,7 +56,6 @@ const path = Astro.url.pathname;
 </div>
 
 <script>
-  // <details> gere nativement l'ouverture/fermeture (fonctionne sans JS) ; on ferme juste au clic sur un lien.
   const details = document.getElementById("nav-details");
   if (details) {
     details.querySelectorAll("a").forEach((link) => {
@@ -59,9 +67,47 @@ const path = Astro.url.pathname;
 </script>
 
 <style>
-  .label-short { display: none; }
-  @media (max-width: 1220px) {
-    .label-full { display: none; }
-    .label-short { display: inline; }
+  .nav-desktop-list {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    gap: clamp(8px, 1.4vw, 20px) !important;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap !important;
+  }
+  .nav-item {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+  .nav-item a {
+    white-space: nowrap !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 4px 2px;
+  }
+  .nav-item a:hover,
+  .nav-item a.is-active {
+    color: var(--color-rust-dark);
+  }
+  .btn-header-dispo,
+  .btn-header-call {
+    padding: 9px 15px !important;
+    font-size: 0.88rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+  @media (max-width: 1060px) {
+    .main-nav-desktop { display: none !important; }
+    .nav-details { display: block !important; }
+    .header-actions { display: none !important; }
+  }
+  @media (min-width: 1061px) {
+    .main-nav-desktop { display: block !important; flex: 1 !important; min-width: 0 !important; }
+    .nav-details { display: none !important; }
+    .header-actions { display: flex !important; }
   }
 </style>

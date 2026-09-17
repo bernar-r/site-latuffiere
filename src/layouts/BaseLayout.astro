@@ -13,6 +13,76 @@ interface Props {
 }
 const { title, description, image = "/images/hero-1-facade.jpg" } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(image, Astro.site);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BedAndBreakfast",
+  "@id": "https://latuffiere.pro/#lodging",
+  "name": "Gîte La Tuffière",
+  "alternateName": ["Gîte La Tuffière Vuillafans", "La Tuffière"],
+  "description": description,
+  "url": "https://latuffiere.pro/",
+  "telephone": "+33381609676",
+  "email": "latuffiere2@wanadoo.fr",
+  "priceRange": "42€ - 67€",
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Espèces, Chèque, Virement bancaire",
+  "image": [
+    "https://latuffiere.pro/images/hero-1-facade.jpg",
+    "https://latuffiere.pro/images/gite-tables-exterieures.jpg",
+    "https://latuffiere.pro/images/table-buffet-terroir.jpg"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1 chemin de Montgesoye",
+    "addressLocality": "Vuillafans",
+    "postalCode": "25840",
+    "addressRegion": "Doubs",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 47.0655,
+    "longitude": 6.2081
+  },
+  "hasMap": "https://www.google.com/maps?q=1+chemin+de+Montgesoye,+25840+Vuillafans",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "20:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "105",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Capacité 35 personnes", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "10 chambres avec salle d'eau et WC privatifs", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Chambre PMR de plain-pied", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Table d'hôtes et cuisine du terroir", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Garage fermé et sécurisé motos et vélos", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Grand parc arboré au bord de la rivière Loue", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Wi-Fi gratuit", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Label Gîtes de France 3 épis", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Label Motard Bienvenue", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Label Pêche Relais Saint-Pierre", "value": true }
+  ]
+};
 ---
 <!doctype html>
 <html lang="fr">
@@ -26,17 +96,31 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
+  <!-- Référencement & Indexation Google -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="Gîte La Tuffière — Bénédicte & Christian">
+  <meta name="geo.region" content="FR-25">
+  <meta name="geo.placename" content="Vuillafans">
+  <meta name="geo.position" content="47.0655;6.2081">
+  <meta name="ICBM" content="47.0655, 6.2081">
+
+  <!-- OpenGraph / Réseaux Sociaux -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Gîte La Tuffière">
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:url" content={canonicalUrl}>
-  <meta property="og:image" content={new URL(image, Astro.site)}>
+  <meta property="og:image" content={ogImageUrl}>
   <meta property="og:locale" content="fr_FR">
+
+  <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
-  <meta name="twitter:image" content={new URL(image, Astro.site)}>
+  <meta name="twitter:image" content={ogImageUrl}>
+
+  <!-- Données Structurées Schema.org JSON-LD pour Google Rich Results -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
