@@ -258,7 +258,9 @@ p { margin: 0 0 1em; }
 }
 
 .hero-small {
-  min-height: 42vh;
+  aspect-ratio: 21 / 9;
+  min-height: 260px;
+  max-height: 480px;
 }
 
 /* ---------- Bandeau labels ---------- */
