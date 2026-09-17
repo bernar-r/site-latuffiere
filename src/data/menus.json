@@ -112,5 +112,20 @@
     "price": "25,00 € / personne (à volonté)",
     "description": "Tartes flambées Franc-Comtoises, salées et/ou sucrées avec salade verte."
   },
-  "allergenNote": "Allergènes sur demande auprès de la Direction."
+  "allergenNote": "Allergènes sur demande auprès de la Direction.",
+  "intro": {
+    "title": "Régalez-vous toute l'année à La Tuffière",
+    "lead": "Pour vous assurer authenticité et saveurs, nous travaillons avec des producteurs locaux dans la mesure du possible. Le soir, les hôtes séjournant dans nos chambres au gîte se retrouvent autour de la grande table commune pour partager un repas régional généreux, avec des légumes de saison, des plats mitonnés et des desserts faits maison.",
+    "sub": "La table d'hôtes, c'est aussi l'occasion d'échanger les anecdotes de la journée dans une ambiance conviviale et chaleureuse. Retrouvez le détail complet des formules et des boissons dans notre grille des tarifs 2026.",
+    "badges": [
+      "🥓 Charcuteries fumées du Haut-Doubs",
+      "🧀 Comté & Morbier Bio",
+      "🍰 Pâtisseries & desserts 100% maison",
+      "🍷 Vins du Jura (Arbois, Savagnin)"
+    ],
+    "showcaseTitle": "Fait maison avec amour",
+    "showcaseText": "L'assiette gourmande de La Tuffière : crèmes brûlées caramélisées, fondants chocolat et mignardises fruitées."
+  },
+  "quote": "« Le partage et l'échange sont primordiaux à La Tuffière »",
+  "quoteAuthor": "— Bénédicte & Christian"
 }

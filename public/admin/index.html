@@ -33,7 +33,7 @@
       color: var(--color-text);
     }
 
-    /* BARRE SUPÉRIEURE FLOTTANTE ULTRA-CLAIRE POUR LES PARENTS */
+    /* BARRE SUPÉRIEURE FLOTTANTE */
     #editor-toolbar {
       height: 60px;
       background: var(--color-brand-green);
@@ -41,7 +41,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
+      padding: 0 18px;
       border-bottom: 2px solid rgba(181, 98, 46, 0.45);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22);
       z-index: 1000;
@@ -69,19 +69,20 @@
       background: rgba(181, 98, 46, 0.4);
       border: 1px solid #b5622e;
       color: #fde8d7;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
       padding: 3px 9px;
       border-radius: 999px;
     }
 
-    /* ONGLETS DE NAVIGATION SIMPLES */
+    /* ONGLETS DE NAVIGATION ENTRE LES PAGES DU SITE */
     .toolbar-center {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
       padding: 4px 0;
+      max-width: 60%;
     }
 
     .nav-tab {
@@ -89,13 +90,13 @@
       color: #f3e5d7;
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 999px;
-      padding: 7px 15px;
-      font-size: 13px;
+      padding: 6px 13px;
+      font-size: 12.5px;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       white-space: nowrap;
       transition: all 0.2s ease;
       text-decoration: none;
@@ -113,15 +114,15 @@
       box-shadow: 0 2px 10px rgba(181, 98, 46, 0.45);
     }
 
-    /* ACTIONS À DROITE : ENREGISTRER & AIDE */
+    /* ACTIONS À DROITE */
     .toolbar-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .dirty-badge {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
       padding: 5px 12px;
       border-radius: 999px;
@@ -211,39 +212,7 @@
       background: #faf7f2;
     }
 
-    /* BANDEAU D'AIDE RAPIDE (DISSIPABLE) */
-    #tip-banner {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      background: rgba(35, 59, 40, 0.92);
-      backdrop-filter: blur(6px);
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 12.5px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      pointer-events: auto;
-      transition: opacity 0.3s ease;
-    }
-    #tip-banner button {
-      background: transparent;
-      border: none;
-      color: #f7e8d6;
-      cursor: pointer;
-      font-size: 14px;
-      opacity: 0.7;
-      padding: 0 4px;
-    }
-    #tip-banner button:hover { opacity: 1; }
-
-    /* NOTIFICATION FLOTTANTE (TOAST) */
+    /* TOAST NOTIFICATION FLOTTANT */
     #toast-notification {
       position: fixed;
       bottom: 24px;
@@ -280,7 +249,7 @@
       border-color: #ef5350;
     }
 
-    /* MODALES SIMPLES */
+    /* MODALES */
     .tuffiere-modal {
       position: fixed;
       inset: 0;
@@ -429,13 +398,13 @@
 
     @media (max-width: 900px) {
       .brand-title span:not(.brand-badge) { display: none; }
-      .toolbar-center { max-width: 55%; }
+      .toolbar-center { max-width: 50%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BARRE SUPÉRIEURE ÉPURÉE ET ACCUEILLANTE -->
+  <!-- BARRE SUPÉRIEURE D'ÉDITION DIRECTE -->
   <header id="editor-toolbar">
     <div class="toolbar-left">
       <div class="brand-title">
@@ -444,23 +413,29 @@
       </div>
     </div>
 
-    <!-- ONGLETS POUR NAVIGUER FACILEMENT -->
-    <nav class="toolbar-center" aria-label="Pages à modifier">
-      <button type="button" class="nav-tab is-active" data-path="/table-dhotes/" title="Modifier les plats et menus du soir">
-        🍽️ Table d'hôtes &amp; Menus
+    <!-- ONGLETS ÉTENDUS POUR TOUTES LES RUBRIQUES -->
+    <nav class="toolbar-center" aria-label="Rubriques du site">
+      <button type="button" class="nav-tab is-active" data-path="/table-dhotes/" title="Modifier les plats et menus">
+        🍽️ Table d'hôtes
       </button>
-      <button type="button" class="nav-tab" data-path="/tarifs/" title="Modifier les tarifs des chambres et repas">
-        💶 Grille des Tarifs
+      <button type="button" class="nav-tab" data-path="/tarifs/" title="Modifier tous les prix et tarifs">
+        💶 Tarifs 2026
       </button>
-      <button type="button" class="nav-tab" data-path="/contact/" title="Modifier les questions fréquentes">
-        ❓ Questions Fréquentes (FAQ)
+      <button type="button" class="nav-tab" data-path="/gite/" title="Modifier les chambres et équipements">
+        🛏️ Le Gîte &amp; Chambres
       </button>
-      <button type="button" class="nav-tab" data-path="/" title="Voir la page d'accueil">
+      <button type="button" class="nav-tab" data-path="/contact/" title="Modifier la FAQ et les coordonnées">
+        ❓ FAQ &amp; Contact
+      </button>
+      <button type="button" class="nav-tab" data-path="/activites/" title="Modifier les activités et loisirs">
+        🎣 Activités
+      </button>
+      <button type="button" class="nav-tab" data-path="/" title="Modifier la page d'accueil">
         🏠 Accueil
       </button>
     </nav>
 
-    <!-- ACTIONS PRINCIPALES -->
+    <!-- ACTIONS : ENREGISTRER, ANNULER, AIDE -->
     <div class="toolbar-right">
       <span class="dirty-badge is-clean" id="dirty-status">
         <span>✅ Tout est à jour</span>
@@ -478,7 +453,7 @@
         <span>❓ Aide</span>
       </button>
 
-      <a href="/" target="_blank" rel="noopener" class="btn-action btn-secondary" title="Ouvrir le site internet normal dans un nouvel onglet">
+      <a href="/" target="_blank" rel="noopener" class="btn-action btn-secondary" title="Voir le site public">
         <span>↗ Voir le site</span>
       </a>
     </div>
@@ -486,21 +461,15 @@
 
   <!-- APERÇU DU SITE EN PLEIN ÉCRAN -->
   <main id="site-viewport-wrapper">
-    <!-- Petite bulle d'astuce rassurante -->
-    <div id="tip-banner">
-      <span>💡 <strong>Astuce :</strong> Cliquez directement sur n'importe quel texte ou tarif pour le modifier.</span>
-      <button type="button" id="btn-close-tip" title="Masquer l'astuce">✕</button>
-    </div>
-
     <iframe id="site-frame" src="/table-dhotes/" title="Site La Tuffière en mode direct"></iframe>
   </main>
 
-  <!-- MODALE UNIQUE ET SIMPLE QUAND ON CLIQUE SUR ENREGISTRER (DEMANDE JUSTE LE JETON) -->
+  <!-- MODALE D'ENREGISTREMENT (DEMANDE UNIQUEMENT LE JETON) -->
   <div id="save-modal" class="tuffiere-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-box">
       <h2>💾 Enregistrer vos modifications</h2>
       <p class="modal-sub">
-        Pour mettre en ligne vos nouveaux plats ou tarifs sur <strong>latuffiere.pro</strong>, entrez simplement votre <strong>clé d'accès</strong> (jeton) :
+        Pour mettre en ligne vos changements sur <strong>latuffiere.pro</strong>, entrez simplement votre <strong>clé d'accès</strong> (jeton) :
       </p>
 
       <form id="save-token-form">
@@ -534,18 +503,18 @@
     </div>
   </div>
 
-  <!-- MODALE DE SUCCÈS CHALEUREUSE APRÈS ENREGISTREMENT -->
+  <!-- MODALE DE SUCCÈS -->
   <div id="success-modal" class="tuffiere-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-box text-center">
       <div style="font-size: 52px; margin-bottom: 12px;">🎉</div>
       <h2 style="justify-content: center;">C'est enregistré avec succès !</h2>
       <p style="font-size: 1.02rem; line-height: 1.6; color: #4a3c31; margin-bottom: 26px;">
-        Bravo Bénédicte &amp; Christian ! Vos modifications ont été envoyées.<br>
-        Le site internet s'actualise automatiquement en tâche de fond : vos nouveaux tarifs et menus seront visibles pour tout le monde d'ici <strong>1 à 2 minutes</strong> sur <strong>latuffiere.pro</strong>.
+        Bravo Bénédicte &amp; Christian ! Vos modifications ont bien été transmises.<br>
+        Le site internet s'actualise automatiquement : vos changements seront en ligne pour tous vos visiteurs d'ici <strong>1 à 2 minutes</strong> sur <strong>latuffiere.pro</strong>.
       </p>
       <div class="modal-actions center">
         <button type="button" class="btn-action btn-save" id="btn-close-success" style="padding: 10px 24px; font-size: 14px;">
-          Parfait, merci !
+          Parfait, fermer !
         </button>
         <a href="/" target="_blank" rel="noopener" class="btn-action btn-secondary" style="padding: 10px 18px;">
           ↗ Voir le site en vrai
@@ -554,7 +523,7 @@
     </div>
   </div>
 
-  <!-- MODALE DU GUIDE D'AIDE FACILE -->
+  <!-- MODALE DU GUIDE D'AIDE -->
   <div id="guide-modal" class="tuffiere-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-box">
       <h2>📖 Comment modifier votre site ?</h2>
@@ -564,23 +533,23 @@
         <div class="guide-step-num">1</div>
         <div class="guide-step-body">
           <h4>Choisissez la page en haut</h4>
-          <p>Cliquez sur <strong>🍽️ Table d'hôtes</strong> pour les plats, <strong>💶 Grille des Tarifs</strong> pour les prix, ou <strong>❓ Questions Fréquentes</strong> pour la FAQ.</p>
+          <p>Cliquez sur l'onglet de votre choix : <strong>🍽️ Table d'hôtes</strong>, <strong>💶 Tarifs</strong>, <strong>🛏️ Le Gîte</strong>, <strong>❓ FAQ &amp; Contact</strong> ou <strong>🏠 Accueil</strong>.</p>
         </div>
       </div>
 
       <div class="guide-step">
         <div class="guide-step-num">2</div>
         <div class="guide-step-body">
-          <h4>Cliquez directement sur un plat ou un prix</h4>
-          <p>Le texte s'entoure d'un cadre vert. Tapez simplement vos modifications au clavier, exactement comme dans Word.</p>
+          <h4>Cliquez sur N'IMPORTE QUEL texte ou prix</h4>
+          <p>Tous les textes, titres, descriptions, plats et prix du site sont modifiables ! Cliquez dessus : le texte s'entoure d'un cadre vert. Tapez directement vos modifications au clavier.</p>
         </div>
       </div>
 
       <div class="guide-step">
         <div class="guide-step-num">3</div>
         <div class="guide-step-body">
-          <h4>Ajoutez ou supprimez des plats</h4>
-          <p>Cliquez sur les boutons <strong>« ➕ Ajouter un plat »</strong> sous les entrées, plats ou desserts, ou sur la corbeille <strong>🗑️</strong> pour effacer un plat.</p>
+          <h4>Ajoutez ou supprimez des éléments</h4>
+          <p>Utilisez les boutons <strong>« ➕ Ajouter »</strong> sous les plats ou les questions, ou la corbeille <strong>🗑️</strong> pour effacer un élément.</p>
         </div>
       </div>
 
@@ -588,7 +557,7 @@
         <div class="guide-step-num">4</div>
         <div class="guide-step-body">
           <h4>Cliquez sur « 💾 Enregistrer » en haut à droite</h4>
-          <p>La fenêtre vous demande votre clé d'accès la première fois, puis vos modifications sont publiées en ligne automatiquement !</p>
+          <p>Votre clé est demandée la première fois, puis le site se met à jour automatiquement sur internet !</p>
         </div>
       </div>
 
@@ -606,7 +575,7 @@
     <span id="toast-message">Message</span>
   </div>
 
-  <!-- MOTEUR DE MODIFICATION ET SAUVEGARDE GITHUB -->
+  <!-- MOTEUR D'ÉDITION DIRECTE UNIVERSEL ET SAUVEGARDE GITHUB -->
   <script>
     (function () {
       const frame = document.getElementById('site-frame');
@@ -615,15 +584,11 @@
       const btnSave = document.getElementById('btn-save-changes');
       const btnReload = document.getElementById('btn-reload-page');
 
-      const tipBanner = document.getElementById('tip-banner');
-      const btnCloseTip = document.getElementById('btn-close-tip');
-
       const saveModal = document.getElementById('save-modal');
       const saveTokenForm = document.getElementById('save-token-form');
       const saveTokenInput = document.getElementById('save-token-input');
       const saveTokenRemember = document.getElementById('save-token-remember');
       const btnCancelSave = document.getElementById('btn-cancel-save');
-      const btnSubmitSave = document.getElementById('btn-submit-save');
 
       const successModal = document.getElementById('success-modal');
       const btnCloseSuccess = document.getElementById('btn-close-success');
@@ -639,7 +604,6 @@
       let unsavedCount = 0;
       let activePath = '/table-dhotes/';
 
-      // Configuration GitHub pré-établie (aucune question technique aux parents)
       const GITHUB_REPO = 'bernar-r/site-latuffiere';
       const GITHUB_BRANCH = 'main';
 
@@ -679,11 +643,6 @@
         }, 5000);
       }
 
-      // Masquer l'astuce
-      btnCloseTip.addEventListener('click', () => {
-        tipBanner.style.display = 'none';
-      });
-
       // Navigation entre onglets
       tabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -717,7 +676,7 @@
       btnCloseSuccess.addEventListener('click', () => successModal.classList.remove('is-open'));
       successModal.addEventListener('click', (e) => { if (e.target === successModal) successModal.classList.remove('is-open'); });
 
-      // INJECTION DU MOTEUR D'ÉDITION DIRECTE DANS LE SITE
+      // INJECTION UNIVERSELLE : TOUT RENDRE MODIFIABLE SUR TOUTES LES PAGES DU SITE
       frame.addEventListener('load', () => {
         let doc;
         try {
@@ -727,7 +686,7 @@
         }
         if (!doc || !doc.body) return;
 
-        // Styles injectés dans la page pour rendre la modification évidente et rassurante
+        // Styles injectés dans l'iframe
         const styleEl = doc.createElement('style');
         styleEl.textContent = `
           .tuffiere-editable {
@@ -747,7 +706,6 @@
             box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.2) !important;
           }
 
-          /* Bouton ajouter un plat / question */
           .tuffiere-btn-add {
             display: inline-flex;
             align-items: center;
@@ -770,7 +728,6 @@
             box-shadow: 0 4px 10px rgba(181, 98, 46, 0.25);
           }
 
-          /* Bouton corbeille pour supprimer un plat */
           .tuffiere-btn-del {
             background: transparent;
             border: none;
@@ -802,22 +759,86 @@
           });
         }
 
+        // RENDRE ABSOLUMENT TOUS LES ÉLÉMENTS DE CONTENU DU SITE MODIFIABLES
+        const contentSelectors = [
+          'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+          'p',
+          'li',
+          'td', 'th',
+          '.food-badge', '.room-tag', '.tag', '.eyebrow',
+          'blockquote', 'figcaption',
+          '.hero-tagline', '.hero-lead', '.lead',
+          'strong', 'em'
+        ];
+
+        doc.querySelectorAll(contentSelectors.join(', ')).forEach(el => {
+          // Ne pas rendre le menu principal ou le footer modifiable pour éviter les mauvaises manipulations
+          if (el.closest('header.site-header, nav.site-nav, .tuffiere-ignore')) return;
+          // Si c'est un lien parent avec des enfants, ne pas casser la navigation
+          if (el.tagName === 'A' && el.children.length > 0) return;
+          makeEditable(el);
+        });
+
+        // ACTIONS PARTICULIÈRES : BOUTONS AJOUTER / SUPPRIMER
         const currentPath = frame.contentWindow.location.pathname;
 
-        // 1. PAGE TABLE D'HÔTES
+        // 1. PAGE TABLE D'HÔTES : BOUTONS AJOUTER / SUPPRIMER LES PLATS
         if (currentPath.includes('table-dhotes')) {
-          const menuCards = doc.querySelectorAll('.menu-card:not(.menu-card-flamme)');
-          menuCards.forEach(card => {
-            makeEditable(card.querySelector('h3'));
-            makeEditable(card.querySelector('.menu-price'));
+          doc.querySelectorAll('.menu-section').forEach(sec => {
+            const ul = sec.querySelector('ul');
+            if (ul && !sec.querySelector('.tuffiere-btn-add')) {
+              function attachDishDelete(li) {
+                if (!li.querySelector('.tuffiere-btn-del')) {
+                  const delBtn = doc.createElement('button');
+                  delBtn.type = 'button';
+                  delBtn.className = 'tuffiere-btn-del tuffiere-ignore';
+                  delBtn.title = 'Supprimer ce plat';
+                  delBtn.textContent = '🗑️';
+                  delBtn.contentEditable = 'false';
+                  delBtn.addEventListener('click', (ev) => {
+                    ev.stopPropagation();
+                    const dishName = li.childNodes[0]?.textContent?.trim() || 'ce plat';
+                    if (confirm(`Voulez-vous supprimer « ${dishName} » de la carte ?`)) {
+                      li.remove();
+                      markDirty();
+                    }
+                  });
+                  li.appendChild(delBtn);
+                }
+              }
 
-            const condList = card.querySelector('.menu-conditions');
-            if (condList) {
-              condList.querySelectorAll('li').forEach(li => makeEditable(li));
+              ul.querySelectorAll('li').forEach(attachDishDelete);
+
+              const addDishBtn = doc.createElement('button');
+              addDishBtn.type = 'button';
+              addDishBtn.className = 'tuffiere-btn-add tuffiere-ignore';
+              addDishBtn.textContent = '➕ Ajouter un plat dans cette section';
+              addDishBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const newLi = doc.createElement('li');
+                newLi.textContent = 'Nouveau plat du terroir...';
+                ul.appendChild(newLi);
+                makeEditable(newLi);
+                attachDishDelete(newLi);
+                newLi.focus();
+                const range = doc.createRange();
+                range.selectNodeContents(newLi.childNodes[0]);
+                const sel = frame.contentWindow.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+                markDirty();
+              });
+              ul.after(addDishBtn);
+            }
+          });
+
+          // Ajouter une condition sous les menus
+          doc.querySelectorAll('.menu-conditions').forEach(condList => {
+            if (!condList.nextElementSibling?.classList.contains('tuffiere-btn-add')) {
               const addCondBtn = doc.createElement('button');
               addCondBtn.type = 'button';
               addCondBtn.className = 'tuffiere-btn-add tuffiere-ignore';
-              addCondBtn.textContent = '➕ Ajouter une condition ou remarque';
+              addCondBtn.textContent = '➕ Ajouter une condition / remarque';
               addCondBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const newLi = doc.createElement('li');
@@ -829,99 +850,14 @@
               });
               condList.after(addCondBtn);
             }
-
-            const sections = card.querySelectorAll('.menu-section');
-            sections.forEach(sec => {
-              makeEditable(sec.querySelector('h4'));
-              const ul = sec.querySelector('ul');
-              if (ul) {
-                function setupDish(li) {
-                  makeEditable(li);
-                  if (!li.querySelector('.tuffiere-btn-del')) {
-                    const delBtn = doc.createElement('button');
-                    delBtn.type = 'button';
-                    delBtn.className = 'tuffiere-btn-del tuffiere-ignore';
-                    delBtn.title = 'Supprimer ce plat de la carte';
-                    delBtn.textContent = '🗑️';
-                    delBtn.contentEditable = 'false';
-                    delBtn.addEventListener('click', (ev) => {
-                      ev.stopPropagation();
-                      const dishName = li.childNodes[0]?.textContent?.trim() || 'ce plat';
-                      if (confirm(`Voulez-vous supprimer « ${dishName} » de la carte ?`)) {
-                        li.remove();
-                        markDirty();
-                      }
-                    });
-                    li.appendChild(delBtn);
-                  }
-                }
-
-                ul.querySelectorAll('li').forEach(setupDish);
-
-                const addDishBtn = doc.createElement('button');
-                addDishBtn.type = 'button';
-                addDishBtn.className = 'tuffiere-btn-add tuffiere-ignore';
-                addDishBtn.textContent = '➕ Ajouter un plat dans cette section';
-                addDishBtn.addEventListener('click', (e) => {
-                  e.preventDefault();
-                  const newLi = doc.createElement('li');
-                  newLi.textContent = 'Nouveau plat du terroir...';
-                  ul.appendChild(newLi);
-                  setupDish(newLi);
-                  newLi.focus();
-                  // Sélectionner le texte par défaut pour faciliter la frappe
-                  const range = doc.createRange();
-                  range.selectNodeContents(newLi.childNodes[0]);
-                  const sel = frame.contentWindow.getSelection();
-                  sel.removeAllRanges();
-                  sel.addRange(range);
-                  markDirty();
-                });
-                ul.after(addDishBtn);
-              }
-            });
-          });
-
-          const flammeCard = doc.querySelector('.menu-card-flamme');
-          if (flammeCard) {
-            makeEditable(flammeCard.querySelector('h3'));
-            makeEditable(flammeCard.querySelector('.menu-price'));
-            makeEditable(flammeCard.querySelector('p:not(.menu-price)'));
-          }
-
-          const allergen = doc.querySelector('.allergen-note');
-          if (allergen) makeEditable(allergen);
-        }
-
-        // 2. PAGE TARIFS
-        else if (currentPath.includes('tarifs')) {
-          doc.querySelectorAll('.price-table tbody tr').forEach(row => {
-            const labelCell = row.cells[0]?.querySelector('strong') || row.cells[0];
-            const priceCell = row.cells[1];
-            makeEditable(labelCell);
-            makeEditable(priceCell);
-          });
-
-          doc.querySelectorAll('.tarifs-card div p, .tarifs-note').forEach(p => {
-            makeEditable(p);
-          });
-
-          doc.querySelectorAll('.group-rate-card').forEach(card => {
-            makeEditable(card.querySelector('.group-rate-price'));
-            card.querySelectorAll('p:not(.group-rate-price)').forEach(p => makeEditable(p));
           });
         }
 
-        // 3. PAGE FAQ
-        else if (currentPath.includes('contact')) {
+        // 2. PAGE CONTACT / FAQ : BOUTONS AJOUTER / SUPPRIMER UNE QUESTION
+        if (currentPath.includes('contact')) {
           const faqAccordion = doc.querySelector('.faq-accordion');
-          if (faqAccordion) {
-            function setupFaq(item) {
-              const q = item.querySelector('.faq-question span:first-child');
-              const a = item.querySelector('.faq-answer p');
-              makeEditable(q);
-              makeEditable(a);
-
+          if (faqAccordion && !doc.querySelector('.tuffiere-faq-add')) {
+            function attachFaqDelete(item) {
               if (!item.querySelector('.tuffiere-btn-del')) {
                 const delBtn = doc.createElement('button');
                 delBtn.type = 'button';
@@ -930,6 +866,7 @@
                 delBtn.style.fontSize = '12px';
                 delBtn.style.color = '#c62828';
                 delBtn.style.marginTop = '10px';
+                delBtn.contentEditable = 'false';
                 delBtn.addEventListener('click', (ev) => {
                   ev.stopPropagation();
                   if (confirm('Voulez-vous supprimer cette question de la FAQ ?')) {
@@ -941,11 +878,11 @@
               }
             }
 
-            faqAccordion.querySelectorAll('.faq-item').forEach(setupFaq);
+            faqAccordion.querySelectorAll('.faq-item').forEach(attachFaqDelete);
 
             const addFaqBtn = doc.createElement('button');
             addFaqBtn.type = 'button';
-            addFaqBtn.className = 'tuffiere-btn-add tuffiere-ignore';
+            addFaqBtn.className = 'tuffiere-btn-add tuffiere-faq-add tuffiere-ignore';
             addFaqBtn.textContent = '➕ Ajouter une nouvelle question / réponse à la FAQ';
             addFaqBtn.style.fontSize = '13.5px';
             addFaqBtn.style.padding = '9px 16px';
@@ -964,23 +901,18 @@
                 </div>
               `;
               faqAccordion.appendChild(newDetails);
-              setupFaq(newDetails);
+              makeEditable(newDetails.querySelector('.faq-question span'));
+              makeEditable(newDetails.querySelector('.faq-answer p'));
+              attachFaqDelete(newDetails);
               newDetails.querySelector('.faq-question span')?.focus();
               markDirty();
             });
             faqAccordion.after(addFaqBtn);
           }
         }
-
-        // 4. PAGE ACCUEIL
-        else {
-          doc.querySelectorAll('.hero-lead, .lead, h2, h3, .section-intro p').forEach(el => {
-            makeEditable(el);
-          });
-        }
       });
 
-      // DÉCLENCHEMENT DE L'ENREGISTREMENT : OUVERTURE DE LA MODALE QUI DEMANDE LE JETON
+      // OUVERTURE DE LA MODALE D'ENREGISTREMENT (DEMANDE LE JETON)
       btnSave.addEventListener('click', () => {
         saveTokenInput.value = getSavedToken();
         saveModal.classList.add('is-open');
@@ -1015,7 +947,7 @@
         await performSave(token);
       });
 
-      // ENREGISTREMENT EFFECTIF SUR GITHUB
+      // SÉRIALISATION DES DONNÉES ET COMMIT GITHUB
       async function performSave(token) {
         let doc;
         try {
@@ -1030,7 +962,7 @@
         let targetFilePath = '';
         let updatedData = null;
 
-        // TABLE D'HÔTES
+        // 1. TABLE D'HÔTES
         if (currentPath.includes('table-dhotes')) {
           targetFilePath = 'src/data/menus.json';
           const menuCards = doc.querySelectorAll('.menu-card:not(.menu-card-flamme)');
@@ -1073,10 +1005,44 @@
 
           const allergenNote = doc.querySelector('.allergen-note')?.textContent.trim() || "Allergènes sur demande auprès de la Direction.";
 
-          updatedData = { menus, flammekueche, allergenNote };
+          // Récupération des textes de présentation et badges
+          const twoCol = doc.querySelector('.section .two-col');
+          const introTitle = twoCol?.querySelector('h2')?.textContent.trim() || "Régalez-vous toute l'année à La Tuffière";
+          const paragraphs = twoCol?.querySelectorAll('p:not(.allergen-note)') || [];
+          const introLead = paragraphs[0]?.textContent.trim() || "";
+          const introSub = paragraphs[1]?.textContent.trim() || "";
+          const badges = Array.from(twoCol?.querySelectorAll('.food-badge') || []).map(b => b.textContent.trim()).filter(Boolean);
+          const showcaseBox = twoCol?.querySelector('.food-showcase-caption');
+          const showcaseTitle = showcaseBox?.querySelector('strong')?.textContent.trim() || "Fait maison avec amour";
+          const showcaseText = showcaseBox?.querySelector('p')?.textContent.trim() || "";
+
+          const quoteSection = doc.querySelector('.section-alt.text-center');
+          const quoteText = quoteSection?.querySelector('.hero-tagline')?.textContent.trim() || "« Le partage et l'échange sont primordiaux à La Tuffière »";
+          const quoteAuthorText = quoteSection?.querySelector('strong')?.textContent.trim() || "— Bénédicte & Christian";
+
+          updatedData = {
+            menus,
+            flammekueche,
+            allergenNote,
+            intro: {
+              title: introTitle,
+              lead: introLead,
+              sub: introSub,
+              badges: badges.length > 0 ? badges : [
+                "🥓 Charcuteries fumées du Haut-Doubs",
+                "🧀 Comté & Morbier Bio",
+                "🍰 Pâtisseries & desserts 100% maison",
+                "🍷 Vins du Jura (Arbois, Savagnin)"
+              ],
+              showcaseTitle,
+              showcaseText
+            },
+            quote: quoteText,
+            quoteAuthor: quoteAuthorText
+          };
         }
 
-        // TARIFS
+        // 2. TARIFS (CHAMBRES, DEMI-PENSION, GROUPES, BOISSONS, VINS)
         else if (currentPath.includes('tarifs')) {
           targetFilePath = 'src/data/tarifs.json';
           const cards = doc.querySelectorAll('.tarifs-grid-2 .tarifs-card');
@@ -1125,17 +1091,72 @@
             });
           });
 
+          // Récupération des boissons et des vins
+          function parseDrinkSection(box) {
+            const items = [];
+            box?.querySelectorAll('tbody tr').forEach(r => {
+              items.push({
+                label: r.cells[0]?.textContent.trim() || '',
+                price: r.cells[1]?.textContent.trim() || ''
+              });
+            });
+            return items;
+          }
+
+          const drinksBoxes = doc.querySelectorAll('.drinks-grid:first-of-type > div');
+          const drinks = {
+            nonAlcoholic: parseDrinkSection(drinksBoxes[0]),
+            hot: parseDrinkSection(drinksBoxes[1]),
+            beer: parseDrinkSection(drinksBoxes[2]),
+            aperitif: parseDrinkSection(drinksBoxes[3]),
+            digestif: parseDrinkSection(drinksBoxes[4])
+          };
+
+          const wineBoxes = doc.querySelectorAll('.drinks-grid:nth-of-type(2) > div');
+          const wines = {
+            white: parseDrinkSection(wineBoxes[0]),
+            red: parseDrinkSection(wineBoxes[1]),
+            rose: parseDrinkSection(wineBoxes[2])
+          };
+
           updatedData = {
             nightRates,
             childRate,
             touristTax,
             halfBoardMenus,
             packedLunch,
-            groupRates
+            groupRates,
+            drinks,
+            wines
           };
         }
 
-        // FAQ
+        // 3. LE GÎTE ET LES 10 CHAMBRES
+        else if (currentPath.includes('gite')) {
+          targetFilePath = 'src/data/rooms.json';
+          const rooms = [];
+          doc.querySelectorAll('.rooms-grid .room-card').forEach(card => {
+            const name = card.querySelector('.room-name')?.textContent.trim() || '';
+            const tag = card.querySelector('.room-tag')?.textContent.trim() || '';
+            const description = card.querySelector('.room-desc')?.textContent.trim() || '';
+            const metaItems = card.querySelectorAll('.room-meta-list li');
+            const beds = metaItems[0]?.textContent.trim().replace(/^🛏️\s*/, '') || '';
+            const floor = metaItems[1]?.textContent.trim().replace(/^📍\s*/, '') || '';
+            const capacity = parseInt(card.dataset.capacity || '2', 10);
+            const pmr = card.dataset.pmr === 'true';
+
+            rooms.push({ name, capacity, beds, floor, pmr, tag, description });
+          });
+
+          const equipment = [];
+          doc.querySelectorAll('.feature-list li').forEach(li => {
+            equipment.push(li.textContent.trim());
+          });
+
+          updatedData = { rooms, equipment };
+        }
+
+        // 4. FAQ & CONTACT
         else if (currentPath.includes('contact')) {
           targetFilePath = 'src/data/faq.json';
           const faq = [];
@@ -1151,9 +1172,31 @@
           updatedData = { faq };
         }
 
-        if (!targetFilePath || !updatedData) {
-          showToast("Cette page n'est pas modifiable directement.", 'error', '⚠️');
-          return;
+        // 5. ACCUEIL OU AUTRE PAGE
+        else {
+          targetFilePath = 'src/data/site.json';
+          const phoneEl = doc.querySelector('a[href^="tel:"]');
+          const phone = phoneEl?.textContent.trim().replace(/^📞\s*/, '') || "03 81 60 96 76";
+          const tagline = doc.querySelector('.hero-tagline')?.textContent.trim() || "Vuillafans · Vallée de la Loue · Doubs";
+
+          updatedData = {
+            name: "Gîte La Tuffière",
+            tagline: tagline,
+            phone: phone,
+            phoneHref: "tel:" + phone.replace(/\s+/g, ''),
+            phoneSecondary: "06 16 61 81 78",
+            phoneSecondaryHref: "tel:0616618178",
+            email: "latuffiere2@wanadoo.fr",
+            address: {
+              line1: "1 chemin de Montgesoye",
+              line2: "25840 Vuillafans"
+            },
+            hours: "Lundi – Vendredi : 08h00 – 18h00",
+            facebook: "https://www.facebook.com/chrisetbene/",
+            googleMaps: "https://www.google.com/maps/place/G%C3%AEte+La+Tuffi%C3%A8re/@47.0684357,6.204781,15z",
+            capacity: "Capacité d'accueil : 35 personnes",
+            dispoIframeUrl: "https://wcf.tourinsoft.com/Syndication/decibelles-data/c03a5d77-24d5-40e9-8393-08d8ac3e8524/object/HCOBFC025345000122/"
+          };
         }
 
         const fileUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${targetFilePath}?ref=${GITHUB_BRANCH}`;
@@ -1163,7 +1206,6 @@
         showToast('Enregistrement de vos modifications en cours...', 'info', '⏳');
 
         try {
-          // 1. Obtenir le SHA actuel du fichier
           const getRes = await fetch(fileUrl, {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -1177,17 +1219,15 @@
           }
 
           if (!getRes.ok) {
-            throw new Error('Erreur de connexion au site : ' + getRes.statusText);
+            throw new Error('Erreur de connexion : ' + getRes.statusText);
           }
 
           const fileMeta = await getRes.json();
           const currentSha = fileMeta.sha;
 
-          // 2. Préparation du JSON en Base64 UTF-8
           const jsonString = JSON.stringify(updatedData, null, 2) + '\n';
           const base64Content = btoa(unescape(encodeURIComponent(jsonString)));
 
-          // 3. Envoi du commit
           const putRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${targetFilePath}`, {
             method: 'PUT',
             headers: {
@@ -1208,7 +1248,6 @@
             throw new Error('Erreur lors de l’enregistrement : ' + (errData.message || putRes.statusText));
           }
 
-          // Succès !
           markClean();
           showToast('Vos modifications ont bien été enregistrées !', 'success', '✅');
           successModal.classList.add('is-open');

@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroCarousel from "../components/HeroCarousel.astro";
 import { site } from "../data/site";
-import { menus, flammekueche, allergenNote } from "../data/menus";
+import { menus, flammekueche, allergenNote, intro, quote, quoteAuthor } from "../data/menus";
 
 const heroSlides = [
   {
@@ -39,15 +39,17 @@ const heroSlides = [
     <div class="container two-col">
       <div>
         <span class="eyebrow">Gastronomie &amp; Terroir</span>
-        <h2>Régalez-vous toute l'année à La Tuffière</h2>
-        <p>Pour vous assurer authenticité et saveurs, nous travaillons avec des producteurs locaux dans la mesure du possible. Le soir, les hôtes séjournant dans nos <a href="/gite/">chambres au gîte</a> se retrouvent autour de la grande table commune pour partager un repas régional généreux, avec des légumes de saison, des plats mitonnés et des desserts faits maison.</p>
-        <p>La table d'hôtes, c'est aussi l'occasion d'échanger les anecdotes de la journée dans une ambiance conviviale et chaleureuse. Retrouvez le détail complet des formules et des boissons dans notre <a href="/tarifs/">grille des tarifs 2026</a>.</p>
+        <h2>{intro?.title || "Régalez-vous toute l'année à La Tuffière"}</h2>
+        <p>{intro?.lead || "Pour vous assurer authenticité et saveurs, nous travaillons avec des producteurs locaux dans la mesure du possible. Le soir, les hôtes séjournant dans nos chambres au gîte se retrouvent autour de la grande table commune pour partager un repas régional généreux, avec des légumes de saison, des plats mitonnés et des desserts faits maison."}</p>
+        <p>{intro?.sub || "La table d'hôtes, c'est aussi l'occasion d'échanger les anecdotes de la journée dans une ambiance conviviale et chaleureuse. Retrouvez le détail complet des formules et des boissons dans notre grille des tarifs 2026."}</p>
         
         <div class="food-highlights">
-          <span class="food-badge">🥓 Charcuteries fumées du Haut-Doubs</span>
-          <span class="food-badge">🧀 Comté &amp; Morbier Bio</span>
-          <span class="food-badge">🍰 Pâtisseries &amp; desserts 100% maison</span>
-          <span class="food-badge">🍷 Vins du Jura (Arbois, Savagnin)</span>
+          {(intro?.badges || [
+            "🥓 Charcuteries fumées du Haut-Doubs",
+            "🧀 Comté & Morbier Bio",
+            "🍰 Pâtisseries & desserts 100% maison",
+            "🍷 Vins du Jura (Arbois, Savagnin)"
+          ]).map((b) => <span class="food-badge">{b}</span>)}
         </div>
 
         <div style="margin-top: 24px;">
@@ -61,8 +63,8 @@ const heroSlides = [
           loading="lazy"
         />
         <div class="food-showcase-caption">
-          <strong>Fait maison avec amour</strong>
-          <p>L'assiette gourmande de La Tuffière : crèmes brûlées caramélisées, fondants chocolat et mignardises fruitées.</p>
+          <strong>{intro?.showcaseTitle || "Fait maison avec amour"}</strong>
+          <p>{intro?.showcaseText || "L'assiette gourmande de La Tuffière : crèmes brûlées caramélisées, fondants chocolat et mignardises fruitées."}</p>
         </div>
       </div>
     </div>
@@ -151,8 +153,8 @@ const heroSlides = [
   <!-- CITATION BÉNÉDICTE & CHRISTIAN -->
   <section class="section section-alt text-center">
     <div class="container">
-      <p class="hero-tagline">« Le partage et l'échange sont primordiaux à La Tuffière »</p>
-      <p><strong>— Bénédicte &amp; Christian</strong></p>
+      <p class="hero-tagline">{quote || "« Le partage et l'échange sont primordiaux à La Tuffière »"}</p>
+      <p><strong>{quoteAuthor || "— Bénédicte & Christian"}</strong></p>
     </div>
   </section>
 

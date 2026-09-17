@@ -1,5 +1,4 @@
-// Détail des chambres réelles du gîte (Bénédicte & Christian).
-// Capacité totale : 35 personnes réparties en 10 chambres avec sanitaires privés.
+import roomsData from "./rooms.json";
 
 export interface Room {
   name: string;
@@ -11,96 +10,5 @@ export interface Room {
   description?: string;
 }
 
-export const rooms: Room[] = [
-  {
-    name: "La Sitelle",
-    capacity: 2,
-    beds: "2 lits individuels (90×190)",
-    floor: "1er étage",
-    tag: "Chambre 2 personnes",
-    description: "Chambre lumineuse au calme, vue sur la nature. Idéale pour deux randonneurs ou amis.",
-  },
-  {
-    name: "La Gelinotte",
-    capacity: 2,
-    beds: "2 lits individuels (90×190)",
-    floor: "Rez-de-chaussée",
-    pmr: true,
-    tag: "Accès PMR · RDC",
-    description: "Chambre de plain-pied spécialement aménagée pour les personnes à mobilité réduite, avec douche à l'italienne et WC adaptés.",
-  },
-  {
-    name: "La Mésange",
-    capacity: 3,
-    beds: "3 lits individuels (90×190)",
-    floor: "1er étage",
-    tag: "Chambre 3 personnes",
-    description: "Configuration idéale pour un trio de voyageurs, cyclotouristes ou randonneurs.",
-  },
-  {
-    name: "La Hulotte",
-    capacity: 3,
-    beds: "1 lit double (140×190) + 1 lit individuel (90×190)",
-    floor: "1er étage",
-    tag: "Couple & enfant / 3 pers.",
-    description: "Parfaite pour un couple avec un enfant ou pour trois adultes en quête de confort.",
-  },
-  {
-    name: "L'Hirondelle",
-    capacity: 3,
-    beds: "1 lit double (140×190) + 1 lit individuel (90×190)",
-    floor: "1er étage",
-    tag: "Couple & enfant / 3 pers.",
-    description: "Chambre chaleureuse et spacieuse, vue dégagée sur le vallon.",
-  },
-  {
-    name: "La Fauvette",
-    capacity: 4,
-    beds: "4 lits individuels dont 1 superposé",
-    floor: "1er étage",
-    tag: "Famille ou groupe 4 pers.",
-    description: "Conviviale et fonctionnelle pour les petites familles ou groupes d'amis.",
-  },
-  {
-    name: "La Grive",
-    capacity: 4,
-    beds: "1 lit double (140×190) + 2 lits individuels dont 1 superposé",
-    floor: "1er étage",
-    tag: "Famille 4 pers.",
-    description: "Très demandée par les familles avec enfants pour son espace et sa praticité.",
-  },
-  {
-    name: "La Bergeronnette",
-    capacity: 4,
-    beds: "4 lits individuels dont 1 superposé",
-    floor: "1er étage",
-    tag: "Groupe / Famille 4 pers.",
-    description: "Chambre confortable avec rangements, idéale pour les étapes de randonnée.",
-  },
-  {
-    name: "La Buse",
-    capacity: 4,
-    beds: "4 lits individuels dont 1 superposé",
-    floor: "1er étage",
-    tag: "Groupe / Famille 4 pers.",
-    description: "Grande chambre aérée, appréciée des clubs motards et marcheurs.",
-  },
-  {
-    name: "La Colombe",
-    capacity: 6,
-    beds: "6 lits individuels dont 2 superposés",
-    floor: "1er étage",
-    tag: "Dortoir confort 6 pers.",
-    description: "Notre plus grande chambre ! Esprit gîte d'étape chaleureux tout en conservant salle d'eau et WC privatifs.",
-  },
-];
-
-export const equipment = [
-  "Capacité d'accueil : 35 personnes",
-  "Toutes les chambres avec salle d'eau (lavabo, douche) et WC",
-  "Chambre accessible aux personnes à mobilité réduite",
-  "Salle de séminaire / réunion",
-  "Terrasse ombragée",
-  "Terrain de boules et terrain de volley",
-  "Parc arboré, à 200 m de la Loue",
-];
+export const rooms: Room[] = roomsData.rooms;
+export const equipment: string[] = roomsData.equipment;
