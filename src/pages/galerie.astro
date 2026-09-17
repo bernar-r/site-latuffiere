@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import Gallery from "../components/Gallery.astro";
+import { site } from "../data/site";
 ---
 <BaseLayout
   title="Galerie Photos : Gîte, Chambres & Rivière | La Tuffière"
@@ -15,7 +16,23 @@ import Gallery from "../components/Gallery.astro";
 
   <section class="section">
     <div class="container">
+      <p style="text-align:center;max-width:740px;margin:0 auto 36px;color:#554436;font-size:1.02rem;line-height:1.6;">
+        Parcourez en images notre maison familiale à Vuillafans : nos <a href="/gite/">10 chambres avec sanitaires privatifs</a>, le grand parc ombragé au bord de la rivière Loue, les buffets généreux de notre <a href="/table-dhotes/">table d'hôtes</a> et les paysages préservés de la <a href="/activites/">vallée de la Loue</a>.
+      </p>
       <Gallery />
+    </div>
+  </section>
+
+  <section class="practical-band">
+    <div class="container">
+      <h2>Envie de séjourner à La Tuffière ?</h2>
+      <p style="max-width:640px;margin:0 auto 20px;">
+        Consultez nos <a href="/tarifs/">tarifs 2026</a> ou <a href="/contact/">contactez-nous par téléphone</a> pour organiser votre séjour en famille ou en groupe.
+      </p>
+      <div class="hero-actions">
+        <a href={site.phoneHref} class="btn btn-primary">📞 Appeler le {site.phone}</a>
+        <a href="/gite/" class="btn btn-outline-light">Voir le détail des chambres</a>
+      </div>
     </div>
   </section>
 </BaseLayout>

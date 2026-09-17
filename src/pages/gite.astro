@@ -19,7 +19,7 @@ import { rooms, equipment } from "../data/rooms";
     <div class="container">
       <span class="eyebrow">Votre gîte dans le Doubs</span>
       <h2>Capacité d'accueil : 35 personnes</h2>
-      <p>La Tuffière vous offre un hébergement de qualité, labellisé Gîtes de France, au bord de la Loue. Que ce soit pour un week-end, une semaine ou une seule nuit, le gîte s'adapte aux groupes comme aux familles.</p>
+      <p>La Tuffière vous offre un hébergement de qualité, labellisé Gîtes de France, au bord de la rivière Loue. Que ce soit pour un week-end en famille, un séjour motard ou une cousinade, profitez de notre <a href="/table-dhotes/">table d'hôtes conviviale</a> et découvrez nos formules d'hébergement dans la <a href="/tarifs/">grille des tarifs</a>.</p>
       <ul class="feature-list">
         {equipment.map((item) => <li>{item}</li>)}
       </ul>
@@ -120,7 +120,7 @@ import { rooms, equipment } from "../data/rooms";
   <section class="practical-band">
     <div class="container">
       <h2>On se voit quand ?</h2>
-      <p>Consultez nos tarifs ou appelez-nous directement pour organiser votre séjour.</p>
+      <p>Consultez nos <a href="/tarifs/">tarifs détaillés</a>, découvrez les <a href="/activites/">activités de la vallée</a> ou <a href="/contact/">contactez-nous directement</a> pour organiser votre séjour.</p>
       <div class="hero-actions">
         <a href="/tarifs/" class="btn btn-outline-light">Voir les tarifs</a>
         <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>

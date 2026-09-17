@@ -29,7 +29,7 @@ import faq from "../data/faq.json";
             <h3 style="margin:0;font-size:1.2rem;color:var(--color-rust-dark);">Réservation par téléphone</h3>
           </div>
           <p style="font-size:0.92rem;color:#554436;margin-bottom:16px;">
-            La confirmation des chambres et de la formule se fait exclusivement par téléphone avec Bénédicte &amp; Christian.
+            La confirmation de vos <a href="/gite/">chambres</a> et de votre formule en demi-pension à la <a href="/table-dhotes/">table d'hôtes</a> se fait par téléphone selon notre <a href="/tarifs/">grille des tarifs 2026</a>.
           </p>
           <div style="display:flex;flex-direction:column;gap:10px;">
             <a href={site.phoneHref} class="btn btn-primary" style="justify-content:flex-start;font-size:1rem;">
@@ -84,6 +84,7 @@ import faq from "../data/faq.json";
         <div style="background:#fff;border:1px solid var(--color-border);border-radius:calc(var(--radius) + 2px);padding:28px;box-shadow:0 4px 14px rgba(59, 46, 36, 0.04);margin-top:20px;">
           <p class="tarifs-note" style="margin-top:0;">
             Ce formulaire ouvre votre logiciel de messagerie habituel avec un message pré-rédigé à destination de <strong>{site.email}</strong>.
+            Consultez au préalable notre <a href="/tarifs/">grille de tarifs</a> ou notre <a href="#faq">foire aux questions ci-dessous</a>.
             <br><br>
             <em>Rappel : les réservations effectives se valident par téléphone afin de vous garantir la disponibilité en temps réel.</em>
           </p>
@@ -115,7 +116,7 @@ import faq from "../data/faq.json";
   </section>
 
   <!-- FAQ / QUESTIONS FRÉQUENTES (SEO RICHE & INFOS PRATIQUES) -->
-  <section class="section section-alt">
+  <section class="section section-alt" id="faq">
     <div class="container" style="max-width:860px;">
       <div style="text-align:center;margin-bottom:36px;">
         <span class="eyebrow">Questions Fréquentes</span>
