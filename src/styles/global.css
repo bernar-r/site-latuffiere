@@ -140,13 +140,13 @@ p { margin: 0 0 1em; }
   align-items: center;
   gap: 20px;
 }
-.logo img { height: 52px; }
-.main-nav { flex: 1; }
+.logo img { height: 52px; flex-shrink: 0; }
+.main-nav { flex: 1; min-width: 0; }
 .main-nav ul {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
+  flex-wrap: nowrap;
+  gap: clamp(10px, 1.4vw, 22px);
   margin: 0;
   padding: 0;
 }
@@ -154,6 +154,8 @@ p { margin: 0 0 1em; }
   text-decoration: none;
   color: var(--color-text);
   font-weight: 500;
+  white-space: nowrap;
+  font-size: 0.95rem;
 }
 .main-nav a.is-active,
 .main-nav a:hover {
@@ -163,6 +165,12 @@ p { margin: 0 0 1em; }
   display: flex;
   gap: 10px;
   align-items: center;
+  flex-shrink: 0;
+}
+.header-actions .btn {
+  padding: 9px 16px;
+  font-size: 0.88rem;
+  white-space: nowrap;
 }
 
 /* Nav desktop, toujours dans le flux normal du header */

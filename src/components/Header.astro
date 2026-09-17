@@ -60,4 +60,8 @@ const path = Astro.url.pathname;
 
 <style>
   .label-short { display: none; }
+  @media (max-width: 1220px) {
+    .label-full { display: none; }
+    .label-short { display: inline; }
+  }
 </style>
