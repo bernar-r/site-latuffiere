@@ -2,10 +2,12 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import { site } from "../data/site";
+import faq from "../data/faq.json";
 ---
 <BaseLayout
-  title="Contact & Réservations — Gîte La Tuffière, Vuillafans (Doubs)"
-  description="Contactez Bénédicte et Christian au gîte La Tuffière à Vuillafans (Doubs). Réservation par téléphone, localisation et itinéraire."
+  title="Contact, Réservations & FAQ — Gîte La Tuffière, Vuillafans (Doubs)"
+  description="Contactez Bénédicte et Christian au gîte La Tuffière à Vuillafans (Doubs). Réservations par téléphone, itinéraire, accès et réponses aux questions fréquentes."
+  faq={faq}
 >
   <PageHero
     image="/images/hero-4-olympus.jpg"
@@ -109,6 +111,33 @@ import { site } from "../data/site";
     </div>
   </section>
 
+  <!-- FAQ / QUESTIONS FRÉQUENTES (SEO RICHE & INFOS PRATIQUES) -->
+  <section class="section section-alt">
+    <div class="container" style="max-width:860px;">
+      <div style="text-align:center;margin-bottom:36px;">
+        <span class="eyebrow">Questions Fréquentes</span>
+        <h2>Tout savoir avant votre séjour</h2>
+        <p style="margin:0 auto;max-width:620px;color:#554436;">
+          Retrouvez les réponses aux questions les plus courantes sur la capacité d'accueil, les formules repas, les équipements et les réservations à La Tuffière.
+        </p>
+      </div>
+
+      <div class="faq-accordion">
+        {faq.map((item, idx) => (
+          <details class="faq-item" open={idx === 0}>
+            <summary class="faq-question">
+              <span>{item.question}</span>
+              <span class="faq-chevron" aria-hidden="true">▾</span>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- BANDEAU CTA DISPONIBILITÉS -->
   <section class="practical-band">
     <div class="container">
@@ -194,5 +223,54 @@ import { site } from "../data/site";
     color: #665547;
     line-height: 1.55;
     margin-bottom: 20px;
+  }
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .faq-item {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .faq-item[open] {
+    box-shadow: 0 4px 16px rgba(59, 46, 36, 0.06);
+    border-color: #d8c0ad;
+  }
+  .faq-question {
+    padding: 18px 20px;
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    list-style: none;
+  }
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  .faq-chevron {
+    font-size: 1.2rem;
+    color: var(--color-rust);
+    transition: transform 0.2s ease;
+  }
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+  .faq-answer {
+    padding: 0 20px 20px 20px;
+    color: #4a3a2d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .faq-answer p {
+    margin: 0;
   }
 </style>

@@ -10,10 +10,24 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  faq?: Array<{ question: string; answer: string }>;
 }
-const { title, description, image = "/images/hero-1-facade.jpg" } = Astro.props;
+const { title, description, image = "/images/hero-1-facade.jpg", faq } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(image, Astro.site);
+
+const faqStructuredData = faq && faq.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+} : null;
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -121,6 +135,9 @@ const structuredData = {
 
   <!-- Données Structurées Schema.org JSON-LD pour Google Rich Results -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  {faqStructuredData && (
+    <script type="application/ld+json" set:html={JSON.stringify(faqStructuredData)} />
+  )}
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
