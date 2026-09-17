@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administration & Aperçu — Gîte La Tuffière</title>
+  <title>Administration & Aperçu en Direct — Gîte La Tuffière</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 
   <style>
-    /* Barre d'outils flottante d'aide et prévisualisation pour Bénédicte & Christian */
+    /* Barre d'outils supérieure flottante */
     #tuffiere-admin-bar {
       position: fixed;
       top: 10px;
@@ -38,7 +38,7 @@
       background: #b5622e;
       color: #fff;
       border: none;
-      padding: 6px 13px;
+      padding: 6px 14px;
       border-radius: 999px;
       font-size: 12.5px;
       font-weight: 600;
@@ -71,28 +71,34 @@
       text-decoration: underline;
     }
 
-    /* TIROIR LATÉRAL D'APERÇU EN DIRECT DU SITE */
+    /* TIROIR LATÉRAL D'APERÇU EN DIRECT DU SITE (SPLIT-SCREEN) */
     #tuffiere-preview-drawer {
       position: fixed;
       top: 0;
       right: 0;
       bottom: 0;
-      width: 52%;
-      max-width: 900px;
-      min-width: 360px;
+      width: 50%;
+      min-width: 380px;
       background: #faf7f2;
       box-shadow: -8px 0 30px rgba(0, 0, 0, 0.3);
       z-index: 1000000;
       display: flex;
       flex-direction: column;
       transform: translateX(105%);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s ease;
       border-left: 2px solid #b5622e;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
     #tuffiere-preview-drawer.is-open {
       transform: translateX(0);
     }
+    #tuffiere-preview-drawer.width-75 {
+      width: 75%;
+    }
+    #tuffiere-preview-drawer.width-100 {
+      width: 100%;
+    }
+
     .preview-header {
       background: #233b28;
       color: #fff;
@@ -114,22 +120,50 @@
       gap: 8px;
       color: #f7e8d6;
     }
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(46, 125, 50, 0.35);
+      border: 1px solid #4caf50;
+      color: #c8e6c9;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background: #4caf50;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #4caf50;
+      animation: livePulse 1.8s infinite;
+    }
+    @keyframes livePulse {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.8; }
+    }
+
     .preview-controls {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .preview-action-btn {
       background: rgba(255, 255, 255, 0.15);
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 6px;
-      padding: 4px 10px;
-      font-size: 12px;
+      padding: 4px 9px;
+      font-size: 11.5px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       transition: background 0.15s;
     }
     .preview-action-btn:hover {
@@ -141,13 +175,14 @@
       border: none;
       border-radius: 6px;
       padding: 4px 12px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
     }
     .preview-close-btn:hover {
       background: #8e471d;
     }
+
     .preview-nav-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -171,6 +206,7 @@
       color: #fff;
       font-weight: 600;
     }
+
     .preview-iframe-wrapper {
       flex: 1;
       position: relative;
@@ -279,7 +315,7 @@
     }
 
     @media (max-width: 768px) {
-      #tuffiere-preview-drawer { width: 100%; max-width: 100%; }
+      #tuffiere-preview-drawer { width: 100% !important; min-width: 100%; }
       #tuffiere-admin-bar .brand-tag { display: none; }
     }
   </style>
@@ -294,28 +330,27 @@
     <button type="button" class="tuffiere-bar-btn btn-guide" id="btn-open-guide">
       <span>📖 Guide d'aide</span>
     </button>
-    <a href="https://latuffiere.pro" target="_blank" rel="noopener" class="tuffiere-bar-btn btn-link">
+    <a href="/" target="_blank" rel="noopener" class="tuffiere-bar-btn btn-link">
       Site public ↗
     </a>
   </div>
 
-  <!-- TIROIR D'APERÇU EN DIRECT (SPLIT-SCREEN) -->
+  <!-- TIROIR D'APERÇU EN DIRECT TEMPS RÉEL (SPLIT-SCREEN) -->
   <div id="tuffiere-preview-drawer" aria-hidden="true">
     <div class="preview-header">
       <div class="preview-top-row">
         <span class="preview-title">
-          <span>👁️ Aperçu en direct de votre site</span>
+          <span>Aperçu du site</span>
+          <span class="live-indicator">
+            <span class="live-dot"></span>
+            <span>Live Temps Réel</span>
+          </span>
         </span>
         <div class="preview-controls">
-          <button type="button" class="preview-action-btn" id="btn-refresh-preview" title="Actualiser la page">
-            🔄 Actualiser
-          </button>
-          <button type="button" class="preview-action-btn" id="btn-open-new-tab" title="Ouvrir dans un nouvel onglet">
-            ↗ Plein écran
-          </button>
-          <button type="button" class="preview-close-btn" id="btn-close-preview" title="Fermer l'aperçu">
-            ✕ Fermer
-          </button>
+          <button type="button" class="preview-action-btn" id="btn-size-50" title="Afficher à 50% de l'écran">50%</button>
+          <button type="button" class="preview-action-btn" id="btn-size-75" title="Afficher à 75% de l'écran">75%</button>
+          <button type="button" class="preview-action-btn" id="btn-refresh-preview" title="Actualiser la page">🔄</button>
+          <button type="button" class="preview-close-btn" id="btn-close-preview" title="Fermer l'aperçu">✕ Fermer</button>
         </div>
       </div>
       <div class="preview-nav-tabs">
@@ -328,7 +363,7 @@
       </div>
     </div>
     <div class="preview-iframe-wrapper">
-      <iframe id="preview-iframe" class="preview-iframe" src="https://latuffiere.pro/table-dhotes/" title="Aperçu interactif du site La Tuffière"></iframe>
+      <iframe id="preview-iframe" class="preview-iframe" src="/table-dhotes/" title="Aperçu interactif du site La Tuffière"></iframe>
     </div>
   </div>
 
@@ -336,7 +371,7 @@
   <div id="tuffiere-guide-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="guide-card">
       <h2>📖 Guide d'utilisation pour Bénédicte &amp; Christian</h2>
-      <p class="guide-sub">Ce panneau vous permet de modifier les textes, plats, tarifs et photos du site sans toucher au code.</p>
+      <p class="guide-sub">Ce panneau vous permet de modifier les textes, plats, tarifs et photos du site en toute simplicité.</p>
 
       <div class="guide-steps">
         <div class="guide-step">
@@ -350,8 +385,8 @@
         <div class="guide-step">
           <span class="step-number">2</span>
           <div class="step-content">
-            <h3>Modifiez ou ajoutez directement</h3>
-            <p>Chaque ligne affiche clairement son nom (ex : <em>Menu Tradition — 25,00 €</em> ou <em>Entrées</em>). Cliquez dessus pour changer un texte ou un tarif. Pour ajouter un plat, cliquez simplement sur <strong>« Ajouter »</strong>.</p>
+            <h3>Modifiez et visualisez en direct</h3>
+            <p>Chaque ligne affiche clairement son nom (ex : <em>Menu Tradition — 25,00 €</em> ou <em>Entrées</em>). Dès que vous tapez un nouveau tarif ou un nouveau plat, <strong>il apparaît instantanément en temps réel dans l'aperçu à droite</strong> !</p>
           </div>
         </div>
 
@@ -359,15 +394,15 @@
           <span class="step-number">3</span>
           <div class="step-content">
             <h3>Cliquez sur « Enregistrer » en haut</h3>
-            <p>Dès que votre modification est terminée, cliquez sur le bouton bleu <strong>« Enregistrer »</strong> en haut à droite. Votre modification est validée immédiatement.</p>
+            <p>Dès que votre modification est terminée, cliquez sur le bouton bleu <strong>« Enregistrer »</strong> en haut à droite. Votre modification est validée et publiée automatiquement en 30 secondes.</p>
           </div>
         </div>
 
         <div class="guide-step">
           <span class="step-number">4</span>
           <div class="step-content">
-            <h3>Vérifiez le résultat avec le bouton « Voir le site à côté »</h3>
-            <p>Cliquez à tout moment sur le bouton orange <strong>« 👁️ Voir le site à côté »</strong> en haut à droite pour afficher votre vrai site à côté de l'écran et vérifier le rendu en direct !</p>
+            <h3>Bouton « Voir le site à côté »</h3>
+            <p>Cliquez à tout moment sur le bouton orange <strong>« 👁️ Voir le site à côté »</strong> en haut à droite pour afficher ou masquer l'aperçu en miroir à côté de votre travail.</p>
           </div>
         </div>
       </div>
@@ -378,7 +413,7 @@
     </div>
   </div>
 
-  <!-- SCRIPT DU TIROIR ET DE LA MODALE -->
+  <!-- MOTEUR DE SYNCHRONISATION LIVE TEMPS RÉEL + GESTION DE L'INTERFACE -->
   <script>
     (function () {
       const drawer = document.getElementById('tuffiere-preview-drawer');
@@ -386,14 +421,22 @@
       const btnTogglePreview = document.getElementById('btn-toggle-preview');
       const btnClosePreview = document.getElementById('btn-close-preview');
       const btnRefreshPreview = document.getElementById('btn-refresh-preview');
-      const btnOpenNewTab = document.getElementById('btn-open-new-tab');
+      const btnSize50 = document.getElementById('btn-size-50');
+      const btnSize75 = document.getElementById('btn-size-75');
       const tabs = document.querySelectorAll('.preview-tab');
 
       const modal = document.getElementById('tuffiere-guide-modal');
       const btnOpenGuide = document.getElementById('btn-open-guide');
       const btnCloseGuide = document.getElementById('btn-close-guide');
 
-      let currentPath = '/table-dhotes/';
+      function switchTab(path) {
+        tabs.forEach(t => t.classList.remove('is-active'));
+        const matchingTab = Array.from(tabs).find(t => t.getAttribute('data-path') === path);
+        if (matchingTab) matchingTab.classList.add('is-active');
+        if (!iframe.src.endsWith(path)) {
+          iframe.src = path;
+        }
+      }
 
       function openDrawer() {
         drawer.classList.add('is-open');
@@ -417,21 +460,23 @@
 
       btnClosePreview.addEventListener('click', closeDrawer);
 
+      btnSize50.addEventListener('click', function () {
+        drawer.classList.remove('width-75', 'width-100');
+      });
+
+      btnSize75.addEventListener('click', function () {
+        drawer.classList.remove('width-100');
+        drawer.classList.toggle('width-75');
+      });
+
       btnRefreshPreview.addEventListener('click', function () {
         iframe.src = iframe.src;
       });
 
-      btnOpenNewTab.addEventListener('click', function () {
-        window.open(iframe.src, '_blank');
-      });
-
       tabs.forEach(function (tab) {
         tab.addEventListener('click', function () {
-          tabs.forEach(t => t.classList.remove('is-active'));
-          tab.classList.add('is-active');
           const path = tab.getAttribute('data-path');
-          currentPath = path;
-          iframe.src = 'https://latuffiere.pro' + path;
+          switchTab(path);
         });
       });
 
@@ -451,6 +496,133 @@
           modal.setAttribute('aria-hidden', 'true');
         }
       });
+
+      // BASCULE AUTOMATIQUE DE L'APERÇU SELON LA RUBRIQUE SÉLECTIONNÉE
+      window.addEventListener('hashchange', function () {
+        const hash = window.location.hash.toLowerCase();
+        if (hash.includes('menus')) switchTab('/table-dhotes/');
+        else if (hash.includes('tarifs')) switchTab('/tarifs/');
+        else if (hash.includes('gallery')) switchTab('/galerie/');
+        else if (hash.includes('faq')) switchTab('/contact/');
+        else if (hash.includes('site')) switchTab('/contact/');
+      });
+
+      // SYNCHRONISATION LIVE TEMPS RÉEL LORS DE LA SAISIE DANS LE CMS
+      document.addEventListener('focusin', function (e) {
+        const target = e.target;
+        if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) {
+          target.dataset.prevVal = target.value;
+        }
+      }, true);
+
+      document.addEventListener('input', function (e) {
+        const input = e.target;
+        if (!input || (input.tagName !== 'INPUT' && input.tagName !== 'TEXTAREA')) return;
+
+        const newVal = input.value;
+        const oldVal = input.dataset.prevVal || '';
+        if (newVal === oldVal) return;
+
+        let doc;
+        try {
+          doc = iframe.contentDocument || iframe.contentWindow?.document;
+        } catch (err) {
+          return;
+        }
+        if (!doc || !doc.body) return;
+
+        // Effet visuel de mise en valeur de l'élément modifié dans l'iframe
+        function flashElement(el) {
+          if (!el) return;
+          el.style.transition = 'all 0.25s ease';
+          el.style.backgroundColor = '#fff3e0';
+          el.style.outline = '2px solid #b5622e';
+          el.style.borderRadius = '4px';
+          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          clearTimeout(el._flashTimer);
+          el._flashTimer = setTimeout(() => {
+            el.style.backgroundColor = '';
+            el.style.outline = '';
+          }, 1400);
+        }
+
+        // 1. Détection ciblée : Tartes flambées
+        const parentContainer = input.closest('fieldset, [data-field-name], div');
+        const labelEl = input.closest('label') || parentContainer?.querySelector('label');
+        const labelText = (labelEl?.textContent || input.name || '').toLowerCase();
+
+        if (labelText.includes('tartes') || labelText.includes('flamme') || parentContainer?.textContent?.toLowerCase().includes('tartes flambées')) {
+          const flammeCard = doc.querySelector('.menu-card-flamme');
+          if (flammeCard) {
+            if (labelText.includes('prix') || labelText.includes('tarif')) {
+              const priceEl = flammeCard.querySelector('.menu-price');
+              if (priceEl) { priceEl.textContent = newVal; flashElement(priceEl); }
+            } else if (labelText.includes('description')) {
+              const descEl = flammeCard.querySelector('p:not(.menu-price)');
+              if (descEl) { descEl.textContent = newVal; flashElement(descEl); }
+            } else if (labelText.includes('titre') || labelText.includes('nom')) {
+              const titleEl = flammeCard.querySelector('h3');
+              if (titleEl) { titleEl.textContent = newVal; flashElement(titleEl); }
+            }
+            input.dataset.prevVal = newVal;
+            return;
+          }
+        }
+
+        // 2. Détection ciblée : Prix des menus ou des tarifs
+        if (labelText.includes('prix') || labelText.includes('tarif')) {
+          const menuCards = doc.querySelectorAll('.menu-card:not(.menu-card-flamme)');
+          for (const card of menuCards) {
+            const priceEl = card.querySelector('.menu-price');
+            if (priceEl && oldVal && priceEl.textContent.includes(oldVal)) {
+              priceEl.textContent = priceEl.textContent.replace(oldVal, newVal);
+              flashElement(priceEl);
+              input.dataset.prevVal = newVal;
+              return;
+            }
+          }
+          const priceCells = doc.querySelectorAll('.price-cell, .group-rate-price');
+          for (const cell of priceCells) {
+            if (oldVal && cell.textContent.trim() === oldVal.trim()) {
+              cell.textContent = newVal;
+              flashElement(cell);
+              input.dataset.prevVal = newVal;
+              return;
+            }
+          }
+        }
+
+        // 3. Remplacement textuel direct (plats, conditions, notes, etc.)
+        if (oldVal && oldVal.length >= 2) {
+          const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+          let node;
+          while ((node = walker.nextNode())) {
+            if (node.nodeValue && node.nodeValue.includes(oldVal)) {
+              node.nodeValue = node.nodeValue.replace(oldVal, newVal);
+              flashElement(node.parentElement);
+              input.dataset.prevVal = newVal;
+              return;
+            }
+          }
+        }
+
+        // 4. Questions et réponses de la FAQ
+        if (labelText.includes('question') || labelText.includes('réponse') || labelText.includes('reponse')) {
+          const faqItems = doc.querySelectorAll('.faq-item');
+          for (const item of faqItems) {
+            if (oldVal && item.textContent.includes(oldVal)) {
+              const qEl = item.querySelector('.faq-question span');
+              const aEl = item.querySelector('.faq-answer p');
+              if (labelText.includes('question') && qEl) { qEl.textContent = newVal; flashElement(qEl); }
+              if (labelText.includes('r') && aEl) { aEl.textContent = newVal; flashElement(aEl); }
+              input.dataset.prevVal = newVal;
+              return;
+            }
+          }
+        }
+
+        input.dataset.prevVal = newVal;
+      }, true);
     })();
   </script>
 
