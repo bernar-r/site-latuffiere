@@ -43,13 +43,13 @@ collections:
             fields:
               - { label: "Nom du menu", name: "name", widget: "string" }
               - { label: "Prix et formule", name: "price", widget: "string" }
-              - { label: "Conditions / Remarques", name: "conditions", widget: "list", field: { label: "Condition", widget: "string" } }
+              - { label: "Conditions / Remarques", name: "conditions", widget: "list", field: { label: "Condition", name: "condition", widget: "string" } }
               - label: "Sections (Entrées, Plats, Desserts)"
                 name: "sections"
                 widget: "list"
                 fields:
                   - { label: "Titre de la section", name: "title", widget: "string" }
-                  - { label: "Plats", name: "items", widget: "list", field: { label: "Intitulé du plat", widget: "string" } }
+                  - { label: "Plats", name: "items", widget: "list", field: { label: "Intitulé du plat", name: "item", widget: "string" } }
           - label: "Formule Tartes flambées"
             name: "flammekueche"
             widget: "object"
