@@ -94,7 +94,7 @@ export const menus = [
 export const flammekueche = {
   name: "Menu Tartes flambées",
   description:
-    "Tartes flambées Franc-Comtoises à volonté, salées avec salade verte et sucrées.",
+    "Tartes flambées Franc-Comtoises, salées avec salade verte et sucrées.",
 };
 
 // Allergènes disponibles sur demande auprès de la Direction (mention obligatoire des deux cartes originales).
