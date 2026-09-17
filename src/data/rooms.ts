@@ -96,14 +96,11 @@ export const rooms: Room[] = [
 ];
 
 export const equipment = [
-  { icon: "users", text: "Capacité d'accueil : 35 personnes (10 chambres)" },
-  { icon: "bath", text: "Toutes les chambres avec salle d'eau (douche, lavabo) et WC privatifs" },
-  { icon: "wheelchair", text: "Chambre accessible PMR de plain-pied (La Gelinotte)" },
-  { icon: "presentation", text: "Grande salle commune / salle de séminaire et réunions" },
-  { icon: "sun", text: "Terrasse ombragée avec tables extérieures sous les arbres" },
-  { icon: "tree", text: "Grand parc arboré au calme, à 200 mètres de la rivière la Loue" },
-  { icon: "ball", text: "Terrain de boules (pétanque) et terrain de volley sur place" },
-  { icon: "bike", text: "Garage fermé sécurisé pour motos et vélos (Label Motard Bienvenue)" },
-  { icon: "wifi", text: "Connexion Wi-Fi disponible gratuitement" },
-  { icon: "utensils", text: "Table d'hôtes le soir mitonnée maison par les propriétaires" },
+  "Capacité d'accueil : 35 personnes",
+  "Toutes les chambres avec salle d'eau (lavabo, douche) et WC",
+  "Chambre accessible aux personnes à mobilité réduite",
+  "Salle de séminaire / réunion",
+  "Terrasse ombragée",
+  "Terrain de boules et terrain de volley",
+  "Parc arboré, à 200 m de la Loue",
 ];
