@@ -1,35 +1,118 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PageHero from "../components/PageHero.astro";
+import HeroCarousel from "../components/HeroCarousel.astro";
 import { site } from "../data/site";
 import { menus, flammekueche, allergenNote } from "../data/menus";
+
+const heroSlides = [
+  {
+    image: "/images/table-buffet-terroir.jpg",
+    alt: "Buffet gourmand du terroir : charcuteries franc-comtoises, comté, morbier et salades de saison",
+  },
+  {
+    image: "/images/table-buffet-champetre.jpg",
+    alt: "Grand buffet champêtre en plein air dans le jardin arboré de La Tuffière",
+  },
+  {
+    image: "/images/galerie-07.jpg",
+    alt: "Assiette gourmande maison : crème brûlée dorée, fondant chocolat, choux et fruits frais",
+  },
+  {
+    image: "/images/table-degustation-jura.jpg",
+    alt: "Dégustation d'Arbois Savagnin et Comté Bio face à la Vallée de la Loue",
+  },
+];
 ---
 <BaseLayout
   title="Table d'hôtes — Gîte La Tuffière, Vuillafans (Doubs)"
-  description="Table d'hôtes de La Tuffière : cuisine régionale franc-comtoise, produits locaux. Menu Tradition 25€, Menu Dégustation 41€, tartes flambées à volonté. Réservation par téléphone."
+  description="Table d'hôtes de La Tuffière : cuisine régionale franc-comtoise, buffets gourmands, desserts maison et produits locaux. Menu Tradition 25€, Menu Dégustation 41€, tartes flambées."
 >
-  <PageHero
-    image="/images/table-salle-reception.jpg"
+  <HeroCarousel
+    slides={heroSlides}
+    kicker="La Tuffière · Table d'hôtes"
     title="Manger à La Tuffière : notre table d'hôtes"
-    lead="Saveurs du terroir franc-comtois, produits locaux et ambiance conviviale"
+    lead="Saveurs du terroir franc-comtois, produits locaux et générosité des grandes tablées"
   />
 
+  <!-- PRÉSENTATION & DESSERTS MAISON -->
   <section class="section">
     <div class="container two-col">
       <div>
-        <span class="eyebrow">Gastronomie</span>
+        <span class="eyebrow">Gastronomie &amp; Terroir</span>
         <h2>Régalez-vous toute l'année à La Tuffière</h2>
-        <p>Pour vous assurer qualité et saveurs, nous travaillons avec des producteurs locaux dans la mesure du possible. Le soir, vous dégusterez un repas régional autour de la table commune, avec des légumes de saison et des plats gourmands.</p>
-        <p>La table d'hôtes, c'est aussi l'occasion d'échanger les impressions de la journée dans une ambiance conviviale.</p>
-        <a href={site.phoneHref} class="btn btn-outline">Appeler pour réserver</a>
+        <p>Pour vous assurer authenticité et saveurs, nous travaillons avec des producteurs locaux dans la mesure du possible. Le soir, vous dégusterez un repas régional généreux autour de la grande table commune, avec des légumes de saison, des plats mitonnés et des desserts faits maison.</p>
+        <p>La table d'hôtes, c'est aussi l'occasion d'échanger les anecdotes de la journée dans une ambiance conviviale et familiale.</p>
+        
+        <div class="food-highlights">
+          <span class="food-badge">🥓 Charcuteries fumées du Haut-Doubs</span>
+          <span class="food-badge">🧀 Comté &amp; Morbier Bio</span>
+          <span class="food-badge">🍰 Pâtisseries &amp; desserts 100% maison</span>
+          <span class="food-badge">🍷 Vins du Jura (Arbois, Savagnin)</span>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <a href={site.phoneHref} class="btn btn-outline">Appeler pour réserver votre table</a>
+        </div>
       </div>
-      <div>
-        <img src="/images/home-tables-exterieures.jpg" alt="Repas partagé sur la terrasse de La Tuffière" loading="lazy">
+      <div class="food-showcase-box">
+        <img
+          src="/images/galerie-07.jpg"
+          alt="Assiette gourmande maison : crème brûlée, fondant au chocolat, chou et brochette de fruits"
+          loading="lazy"
+        />
+        <div class="food-showcase-caption">
+          <strong>Fait maison avec amour</strong>
+          <p>L'assiette gourmande de La Tuffière : crèmes brûlées caramélisées, fondants chocolat et mignardises fruitées.</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- MOSAÏQUE VISUELLE DES SPÉCIALITÉS -->
   <section class="section section-alt">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow">L'esprit de notre table</span>
+        <h2>La convivialité des grandes tablées</h2>
+        <p>Que ce soit en terrasse aux beaux jours ou dans notre salle de réception au coin du feu, chaque repas est un moment de partage et de plaisir gustatif.</p>
+      </div>
+
+      <div class="food-cards-grid">
+        <article class="food-card">
+          <div class="food-card-media">
+            <img src="/images/table-buffet-terroir.jpg" alt="Buffet franc-comtois avec charcuteries et fromages" loading="lazy" />
+          </div>
+          <div class="food-card-text">
+            <h3>Les Buffets du Terroir</h3>
+            <p>Jambon de pays, salades composées fraîches, terrines maison et plateaux de fromages comtois affinés à volonté.</p>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <div class="food-card-media">
+            <img src="/images/table-buffet-champetre.jpg" alt="Banquet champêtre en plein air sous la tonnelle" loading="lazy" />
+          </div>
+          <div class="food-card-text">
+            <h3>Banquets au Jardin</h3>
+            <p>Dès les beaux jours, profitez d'un grand buffet campagnard en extérieur à l'ombre du parc arboré au bord de la Loue.</p>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <div class="food-card-media">
+            <img src="/images/table-degustation-jura.jpg" alt="Dégustation d'Arbois Savagnin et Comté Bio avec vue" loading="lazy" />
+          </div>
+          <div class="food-card-text">
+            <h3>Vins du Jura &amp; Comté Bio</h3>
+            <p>Accords mets et vins d'exception : savourez un verre d'Arbois Savagnin ou de Vin Jaune accompagné de Comté Bio médaillé.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LES MENUS ET CARTES 2026 -->
+  <section class="section">
     <div class="container">
       <span class="eyebrow">Nos menus</span>
       <h2>Cartes 2026</h2>
@@ -64,13 +147,15 @@ import { menus, flammekueche, allergenNote } from "../data/menus";
     </div>
   </section>
 
-  <section class="section text-center">
+  <!-- CITATION BÉNÉDICTE & CHRISTIAN -->
+  <section class="section section-alt text-center">
     <div class="container">
       <p class="hero-tagline">« Le partage et l'échange sont primordiaux à La Tuffière »</p>
       <p><strong>— Bénédicte &amp; Christian</strong></p>
     </div>
   </section>
 
+  <!-- BANDEAU D'APPEL À L'ACTION -->
   <section class="practical-band">
     <div class="container">
       <h2>Envie de réserver votre table ?</h2>
@@ -84,6 +169,102 @@ import { menus, flammekueche, allergenNote } from "../data/menus";
 </BaseLayout>
 
 <style>
+  .food-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .food-badge {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  .food-showcase-box {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .food-showcase-box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .food-showcase-caption {
+    padding: 14px 18px;
+  }
+  .food-showcase-caption strong {
+    display: block;
+    color: var(--color-rust);
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  .food-showcase-caption p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+  .section-intro {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 36px;
+  }
+  .food-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 860px) {
+    .food-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .food-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .food-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(59, 46, 36, 0.08);
+  }
+  .food-card-media {
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+  }
+  .food-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .food-card:hover .food-card-media img {
+    transform: scale(1.04);
+  }
+  .food-card-text {
+    padding: 20px;
+    flex: 1;
+  }
+  .food-card-text h3 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  .food-card-text p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    opacity: 0.88;
+  }
   .menus-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

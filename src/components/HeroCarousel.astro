@@ -1,0 +1,236 @@
+---
+interface Slide {
+  image: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  slides: Slide[];
+  kicker?: string;
+  title: string;
+  lead?: string;
+}
+
+const { slides, kicker = "La Tuffière", title, lead } = Astro.props;
+---
+
+<section class="hero hero-small hero-carousel" aria-label="Diaporama de la table d'hôtes">
+  <div class="carousel-track">
+    {slides.map((slide, index) => (
+      <div
+        class={`carousel-slide ${index === 0 ? "is-active" : ""}`}
+        style={`background-image: url('${slide.image}')`}
+        data-slide-index={index}
+        role="group"
+        aria-roledescription="diapositive"
+        aria-label={`${index + 1} sur ${slides.length} : ${slide.alt}`}
+      />
+    ))}
+  </div>
+
+  <div class="hero-content">
+    <span class="hero-kicker">{kicker}</span>
+    <h1>{title}</h1>
+    {lead && <p class="hero-meta">{lead}</p>}
+  </div>
+
+  {slides.length > 1 && (
+    <>
+      <button type="button" class="carousel-nav-btn carousel-prev" aria-label="Photo précédente" data-carousel-prev>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button type="button" class="carousel-nav-btn carousel-next" aria-label="Photo suivante" data-carousel-next>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <div class="carousel-indicators" role="tablist" aria-label="Sélectionner une photo">
+        {slides.map((slide, index) => (
+          <button
+            type="button"
+            class={`carousel-dot ${index === 0 ? "is-active" : ""}`}
+            data-dot-index={index}
+            aria-label={`Afficher la photo ${index + 1} : ${slide.alt}`}
+          />
+        ))}
+      </div>
+    </>
+  )}
+</section>
+
+<style>
+  .hero-carousel {
+    position: relative;
+    overflow: hidden;
+    background-image: none !important;
+  }
+  .carousel-track {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .carousel-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+  .carousel-slide.is-active {
+    opacity: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+  .carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(20, 16, 12, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+    padding: 0;
+  }
+  .carousel-nav-btn:hover {
+    background: rgba(20, 16, 12, 0.8);
+    border-color: #fff;
+    transform: translateY(-50%) scale(1.08);
+  }
+  .carousel-prev {
+    left: 18px;
+  }
+  .carousel-next {
+    right: 18px;
+  }
+  .carousel-indicators {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+  }
+  .carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  .carousel-dot.is-active {
+    background: #fff;
+    width: 26px;
+    border-radius: 5px;
+  }
+  @media (max-width: 640px) {
+    .carousel-nav-btn {
+      width: 36px;
+      height: 36px;
+    }
+    .carousel-prev { left: 10px; }
+    .carousel-next { right: 10px; }
+  }
+</style>
+
+<script>
+  function initHeroCarousel() {
+    const carousel = document.querySelector(".hero-carousel");
+    if (!carousel) return;
+
+    const slides = carousel.querySelectorAll<HTMLElement>(".carousel-slide");
+    const dots = carousel.querySelectorAll<HTMLElement>(".carousel-dot");
+    const prevBtn = carousel.querySelector("[data-carousel-prev]");
+    const nextBtn = carousel.querySelector("[data-carousel-next]");
+
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    let timer: number | null = null;
+    const interval = 5000;
+
+    function showSlide(index: number) {
+      slides[currentIndex].classList.remove("is-active");
+      dots[currentIndex]?.classList.remove("is-active");
+
+      currentIndex = (index + slides.length) % slides.length;
+
+      slides[currentIndex].classList.add("is-active");
+      dots[currentIndex]?.classList.add("is-active");
+    }
+
+    function next() {
+      showSlide(currentIndex + 1);
+    }
+
+    function prev() {
+      showSlide(currentIndex - 1);
+    }
+
+    function startTimer() {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      stopTimer();
+      timer = window.setInterval(next, interval);
+    }
+
+    function stopTimer() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    nextBtn?.addEventListener("click", () => {
+      next();
+      startTimer();
+    });
+
+    prevBtn?.addEventListener("click", () => {
+      prev();
+      startTimer();
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const targetIndex = Number(dot.getAttribute("data-dot-index"));
+        if (!isNaN(targetIndex)) {
+          showSlide(targetIndex);
+          startTimer();
+        }
+      });
+    });
+
+    carousel.addEventListener("mouseenter", stopTimer);
+    carousel.addEventListener("mouseleave", startTimer);
+    carousel.addEventListener("focusin", stopTimer);
+    carousel.addEventListener("focusout", startTimer);
+
+    startTimer();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeroCarousel);
+  } else {
+    initHeroCarousel();
+  }
+</script>
