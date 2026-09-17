@@ -1,30 +1,32 @@
-[
-  {
-    "question": "Quelle est la capacité d'accueil du gîte La Tuffière ?",
-    "answer": "Le gîte La Tuffière peut accueillir jusqu'à 35 personnes réparties dans 10 chambres tout confort. Chaque chambre dispose de sa propre salle d'eau (douche) et de sanitaires privatifs (WC)."
-  },
-  {
-    "question": "Comment réserver son séjour au gîte ?",
-    "answer": "Les réservations s'effectuent directement par téléphone auprès de Bénédicte & Christian au 03 81 60 96 76 ou au 06 16 61 81 78. Vous pouvez vérifier les disponibilités indicatives en ligne, puis nous appeler pour confirmer la formule et la répartition des chambres adaptées à votre groupe."
-  },
-  {
-    "question": "Le gîte propose-t-il la demi-pension et une table d'hôtes ?",
-    "answer": "Oui, nous proposons une cuisine régionale familiale et généreuse le soir à la table d'hôtes. Vous pouvez choisir pour votre tablée soit notre Menu Tradition du terroir (entrée, plat, dessert), soit notre Menu Tartes Flambées Franc-Comtoises servies à volonté (salées avec salade verte, et sucrées)."
-  },
-  {
-    "question": "Disposez-vous d'un garage fermé pour les motos et vélos ?",
-    "answer": "Oui ! Labellisé « Motard Bienvenue », le gîte La Tuffière met gratuitement à disposition des motards et des cyclotouristes un grand garage fermé et sécurisé pour abriter vos deux-roues en toute tranquillité."
-  },
-  {
-    "question": "Le gîte est-il accessible aux personnes à mobilité réduite (PMR) ?",
-    "answer": "Oui, le gîte dispose d'une chambre adaptée de plain-pied avec douche à l'italienne et WC aménagés, facilitant l'accès et le confort des personnes à mobilité réduite."
-  },
-  {
-    "question": "Quelles sont les activités de plein air et de pêche à proximité ?",
-    "answer": "Situé au bord de la Loue et labellisé « Pêche Relais Saint-Pierre », le gîte est un spot réputé pour la pêche à la mouche (truites farios sauvages, ombres communs). Vous profitez également de nombreux sentiers de randonnée pédestre (GR), circuits VTT, balades à moto dans les gorges de la Loue et descentes en canoë-kayak."
-  },
-  {
-    "question": "Le gîte est-il adapté aux groupes, clubs et réunions de famille ?",
-    "answer": "Parfaitement. Avec sa capacité de 35 personnes, sa grande salle commune chaleureuse avec cheminée, sa terrasse et son parc arboré au bord de l'eau, La Tuffière accueille régulièrement des clubs de motards, randonneurs, cyclistes, séminaires ou cousinades."
-  }
-]
+{
+  "faq": [
+    {
+      "question": "Quelle est la capacité d'accueil du gîte La Tuffière ?",
+      "answer": "Le gîte La Tuffière peut accueillir jusqu'à 35 personnes réparties dans 10 chambres tout confort. Chaque chambre dispose de sa propre salle d'eau (douche) et de sanitaires privatifs (WC)."
+    },
+    {
+      "question": "Comment réserver son séjour au gîte ?",
+      "answer": "Les réservations s'effectuent directement par téléphone auprès de Bénédicte & Christian au 03 81 60 96 76 ou au 06 16 61 81 78. Vous pouvez vérifier les disponibilités indicatives en ligne, puis nous appeler pour confirmer la formule et la répartition des chambres adaptées à votre groupe."
+    },
+    {
+      "question": "Le gîte propose-t-il la demi-pension et une table d'hôtes ?",
+      "answer": "Oui, nous proposons une cuisine régionale familiale et généreuse le soir à la table d'hôtes. Vous pouvez choisir pour votre tablée soit notre Menu Tradition du terroir (entrée, plat, dessert), soit notre Menu Tartes Flambées Franc-Comtoises servies à volonté (salées avec salade verte, et sucrées)."
+    },
+    {
+      "question": "Disposez-vous d'un garage fermé pour les motos et vélos ?",
+      "answer": "Oui ! Labellisé « Motard Bienvenue », le gîte La Tuffière met gratuitement à disposition des motards et des cyclotouristes un grand garage fermé et sécurisé pour abriter vos deux-roues en toute tranquillité."
+    },
+    {
+      "question": "Le gîte est-il accessible aux personnes à mobilité réduite (PMR) ?",
+      "answer": "Oui, le gîte dispose d'une chambre adaptée de plain-pied avec douche à l'italienne et WC aménagés, facilitant l'accès et le confort des personnes à mobilité réduite."
+    },
+    {
+      "question": "Quelles sont les activités de plein air et de pêche à proximité ?",
+      "answer": "Situé au bord de la Loue et labellisé « Pêche Relais Saint-Pierre », le gîte est un spot réputé pour la pêche à la mouche (truites farios sauvages, ombres communs). Vous profitez également de nombreux sentiers de randonnée pédestre (GR), circuits VTT, balades à moto dans les gorges de la Loue et descentes en canoë-kayak."
+    },
+    {
+      "question": "Le gîte est-il adapté aux groupes, clubs et réunions de famille ?",
+      "answer": "Parfaitement. Avec sa capacité de 35 personnes, sa grande salle commune chaleureuse avec cheminée, sa terrasse et son parc arboré au bord de l'eau, La Tuffière accueille régulièrement des clubs de motards, randonneurs, cyclistes, séminaires ou cousinades."
+    }
+  ]
+}

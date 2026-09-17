@@ -3,9 +3,457 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administration — Gîte La Tuffière</title>
+  <title>Administration & Aperçu — Gîte La Tuffière</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+
+  <style>
+    /* Barre d'outils flottante d'aide et prévisualisation pour Bénédicte & Christian */
+    #tuffiere-admin-bar {
+      position: fixed;
+      top: 10px;
+      right: 14px;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #233b28;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    #tuffiere-admin-bar .brand-tag {
+      font-weight: 700;
+      color: #f7e8d6;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-right: 8px;
+      border-right: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .tuffiere-bar-btn {
+      background: #b5622e;
+      color: #fff;
+      border: none;
+      padding: 6px 13px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease, transform 0.1s ease;
+      text-decoration: none;
+    }
+    .tuffiere-bar-btn:hover {
+      background: #8e471d;
+      transform: translateY(-1px);
+    }
+    .tuffiere-bar-btn.btn-guide {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+    .tuffiere-bar-btn.btn-guide:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .tuffiere-bar-btn.btn-link {
+      background: transparent;
+      color: #f0dec9;
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+    .tuffiere-bar-btn.btn-link:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* TIROIR LATÉRAL D'APERÇU EN DIRECT DU SITE */
+    #tuffiere-preview-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 52%;
+      max-width: 900px;
+      min-width: 360px;
+      background: #faf7f2;
+      box-shadow: -8px 0 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000000;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(105%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border-left: 2px solid #b5622e;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    #tuffiere-preview-drawer.is-open {
+      transform: translateX(0);
+    }
+    .preview-header {
+      background: #233b28;
+      color: #fff;
+      padding: 10px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .preview-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .preview-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f7e8d6;
+    }
+    .preview-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .preview-action-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.15s;
+    }
+    .preview-action-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .preview-close-btn {
+      background: #b5622e;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .preview-close-btn:hover {
+      background: #8e471d;
+    }
+    .preview-nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 4px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .preview-tab {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fbf5ef;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 11.5px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .preview-tab:hover, .preview-tab.is-active {
+      background: #b5622e;
+      border-color: #b5622e;
+      color: #fff;
+      font-weight: 600;
+    }
+    .preview-iframe-wrapper {
+      flex: 1;
+      position: relative;
+      background: #fff;
+    }
+    .preview-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* MODALE GUIDE D'UTILISATION POUR BÉNÉDICTE & CHRISTIAN */
+    #tuffiere-guide-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(3px);
+      z-index: 1000005;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    #tuffiere-guide-modal.is-open {
+      display: flex;
+    }
+    .guide-card {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      position: relative;
+      color: #3b2e24;
+      line-height: 1.55;
+    }
+    .guide-card h2 {
+      font-size: 1.45rem;
+      margin: 0 0 8px;
+      color: #233b28;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .guide-card p.guide-sub {
+      color: #6d5b4e;
+      font-size: 0.95rem;
+      margin: 0 0 24px;
+    }
+    .guide-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .guide-step {
+      background: #faf7f2;
+      border: 1px solid #ebdcd0;
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .step-number {
+      background: #b5622e;
+      color: #fff;
+      font-weight: 700;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+    .step-content h3 {
+      font-size: 1.05rem;
+      margin: 0 0 4px;
+      color: #233b28;
+    }
+    .step-content p {
+      font-size: 0.9rem;
+      margin: 0;
+      color: #554436;
+    }
+    .guide-footer-btn {
+      background: #233b28;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+    }
+    .guide-footer-btn:hover {
+      background: #17291a;
+    }
+
+    @media (max-width: 768px) {
+      #tuffiere-preview-drawer { width: 100%; max-width: 100%; }
+      #tuffiere-admin-bar .brand-tag { display: none; }
+    }
+  </style>
 </head>
 <body>
+  <!-- BARRE SUPÉRIEURE FLOTTANTE D'AIDE ET APERÇU -->
+  <div id="tuffiere-admin-bar">
+    <span class="brand-tag">🏡 La Tuffière</span>
+    <button type="button" class="tuffiere-bar-btn" id="btn-toggle-preview">
+      <span>👁️ Voir le site à côté</span>
+    </button>
+    <button type="button" class="tuffiere-bar-btn btn-guide" id="btn-open-guide">
+      <span>📖 Guide d'aide</span>
+    </button>
+    <a href="https://latuffiere.pro" target="_blank" rel="noopener" class="tuffiere-bar-btn btn-link">
+      Site public ↗
+    </a>
+  </div>
+
+  <!-- TIROIR D'APERÇU EN DIRECT (SPLIT-SCREEN) -->
+  <div id="tuffiere-preview-drawer" aria-hidden="true">
+    <div class="preview-header">
+      <div class="preview-top-row">
+        <span class="preview-title">
+          <span>👁️ Aperçu en direct de votre site</span>
+        </span>
+        <div class="preview-controls">
+          <button type="button" class="preview-action-btn" id="btn-refresh-preview" title="Actualiser la page">
+            🔄 Actualiser
+          </button>
+          <button type="button" class="preview-action-btn" id="btn-open-new-tab" title="Ouvrir dans un nouvel onglet">
+            ↗ Plein écran
+          </button>
+          <button type="button" class="preview-close-btn" id="btn-close-preview" title="Fermer l'aperçu">
+            ✕ Fermer
+          </button>
+        </div>
+      </div>
+      <div class="preview-nav-tabs">
+        <button type="button" class="preview-tab is-active" data-path="/table-dhotes/">🍽️ Table d'hôtes</button>
+        <button type="button" class="preview-tab" data-path="/tarifs/">💶 Tarifs 2026</button>
+        <button type="button" class="preview-tab" data-path="/galerie/">📸 Galerie</button>
+        <button type="button" class="preview-tab" data-path="/contact/">📞 Contact & FAQ</button>
+        <button type="button" class="preview-tab" data-path="/gite/">🛏️ Le Gîte</button>
+        <button type="button" class="preview-tab" data-path="/">🏠 Accueil</button>
+      </div>
+    </div>
+    <div class="preview-iframe-wrapper">
+      <iframe id="preview-iframe" class="preview-iframe" src="https://latuffiere.pro/table-dhotes/" title="Aperçu interactif du site La Tuffière"></iframe>
+    </div>
+  </div>
+
+  <!-- MODALE DU GUIDE PAS À PAS POUR BÉNÉDICTE & CHRISTIAN -->
+  <div id="tuffiere-guide-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="guide-card">
+      <h2>📖 Guide d'utilisation pour Bénédicte &amp; Christian</h2>
+      <p class="guide-sub">Ce panneau vous permet de modifier les textes, plats, tarifs et photos du site sans toucher au code.</p>
+
+      <div class="guide-steps">
+        <div class="guide-step">
+          <span class="step-number">1</span>
+          <div class="step-content">
+            <h3>Choisissez la section à gauche</h3>
+            <p>Dans la colonne de gauche, cliquez sur la rubrique souhaitée : <strong>🍽️ Table d'hôtes</strong> pour vos plats, <strong>💶 Grille des Tarifs</strong> pour vos prix, <strong>📸 Galerie</strong> pour les photos ou <strong>❓ FAQ</strong> pour les questions pratiques.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <span class="step-number">2</span>
+          <div class="step-content">
+            <h3>Modifiez ou ajoutez directement</h3>
+            <p>Chaque ligne affiche clairement son nom (ex : <em>Menu Tradition — 25,00 €</em> ou <em>Entrées</em>). Cliquez dessus pour changer un texte ou un tarif. Pour ajouter un plat, cliquez simplement sur <strong>« Ajouter »</strong>.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <span class="step-number">3</span>
+          <div class="step-content">
+            <h3>Cliquez sur « Enregistrer » en haut</h3>
+            <p>Dès que votre modification est terminée, cliquez sur le bouton bleu <strong>« Enregistrer »</strong> en haut à droite. Votre modification est validée immédiatement.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <span class="step-number">4</span>
+          <div class="step-content">
+            <h3>Vérifiez le résultat avec le bouton « Voir le site à côté »</h3>
+            <p>Cliquez à tout moment sur le bouton orange <strong>« 👁️ Voir le site à côté »</strong> en haut à droite pour afficher votre vrai site à côté de l'écran et vérifier le rendu en direct !</p>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="guide-footer-btn" id="btn-close-guide">
+        J'ai compris, fermer le guide
+      </button>
+    </div>
+  </div>
+
+  <!-- SCRIPT DU TIROIR ET DE LA MODALE -->
+  <script>
+    (function () {
+      const drawer = document.getElementById('tuffiere-preview-drawer');
+      const iframe = document.getElementById('preview-iframe');
+      const btnTogglePreview = document.getElementById('btn-toggle-preview');
+      const btnClosePreview = document.getElementById('btn-close-preview');
+      const btnRefreshPreview = document.getElementById('btn-refresh-preview');
+      const btnOpenNewTab = document.getElementById('btn-open-new-tab');
+      const tabs = document.querySelectorAll('.preview-tab');
+
+      const modal = document.getElementById('tuffiere-guide-modal');
+      const btnOpenGuide = document.getElementById('btn-open-guide');
+      const btnCloseGuide = document.getElementById('btn-close-guide');
+
+      let currentPath = '/table-dhotes/';
+
+      function openDrawer() {
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        btnTogglePreview.style.background = '#8e471d';
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        btnTogglePreview.style.background = '#b5622e';
+      }
+
+      btnTogglePreview.addEventListener('click', function () {
+        if (drawer.classList.contains('is-open')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+
+      btnClosePreview.addEventListener('click', closeDrawer);
+
+      btnRefreshPreview.addEventListener('click', function () {
+        iframe.src = iframe.src;
+      });
+
+      btnOpenNewTab.addEventListener('click', function () {
+        window.open(iframe.src, '_blank');
+      });
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(t => t.classList.remove('is-active'));
+          tab.classList.add('is-active');
+          const path = tab.getAttribute('data-path');
+          currentPath = path;
+          iframe.src = 'https://latuffiere.pro' + path;
+        });
+      });
+
+      btnOpenGuide.addEventListener('click', function () {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+
+      btnCloseGuide.addEventListener('click', function () {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+      });
+
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+          modal.classList.remove('is-open');
+          modal.setAttribute('aria-hidden', 'true');
+        }
+      });
+    })();
+  </script>
+
   <!-- Sveltia CMS : interface moderne, responsive, en français connectée directement à GitHub -->
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
 </body>

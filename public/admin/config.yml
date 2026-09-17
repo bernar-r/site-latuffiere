@@ -3,96 +3,145 @@ backend:
   repo: bernar-r/site-latuffiere
   branch: main
 
-# Dossier où sont stockées les images téléversées
+# Dossier où sont stockées les photos téléversées
 media_folder: "public/images"
 public_folder: "/images"
+
+site_url: "https://latuffiere.pro"
+display_url: "https://latuffiere.pro"
+logo_url: "/images/logo.png"
 
 locale: "fr"
 
 collections:
-  - name: "content"
-    label: "Contenus du Gîte"
+  - name: "menus_section"
+    label: "🍽️ Table d'hôtes & Menus"
+    description: "Modifiez ici les menus régionaux du soir, les plats proposés et la formule tartes flambées. 👉 [Voir la page Table d'hôtes sur le site](https://latuffiere.pro/table-dhotes/)"
     delete: false
     files:
-      - name: "site"
-        label: "Coordonnées & Informations"
-        file: "src/data/site.json"
-        fields:
-          - { label: "Nom du gîte", name: "name", widget: "string" }
-          - { label: "Sous-titre / Accroche", name: "tagline", widget: "string" }
-          - { label: "Téléphone fixe", name: "phone", widget: "string" }
-          - { label: "Téléphone portable", name: "phoneSecondary", widget: "string" }
-          - { label: "E-mail de contact", name: "email", widget: "string" }
-          - label: "Adresse postale"
-            name: "address"
-            widget: "object"
-            fields:
-              - { label: "Rue / Chemin", name: "line1", widget: "string" }
-              - { label: "Code postal & Ville", name: "line2", widget: "string" }
-          - { label: "Horaires / Disponibilité d'accueil", name: "hours", widget: "string" }
-          - { label: "Capacité d'accueil", name: "capacity", widget: "string" }
-          - { label: "Lien page Facebook", name: "facebook", widget: "string" }
-
       - name: "menus"
-        label: "Menus & Table d'hôtes"
+        label: "Carte de la Table d'hôtes"
         file: "src/data/menus.json"
         fields:
-          - label: "Menus"
+          - label: "Menus du soir (Tradition, Dégustation)"
             name: "menus"
             widget: "list"
+            summary: "{{name}} — {{price}}"
             fields:
-              - { label: "Nom du menu", name: "name", widget: "string" }
-              - { label: "Prix et formule", name: "price", widget: "string" }
-              - { label: "Conditions / Remarques", name: "conditions", widget: "list", field: { label: "Condition", name: "condition", widget: "string" } }
-              - label: "Sections (Entrées, Plats, Desserts)"
+              - { label: "Nom du menu", name: "name", widget: "string", hint: "Ex : Menu Tradition, Menu Dégustation" }
+              - { label: "Prix et formule", name: "price", widget: "string", hint: "Ex : 25,00 € / personne (entrée, plat, dessert)" }
+              - label: "Conditions & Remarques"
+                name: "conditions"
+                widget: "list"
+                field: { label: "Condition", name: "condition", widget: "string", hint: "Ex : Seulement sur réservation, Menu unique pour tous..." }
+              - label: "Sections du repas (Entrées, Plats, Desserts)"
                 name: "sections"
                 widget: "list"
+                summary: "{{title}} ({{items.length}} suggestions)"
                 fields:
-                  - { label: "Titre de la section", name: "title", widget: "string" }
-                  - { label: "Plats", name: "items", widget: "list", field: { label: "Intitulé du plat", name: "item", widget: "string" } }
-          - label: "Formule Tartes flambées"
+                  - { label: "Titre de la section", name: "title", widget: "string", hint: "Ex : Entrées, Plats, Desserts" }
+                  - label: "Liste des plats proposés"
+                    name: "items"
+                    widget: "list"
+                    field: { label: "Intitulé du plat", name: "item", widget: "string", hint: "Ex : Paleron au cidre avec ses tagliatelles" }
+          - label: "Formule Tartes flambées Franc-Comtoises"
             name: "flammekueche"
             widget: "object"
             fields:
-              - { label: "Titre de la formule", name: "name", widget: "string" }
-              - { label: "Prix et formule", name: "price", widget: "string", required: false }
-              - { label: "Description", name: "description", widget: "text" }
-          - { label: "Mention Allergènes", name: "allergenNote", widget: "string" }
+              - { label: "Titre de la formule", name: "name", widget: "string", hint: "Ex : Menu Tartes flambées" }
+              - { label: "Prix et formule", name: "price", widget: "string", required: false, hint: "Ex : 25,00 € / personne (à volonté)" }
+              - { label: "Description de la formule", name: "description", widget: "text", hint: "Ex : Tartes flambées Franc-Comtoises, salées et/ou sucrées avec salade verte." }
+          - { label: "Mention Allergènes (bas de page)", name: "allergenNote", widget: "string", hint: "Ex : Allergènes sur demande auprès de la Direction." }
 
+  - name: "tarifs_section"
+    label: "💶 Grille des Tarifs 2026"
+    description: "Modifiez ici les tarifs des chambres, nuitées, demi-pensions, repas et séjours de groupes. 👉 [Voir la page Tarifs sur le site](https://latuffiere.pro/tarifs/)"
+    delete: false
+    files:
       - name: "tarifs"
-        label: "Grille des Tarifs"
+        label: "Tarifs Nuitées & Repas"
         file: "src/data/tarifs.json"
         fields:
-          - label: "Tarifs des Nuitées"
+          - label: "Tarifs des Nuitées (Petit-déjeuner inclus)"
             name: "nightRates"
             widget: "list"
+            summary: "{{label}} : {{price}}"
             fields:
-              - { label: "Type de chambre / hébergement", name: "label", widget: "string" }
-              - { label: "Prix affiché", name: "price", widget: "string" }
-          - { label: "Tarif Enfant", name: "childRate", widget: "string" }
-          - { label: "Taxe de séjour", name: "touristTax", widget: "string" }
+              - { label: "Type d'hébergement", name: "label", widget: "string", hint: "Ex : Chambre individuelle, Chambre double (par personne)..." }
+              - { label: "Prix affiché", name: "price", widget: "string", hint: "Ex : 61,00 €, 47,50 €..." }
+          - { label: "Tarif Enfant", name: "childRate", widget: "string", hint: "Ex : Enfant (3 à 11 ans) dans la chambre des parents : 31,50 €" }
+          - { label: "Taxe de séjour", name: "touristTax", widget: "string", hint: "Ex : + Taxe de séjour : 0,83 € / adulte / nuit à partir de 18 ans" }
           - label: "Formules Repas & Demi-pension"
             name: "halfBoardMenus"
             widget: "list"
+            summary: "{{label}} : {{price}}"
             fields:
-              - { label: "Intitulé formule", name: "label", widget: "string" }
-              - { label: "Prix", name: "price", widget: "string" }
-          - { label: "Panier repas randonneur", name: "packedLunch", widget: "string" }
-          - label: "Tarifs Groupes"
+              - { label: "Intitulé de la formule", name: "label", widget: "string", hint: "Ex : Menu tradition, entrée + plat + dessert" }
+              - { label: "Prix affiché", name: "price", widget: "string", hint: "Ex : 25,00 €" }
+          - { label: "Panier repas randonneur", name: "packedLunch", widget: "string", hint: "Ex : Panier repas randonneur à emporter : 12,90 €..." }
+          - label: "Tarifs Séjours Groupes"
             name: "groupRates"
             widget: "list"
+            summary: "{{label}} : {{price}}"
             fields:
-              - { label: "Condition de groupe", name: "label", widget: "string" }
-              - { label: "Prix par personne / nuit", name: "price", widget: "string" }
-              - { label: "Remarque / détails", name: "note", widget: "string" }
+              - { label: "Condition de groupe", name: "label", widget: "string", hint: "Ex : 20 adultes minimum, sur 3 nuits consécutives" }
+              - { label: "Prix par personne / nuit", name: "price", widget: "string", hint: "Ex : 65,00 € / personne / nuit" }
+              - { label: "Remarque / Détails inclus", name: "note", widget: "string", hint: "Ex : Demi-pension, menu tradition (entrée, plat, dessert)" }
 
+  - name: "gallery_section"
+    label: "📸 Galerie Photos"
+    description: "Ajoutez, supprimez ou modifiez les légendes des photos affichées sur le site. 👉 [Voir la Galerie sur le site](https://latuffiere.pro/galerie/)"
+    delete: false
+    files:
       - name: "gallery"
-        label: "Galerie Photos"
+        label: "Photos du gîte et de la région"
         file: "src/data/gallery.json"
         fields:
           - label: "Photos du gîte"
             name: "photos"
             widget: "list"
+            summary: "{{alt}}"
             fields:
-              - { label: "Photo", name: "src", widget: "image" }
-              - { label: "Description / Titre", name: "alt", widget: "string" }
+              - { label: "Fichier Photo", name: "src", widget: "image", hint: "Choisissez ou téléversez une photo" }
+              - { label: "Titre / Description de la photo", name: "alt", widget: "string", hint: "Description affichée et utile pour le référencement Google" }
+
+  - name: "faq_section"
+    label: "❓ Foire Aux Questions (FAQ)"
+    description: "Ces questions et réponses pratiques s'affichent sous forme d'accordéon sur la page Contact. 👉 [Voir la FAQ sur le site](https://latuffiere.pro/contact/#faq)"
+    delete: false
+    files:
+      - name: "faq"
+        label: "Questions Fréquentes"
+        file: "src/data/faq.json"
+        fields:
+          - label: "Liste des questions / réponses"
+            name: "faq"
+            widget: "list"
+            summary: "{{question}}"
+            fields:
+              - { label: "Question posée", name: "question", widget: "string", hint: "Ex : Disposez-vous d'un garage fermé pour les motos et vélos ?" }
+              - { label: "Réponse apportée aux clients", name: "answer", widget: "text", hint: "Explications complètes et claires pour les voyageurs" }
+
+  - name: "site_section"
+    label: "📞 Coordonnées & Accueil"
+    description: "Numéros de téléphone, adresse e-mail, adresse postale et horaires d'accueil téléphonique affichés sur l'ensemble du site."
+    delete: false
+    files:
+      - name: "site"
+        label: "Coordonnées de La Tuffière"
+        file: "src/data/site.json"
+        fields:
+          - { label: "Nom du gîte", name: "name", widget: "string" }
+          - { label: "Phrase d'accroche principale", name: "tagline", widget: "string", hint: "Affichée sur la page d'accueil sous le grand titre" }
+          - { label: "Téléphone fixe (principal)", name: "phone", widget: "string", hint: "Ligne fixe appelée pour les réservations (ex : 03 81 60 96 76)" }
+          - { label: "Téléphone portable (secondaire)", name: "phoneSecondary", widget: "string", hint: "Numéro portable (ex : 06 16 61 81 78)" }
+          - { label: "E-mail de contact", name: "email", widget: "string", hint: "Ex : latuffiere2@wanadoo.fr" }
+          - label: "Adresse postale"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "Rue / Chemin", name: "line1", widget: "string", hint: "Ex : 1 chemin de Montgesoye" }
+              - { label: "Code postal & Ville", name: "line2", widget: "string", hint: "Ex : 25840 Vuillafans" }
+          - { label: "Horaires de permanence téléphonique", name: "hours", widget: "string", hint: "Ex : Tous les jours de 9h à 20h" }
+          - { label: "Capacité d'accueil affichée", name: "capacity", widget: "string", hint: "Ex : Capacité 35 personnes" }
+          - { label: "Lien de la page Facebook", name: "facebook", widget: "string" }
