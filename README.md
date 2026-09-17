@@ -1,42 +1,35 @@
-# Astro Starter Kit: Minimal
+# Gîte La Tuffière — site internet
+
+Site statique du gîte La Tuffière (Vuillafans, Doubs), construit avec [Astro](https://astro.build).
+
+## Développement
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev       # serveur local sur http://localhost:4321
+npm run build     # génère le site statique dans dist/
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Structure du contenu
 
-## 🚀 Project Structure
+- `src/pages/` — une page par fichier (`.astro`), reflète les URL du site.
+- `src/data/` — textes réutilisables et données à modifier en premier (tarifs, menus, chambres, coordonnées, labels).
+- `src/components/` — en-tête, pied de page, galerie, modale de disponibilités.
+- `public/images/` — toutes les photos réelles du gîte.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Modifier un contenu courant
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+| Je veux changer… | Fichier à éditer |
+| :--- | :--- |
+| Téléphone, adresse, horaires | `src/data/site.ts` |
+| Tarifs (nuit, table d'hôtes, groupes, boissons) | `src/data/tarifs.ts` |
+| Menus de la table d'hôtes | `src/data/menus.ts` |
+| Détail des chambres | `src/data/rooms.ts` |
+| Photos de la galerie | `src/data/gallery.ts` + ajouter le fichier dans `public/images/` |
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Publier une mise à jour
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Le développement actif tourne sur une copie locale hors OneDrive/Google Drive (nécessaire pour que `npm install` fonctionne correctement). Procédure : modifier les fichiers, `npm run build`, puis recopier `dist/` dans le dossier `docs/` du dépôt GitHub `bernar-r/site-latuffiere` avant de committer et pousser sur `main` (GitHub Pages sert le site depuis `main` / `docs`).
 
 ## 👀 Want to learn more?
 

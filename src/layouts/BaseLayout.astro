@@ -2,6 +2,8 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import DispoModal from "../components/DispoModal.astro";
+import "@fontsource-variable/fraunces";
+import "@fontsource-variable/work-sans";
 import "../styles/global.css";
 
 interface Props {
@@ -35,10 +37,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={new URL(image, Astro.site)}>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
