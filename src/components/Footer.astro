@@ -1,0 +1,31 @@
+---
+import { site, nav } from "../data/site";
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="/images/logo.png" alt="Gîte La Tuffière" class="footer-logo" width="88" height="44">
+        <p>Gîte de charme au cœur de la Vallée de la Loue, dans le Doubs. Bénédicte et Christian vous accueillent — réservation uniquement par téléphone.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li>{site.address.line1}<br>{site.address.line2}</li>
+          <li><a href={site.phoneHref}>{site.phone}</a></li>
+          <li><a href={site.phoneSecondaryHref}>{site.phoneSecondary}</a></li>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">
+      © {new Date().getFullYear()} La Tuffière — <a href="/mentions-legales/">Mentions légales &amp; confidentialité</a>
+    </p>
+  </div>
+</footer>

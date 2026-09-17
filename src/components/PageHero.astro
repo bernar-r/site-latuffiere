@@ -1,0 +1,16 @@
+---
+interface Props {
+  image: string;
+  kicker?: string;
+  title: string;
+  lead?: string;
+}
+const { image, kicker = "La Tuffière", title, lead } = Astro.props;
+---
+<section class="hero hero-small" style={`background-image:url('${image}')`}>
+  <div class="hero-content">
+    <span class="hero-kicker">{kicker}</span>
+    <h1>{title}</h1>
+    {lead && <p class="hero-meta">{lead}</p>}
+  </div>
+</section>

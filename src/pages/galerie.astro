@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import Gallery from "../components/Gallery.astro";
+---
+<BaseLayout
+  title="Galerie photo — Gîte La Tuffière, Vuillafans (Doubs)"
+  description="Découvrez le gîte La Tuffière et ses environs en images : chambres, extérieurs, jardin et vallée de la Loue."
+>
+  <PageHero
+    image="/images/hero-3.jpeg"
+    title="Galerie photo"
+    lead="Découvrez La Tuffière et ses environs en images"
+  />
+
+  <section class="section">
+    <div class="container">
+      <Gallery />
+    </div>
+  </section>
+</BaseLayout>

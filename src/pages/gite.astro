@@ -1,0 +1,116 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site";
+import { rooms, equipment } from "../data/rooms";
+---
+<BaseLayout
+  title="Le gîte — Gîte La Tuffière, Vuillafans (Doubs)"
+  description="Capacité d'accueil de 35 personnes à La Tuffière : chambres avec sanitaires, accès PMR, salle de séminaire, terrasse et grand parc arboré au bord de la Loue."
+>
+  <PageHero
+    image="/images/gite-ext-33.jpg"
+    title="Un gîte plein de charme au cœur de la Franche-Comté"
+    lead="Label Gîtes de France : hébergement de qualité dans le Doubs"
+  />
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Votre gîte dans le Doubs</span>
+      <h2>Capacité d'accueil : 35 personnes</h2>
+      <p>La Tuffière vous offre un hébergement de qualité, labellisé Gîtes de France, au bord de la Loue. Que ce soit pour un week-end, une semaine ou une seule nuit, le gîte s'adapte aux groupes comme aux familles.</p>
+      <ul class="feature-list">
+        {equipment.map((item) => <li>{item}</li>)}
+      </ul>
+
+      <details class="rooms">
+        <summary>Voir le détail des chambres</summary>
+        <p style="margin-top:14px;">Toutes les chambres sont équipées d'une salle d'eau (lavabo, douche) et de WC.</p>
+        <ul>
+          {rooms.map((room) => <li><strong>{room.name}</strong> — {room.beds}</li>)}
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container two-col">
+      <div>
+        <span class="eyebrow">Pour tous</span>
+        <h2>Un espace pour tous les voyageurs</h2>
+        <p>Motards, randonneurs, pêcheurs, familles, couples ou groupes : La Tuffière est pensée pour accueillir un grand nombre de profils différents, pour une nuit comme pour un séjour complet.</p>
+        <p>La location se fait à la chambre. Pour connaître la disponibilité adaptée à votre séjour, consultez le calendrier ci-dessous puis appelez-nous pour confirmer.</p>
+        <div class="hero-actions" style="justify-content:flex-start;">
+          <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline" data-open-dispo>Voir les disponibilités</a>
+          <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>
+        </div>
+      </div>
+      <div>
+        <img src="/images/gite-chambre-fauvette.jpg" alt="Chambre La Fauvette du gîte La Tuffière" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Nos espaces</span>
+      <h2>Extérieurs et façade</h2>
+      <div class="mosaic" style="grid-auto-rows:220px;">
+        <a href="/galerie/"><img src="/images/gite-ext-33.jpg" alt="Jardin et terrasse couverte du gîte La Tuffière" loading="lazy"></a>
+        <a href="/galerie/"><img src="/images/gite-tables-exterieures.jpg" alt="Terrasse couverte et jardin du gîte" loading="lazy"></a>
+        <a href="/galerie/"><img src="/images/facade-moto.jpg" alt="Façade du gîte La Tuffière" loading="lazy"></a>
+      </div>
+      <p style="text-align:center;margin-top:24px;"><a href="/galerie/" class="btn btn-outline">Voir toute la galerie</a></p>
+    </div>
+  </section>
+
+  <section class="practical-band">
+    <div class="container">
+      <h2>On se voit quand ?</h2>
+      <p>Consultez nos tarifs ou appelez-nous directement pour organiser votre séjour.</p>
+      <div class="hero-actions">
+        <a href="/tarifs/" class="btn btn-outline-light">Voir les tarifs</a>
+        <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .feature-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 24px;
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+  }
+  .feature-list li {
+    padding-left: 22px;
+    position: relative;
+  }
+  .feature-list li::before {
+    content: "•";
+    color: var(--color-rust);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+  @media (max-width: 600px) {
+    .feature-list { grid-template-columns: 1fr; }
+  }
+  .rooms {
+    margin-top: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    background: #fff;
+  }
+  .rooms summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+  }
+  .rooms ul { margin-top: 10px; }
+</style>

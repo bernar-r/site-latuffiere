@@ -1,0 +1,56 @@
+---
+import { site } from "../data/site";
+---
+<div class="modal dispo-modal" role="dialog" aria-modal="true" aria-labelledby="dispo-title">
+  <div class="modal-panel">
+    <button type="button" class="modal-close" data-close-dispo aria-label="Fermer">&times;</button>
+    <h2 id="dispo-title">Disponibilités</h2>
+    <p class="modal-sub">
+      Widget officiel Gîtes de France / Tourinsoft. Il indique les places restantes, pas la disponibilité
+      du gîte entier : la disponibilité adaptée à votre séjour doit être confirmée par téléphone au
+      <a href={site.phoneHref}>{site.phone}</a>.
+    </p>
+    <iframe
+      class="dispo-iframe"
+      data-src={site.dispoIframeUrl}
+      title="Disponibilités du gîte La Tuffière"
+      loading="lazy"
+    ></iframe>
+    <p class="modal-fallback">
+      Le widget ne s'affiche pas ? Appelez directement le <a href={site.phoneHref}>{site.phone}</a>.
+    </p>
+  </div>
+</div>
+
+<script>
+  const modal = document.querySelector(".dispo-modal");
+  const iframe = modal?.querySelector<HTMLIFrameElement>(".dispo-iframe");
+  const closeBtn = modal?.querySelector("[data-close-dispo]");
+
+  function openModal(e?: Event) {
+    if (!modal) return;
+    e?.preventDefault();
+    modal.classList.add("is-open");
+    if (iframe && !iframe.src && iframe.dataset.src) {
+      iframe.src = iframe.dataset.src;
+    }
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll("[data-open-dispo]").forEach((trigger) => {
+    trigger.addEventListener("click", openModal);
+  });
+  closeBtn?.addEventListener("click", closeModal);
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
+</script>

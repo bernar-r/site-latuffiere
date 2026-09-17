@@ -1,0 +1,108 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site";
+---
+<BaseLayout
+  title="Activités — Gîte La Tuffière, Vallée de la Loue (Doubs)"
+  description="Pêche, randonnée, moto, sports de pleine nature, randonnées équestres et musées autour du gîte La Tuffière, dans la vallée de la Loue."
+>
+  <PageHero
+    image="/images/activites-hero-1.jpeg"
+    title="Activités"
+    lead="La vallée de la Loue : une vallée riche en activités pleine nature"
+  />
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Découverte</span>
+      <h2>Découverte de la vallée de la Loue</h2>
+      <p>La vallée de la Loue, une « ambiance nature » avec d'anciens villages vignerons qui ont gardé toute leur authenticité et leur charme. Des villages situés au bord de la rivière, aux maisons de pierres accolées les unes aux autres, entre lesquelles serpentent des ruelles étroites. Tout autour, une nature très forte qui reprend le dessus sur les anciennes parcelles de vignes.</p>
+      <p>C'est un lieu idéal pour le dépaysement et la tranquillité. Pour les personnes désirant flâner au rythme de leurs envies en combinant visites de sites et de musées, la vallée vous régalera avec sa gastronomie, ses sources, ses belvédères et ses nombreux musées liés au patrimoine.</p>
+      <div class="mosaic" style="grid-auto-rows:200px;margin-top:28px;">
+        <a href="/galerie/"><img src="/images/activites-1.jpg" alt="Sentiers dans les vergers de la vallée de la Loue" loading="lazy"></a>
+        <a href="/galerie/"><img src="/images/activites-2.jpg" alt="Vallée de la Loue" loading="lazy"></a>
+        <a href="/galerie/"><img src="/images/activites-moto.jpg" alt="Moto garée devant le gîte" loading="lazy"></a>
+        <a href="/galerie/"><img src="/images/activites-4.jpg" alt="Vallée de la Loue" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container two-col">
+      <div>
+        <span class="eyebrow">Label Pêche — Relais St Pierre</span>
+        <h2>Pêche sur la Loue</h2>
+        <p>Un haut lieu préservé et riche en truites et ombres de belles tailles. La Loue est réputée pour la pêche à la mouche dans un cadre naturel exceptionnel.</p>
+        <p>Renseignez-vous auprès de la société de pêche de Vuillafans pour les parcours et les techniques de pêche locales.</p>
+      </div>
+      <div>
+        <img src="/images/activites-4.jpg" alt="Pêche sur la Loue" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <img src="/images/activites-moto.jpg" alt="Balade moto près du gîte La Tuffière" loading="lazy">
+      </div>
+      <div>
+        <span class="eyebrow">Label Motard Bienvenue</span>
+        <h2>Balades moto</h2>
+        <p>Motards, de belles balades en étoile autour du gîte dans ces magnifiques vallées. La Tuffière est labellisée « Motard Bienvenue » et vous propose un accueil adapté, avec garage fermé.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="eyebrow">Sports &amp; aventure</span>
+      <h2>Sports de pleine nature</h2>
+      <p>Spéléologie, randonnées, VTT, canoë-kayak, via ferrata, escalade avec de nombreuses voies…</p>
+      <ul class="feature-list">
+        <li>Canoë-Kayak</li>
+        <li>Via ferrata &amp; escalade</li>
+        <li>Randonnées &amp; VTT</li>
+        <li>Spéléologie</li>
+      </ul>
+      <h3 style="margin-top:24px;">Liens utiles — Sports nature</h3>
+      <ul class="feature-list">
+        <li><a href="https://sportsnatureevasion.com/" target="_blank" rel="noopener">sportsnatureevasion.com</a></li>
+        <li><a href="https://latitudecanoe.fr/" target="_blank" rel="noopener">latitudecanoe.fr</a></li>
+        <li><a href="https://www.akila-centers.com/" target="_blank" rel="noopener">akila-centers.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Randonnées équestres</h2>
+      <p>Randonnées à cheval, location d'ânes et mules de bât, balades à poney : une manière originale de découvrir la vallée de la Loue et ses paysages préservés.</p>
+      <p><a href="https://www.facebook.com/louecaval/" target="_blank" rel="noopener">Loue Caval →</a></p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="eyebrow">Culture &amp; patrimoine</span>
+      <h2>Les musées</h2>
+      <ul class="feature-list">
+        <li><strong>Musée Courbet</strong> — <a href="https://musee-courbet.fr/" target="_blank" rel="noopener">musee-courbet.fr</a></li>
+        <li><strong>Musée du Costume et des Traditions</strong> — <a href="https://www.besac.com/" target="_blank" rel="noopener">besac.com</a></li>
+        <li><strong>Musée de la Vigne et du Vin</strong> — <a href="https://www.museedelavigneetduvin-lods.fr/" target="_blank" rel="noopener">museedelavigneetduvin-lods.fr</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="practical-band">
+    <div class="container">
+      <h2>Votre gîte dans le Doubs</h2>
+      <p>Découvrez aussi les activités de Loue-Lison sur le site de <a href="https://www.valleedelaloue.com/" target="_blank" rel="noopener" style="color:#fff;">l'office du tourisme</a>.</p>
+      <div class="hero-actions">
+        <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>
+        <a href="/gite/" class="btn btn-outline-light">Découvrir le gîte</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

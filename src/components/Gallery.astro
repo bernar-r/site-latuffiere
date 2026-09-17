@@ -1,0 +1,122 @@
+---
+import { galleryPhotos } from "../data/gallery";
+---
+<!-- Chaque vignette est un vrai lien vers l'image (fonctionne sans JS) ; le JS ouvre une visionneuse par-dessus -->
+<div class="gallery-grid">
+  {galleryPhotos.map((photo, i) => (
+    <a href={photo.src} class="gallery-item" data-lightbox-index={i}>
+      <img src={photo.src} alt={photo.alt} loading="lazy">
+    </a>
+  ))}
+</div>
+
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse photo">
+  <button type="button" class="lightbox-close" aria-label="Fermer">&times;</button>
+  <button type="button" class="lightbox-prev" aria-label="Photo précédente">&lsaquo;</button>
+  <img src="" alt="">
+  <button type="button" class="lightbox-next" aria-label="Photo suivante">&rsaquo;</button>
+</div>
+
+<script define:vars={{ photos: galleryPhotos }}>
+  const lightbox = document.querySelector(".lightbox");
+  const lightboxImg = lightbox?.querySelector("img");
+  const items = Array.from(document.querySelectorAll(".gallery-item"));
+  let current = 0;
+
+  function show(index) {
+    current = (index + photos.length) % photos.length;
+    if (lightboxImg) {
+      lightboxImg.src = photos[current].src;
+      lightboxImg.alt = photos[current].alt;
+    }
+  }
+
+  function open(index) {
+    show(index);
+    lightbox?.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function close() {
+    lightbox?.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  items.forEach((item, i) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      open(i);
+    });
+  });
+
+  lightbox?.querySelector(".lightbox-close")?.addEventListener("click", close);
+  lightbox?.querySelector(".lightbox-prev")?.addEventListener("click", () => show(current - 1));
+  lightbox?.querySelector(".lightbox-next")?.addEventListener("click", () => show(current + 1));
+  lightbox?.addEventListener("click", (e) => {
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox?.classList.contains("is-open")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowRight") show(current + 1);
+    if (e.key === "ArrowLeft") show(current - 1);
+  });
+</script>
+
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 900px) {
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .gallery-item {
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 10, 5, 0.9);
+    padding: 20px;
+  }
+  .lightbox.is-open { display: flex; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+  }
+  .lightbox-close, .lightbox-prev, .lightbox-next {
+    position: absolute;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    line-height: 1;
+    padding: 10px 16px;
+    border-radius: 4px;
+  }
+  .lightbox-close { top: 16px; right: 16px; }
+  .lightbox-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 16px; top: 50%; transform: translateY(-50%); }
+</style>

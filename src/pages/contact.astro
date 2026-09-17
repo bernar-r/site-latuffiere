@@ -1,0 +1,154 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site";
+---
+<BaseLayout
+  title="Contact — Gîte La Tuffière, Vuillafans (Doubs)"
+  description="Contactez le gîte La Tuffière à Vuillafans (Doubs) : téléphone, e-mail et plan d'accès. Réservation uniquement par téléphone."
+>
+  <PageHero
+    image="/images/hero-4-olympus.jpg"
+    title="Contact"
+    lead="Pour réserver, un seul moyen : le téléphone. Pour toute autre question, écrivez-nous."
+  />
+
+  <section class="section">
+    <div class="container contact-layout">
+      <div>
+        <span class="eyebrow">Informations</span>
+        <h2>Nos coordonnées</h2>
+        <ul class="contact-info-list">
+          <li>
+            <strong>Adresse</strong>
+            <p>{site.address.line1}<br>{site.address.line2}</p>
+          </li>
+          <li>
+            <strong>Téléphone — réservation</strong>
+            <p><a href={site.phoneHref}>{site.phone}</a><br><a href={site.phoneSecondaryHref}>{site.phoneSecondary}</a></p>
+          </li>
+          <li>
+            <strong>E-mail</strong>
+            <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+          </li>
+          <li>
+            <strong>Horaires d'appel</strong>
+            <p>{site.hours}</p>
+          </li>
+          <li>
+            <strong>Réseaux</strong>
+            <p>
+              <a href={site.facebook} target="_blank" rel="noopener">Facebook</a>
+              ·
+              <a href={site.googleMaps} target="_blank" rel="noopener">Google Maps</a>
+            </p>
+          </li>
+        </ul>
+
+        <iframe
+          class="map-embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=1+chemin+de+Montgesoye,+25840+Vuillafans&output=embed"
+          title="Localisation du gîte La Tuffière"
+        ></iframe>
+      </div>
+
+      <div>
+        <h2>Une question ? Écrivez-nous</h2>
+        <p class="tarifs-note">
+          Ce formulaire ouvre votre messagerie habituelle avec un message pré-rempli à destination de{" "}
+          {site.email} — vous devez ensuite l'envoyer vous-même. Il ne s'agit pas d'une réservation : pour
+          réserver, appelez directement le <a href={site.phoneHref}>{site.phone}</a>.
+        </p>
+        <form class="contact-form" method="post" action={`mailto:${site.email}`} enctype="text/plain">
+          <div>
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="Nom" required>
+          </div>
+          <div>
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="E-mail" required>
+          </div>
+          <div>
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="Telephone">
+          </div>
+          <div>
+            <label for="message">Message *</label>
+            <textarea id="message" name="Message" required rows="6"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Ouvrir mon client mail</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="practical-band">
+    <div class="container">
+      <h2>Envie de réserver ?</h2>
+      <p>La réservation se fait uniquement par téléphone, après vérification de la disponibilité adaptée à votre séjour.</p>
+      <div class="hero-actions">
+        <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline-light" data-open-dispo>Voir les disponibilités</a>
+        <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 860px) {
+    .contact-layout { grid-template-columns: 1fr; }
+  }
+  .contact-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 28px;
+  }
+  .contact-info-list li {
+    margin-bottom: 16px;
+  }
+  .contact-info-list strong {
+    display: block;
+    font-family: var(--font-title);
+    color: var(--color-green-dark);
+    margin-bottom: 2px;
+  }
+  .contact-info-list p { margin: 0; }
+  .map-embed {
+    width: 100%;
+    height: 280px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+  }
+  .contact-form {
+    display: grid;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .contact-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+  }
+  .tarifs-note {
+    font-size: 0.88rem;
+    opacity: 0.85;
+    margin: 12px 0 20px;
+  }
+</style>

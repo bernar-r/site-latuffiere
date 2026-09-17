@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site, labels } from "../data/site";
+---
+<BaseLayout
+  title="Gîte La Tuffière — Vuillafans, Vallée de la Loue (Doubs)"
+  description="Gîte de groupe familial à Vuillafans (Doubs), capacité d'accueil 35 personnes, table d'hôtes. Labellisé Gîtes de France, Motard Bienvenue et Pêche. Réservation par téléphone."
+>
+  <!-- HERO : une seule photo forte, pas de diaporama -->
+  <section class="hero" style="background-image:url('/images/hero-1-facade.jpg')">
+    <div class="hero-content">
+      <span class="hero-kicker">Vuillafans · Vallée de la Loue · Doubs</span>
+      <h1>Gîte La Tuffière</h1>
+      <p class="hero-tagline">{site.tagline}</p>
+      <p class="hero-meta">{site.capacity} — table d'hôtes — réservation uniquement par téléphone</p>
+      <div class="hero-actions">
+        <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-primary" data-open-dispo>Voir les disponibilités</a>
+        <a href={site.phoneHref} class="btn btn-outline-light">Appeler le {site.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDEAU LABELS -->
+  <section class="labels-band">
+    <div class="container">
+      {labels.map((label) => (
+        <a class="label-item" href={label.href} target="_blank" rel="noopener">
+          <img src={label.logo} alt={label.title} loading="lazy">
+          <span>
+            <strong>{label.title}</strong>
+            <span>{label.description}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <span class="eyebrow">Bénédicte &amp; Christian vous accueillent</span>
+        <h2>Une maison familiale au bord de la Loue</h2>
+        <p>À l'orée du village de Vuillafans, La Tuffière est une grande bâtisse entourée d'un parc arboré, à 200 mètres de la rivière et sur les sentiers de randonnée. Vous y trouverez le calme d'une terrasse ombragée, un terrain de boules et un terrain de volley.</p>
+        <p><strong>Capacité d'accueil : 35 personnes</strong>, en chambres de 2, 4 ou 6 lits, toutes équipées de salle d'eau et WC.</p>
+        <a href="/gite/" class="btn btn-outline">Découvrir le gîte</a>
+      </div>
+      <div>
+        <img src="/images/home-tables-exterieures.jpg" alt="Tables extérieures ombragées du gîte La Tuffière" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- MOSAÏQUE GALERIE -->
+  <section class="section section-alt">
+    <div class="container">
+      <span class="eyebrow">En images</span>
+      <h2>La vallée, le gîte, la table</h2>
+      <div class="mosaic">
+        <a href="/galerie/" class="wide"><img src="/images/home-gallery-1.jpg" alt="La Tuffière" loading="lazy"></a>
+        <a href="/galerie/" class="tall"><img src="/images/home-gallery-2.jpg" alt="Cascade près de La Tuffière" loading="lazy"></a>
+        <a href="/galerie/"><img src="/images/home-gallery-3.jpg" alt="Randonnée et vaches dans le Doubs" loading="lazy"></a>
+        <a href="/galerie/"><img src="/images/home-gallery-4.jpg" alt="Randonnée dans la vallée de la Loue" loading="lazy"></a>
+        <a href="/galerie/" class="wide"><img src="/images/home-gallery-5.jpg" alt="Randonnée dans les vignes" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE D'HÔTES -->
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <img src="/images/home-instagram.jpg" alt="Moment convivial partagé à La Tuffière" loading="lazy">
+      </div>
+      <div>
+        <span class="eyebrow">Table d'hôtes</span>
+        <h2>Partage et cuisine régionale</h2>
+        <p>Le soir, profitez de la terrasse et d'une cuisine familiale préparée à partir de produits locaux. Bénédicte et Christian sont là pour vous conseiller sur la région et votre séjour.</p>
+        <a href="/table-dhotes/" class="btn btn-outline">Découvrir la table d'hôtes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFOS PRATIQUES -->
+  <section class="practical-band">
+    <div class="container">
+      <h2>Réserver votre séjour</h2>
+      <p>La location se fait à la chambre. Consultez les places restantes en ligne, puis appelez-nous pour confirmer la disponibilité adaptée à votre séjour.</p>
+      <div class="hero-actions">
+        <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline-light" data-open-dispo>Voir les disponibilités</a>
+        <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>
+        <a href="/tarifs/" class="btn btn-outline-light">Voir les tarifs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS (widget tiers réel, à confirmer) -->
+  <section class="section">
+    <div class="container">
+      <div class="reviews-header">
+        <span class="eyebrow">Témoignages</span>
+        <h2>L'avis de nos hôtes</h2>
+      </div>
+      <!-- Widget Elfsight Google Reviews : à confirmer que ce compte appartient bien au gîte avant mise en ligne -->
+      <div class="elfsight-app-f95532ad-1d47-4bc0-b109-936710c6a781" data-elfsight-app-lazy></div>
+      <script src="https://static.elfsight.com/platform/platform.js" async></script>
+      <p style="text-align:center;">
+        <a href={site.googleMaps} target="_blank" rel="noopener">Voir tous les avis sur Google →</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
