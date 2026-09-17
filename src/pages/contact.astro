@@ -4,43 +4,61 @@ import PageHero from "../components/PageHero.astro";
 import { site } from "../data/site";
 ---
 <BaseLayout
-  title="Contact — Gîte La Tuffière, Vuillafans (Doubs)"
-  description="Contactez le gîte La Tuffière à Vuillafans (Doubs) : téléphone, e-mail et plan d'accès. Réservation uniquement par téléphone."
+  title="Contact & Réservations — Gîte La Tuffière, Vuillafans (Doubs)"
+  description="Contactez Bénédicte et Christian au gîte La Tuffière à Vuillafans (Doubs). Réservation par téléphone, localisation et itinéraire."
 >
   <PageHero
     image="/images/hero-4-olympus.jpg"
-    title="Contact"
-    lead="Pour réserver, un seul moyen : le téléphone. Pour toute autre question, écrivez-nous."
+    title="Contact & Réservations"
+    lead="Pour réserver ou échanger sur votre projet de séjour, un contact direct : le téléphone"
   />
 
   <section class="section">
     <div class="container contact-layout">
+      <!-- COLONNE GAUCHE : COORDONNÉES ET CARTE -->
       <div>
-        <span class="eyebrow">Informations</span>
-        <h2>Nos coordonnées</h2>
+        <span class="eyebrow">Nous joindre facilement</span>
+        <h2>Coordonnées directes</h2>
+
+        <!-- CARTE RÉSERVATION PRIORITAIRE -->
+        <div style="background:#fff;border:2px solid var(--color-rust);border-radius:calc(var(--radius) + 2px);padding:24px;margin:20px 0 28px;box-shadow:0 6px 18px rgba(181, 98, 46, 0.08);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <span style="font-size:1.5rem;">📞</span>
+            <h3 style="margin:0;font-size:1.2rem;color:var(--color-rust-dark);">Réservation par téléphone</h3>
+          </div>
+          <p style="font-size:0.92rem;color:#554436;margin-bottom:16px;">
+            La confirmation des chambres et de la formule se fait exclusivement par téléphone avec Bénédicte &amp; Christian.
+          </p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <a href={site.phoneHref} class="btn btn-primary" style="justify-content:flex-start;font-size:1rem;">
+              <span>📞 Ligne fixe : <strong>{site.phone}</strong></span>
+            </a>
+            {site.phoneSecondary && (
+              <a href={site.phoneSecondaryHref} class="btn btn-outline" style="justify-content:flex-start;font-size:0.95rem;">
+                <span>📱 Portable : <strong>{site.phoneSecondary}</strong></span>
+              </a>
+            )}
+          </div>
+          <p style="font-size:0.82rem;color:#776252;margin:12px 0 0;">
+            🕒 <strong>Horaires d'accueil téléphonique :</strong> {site.hours}
+          </p>
+        </div>
+
         <ul class="contact-info-list">
           <li>
-            <strong>Adresse</strong>
+            <strong>Adresse postale</strong>
             <p>{site.address.line1}<br>{site.address.line2}</p>
           </li>
           <li>
-            <strong>Téléphone — réservation</strong>
-            <p><a href={site.phoneHref}>{site.phone}</a><br><a href={site.phoneSecondaryHref}>{site.phoneSecondary}</a></p>
-          </li>
-          <li>
-            <strong>E-mail</strong>
+            <strong>E-mail d'information</strong>
             <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
           </li>
           <li>
-            <strong>Horaires d'appel</strong>
-            <p>{site.hours}</p>
-          </li>
-          <li>
-            <strong>Réseaux</strong>
+            <strong>Nous retrouver</strong>
             <p>
-              <a href={site.facebook} target="_blank" rel="noopener">Facebook</a>
-              ·
-              <a href={site.googleMaps} target="_blank" rel="noopener">Google Maps</a>
+              <a href={site.facebook} target="_blank" rel="noopener">Page Facebook officielle →</a>
+              <br>
+              <a href={site.googleMaps} target="_blank" rel="noopener">Fiche &amp; avis Google Maps →</a>
             </p>
           </li>
         </ul>
@@ -50,47 +68,61 @@ import { site } from "../data/site";
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=1+chemin+de+Montgesoye,+25840+Vuillafans&output=embed"
-          title="Localisation du gîte La Tuffière"
+          title="Plan d'accès au gîte La Tuffière à Vuillafans"
         ></iframe>
       </div>
 
+      <!-- COLONNE DROITE : FORMULAIRE DE MESSAGE -->
       <div>
+        <span class="eyebrow">Demande écrite</span>
         <h2>Une question ? Écrivez-nous</h2>
-        <p class="tarifs-note">
-          Ce formulaire ouvre votre messagerie habituelle avec un message pré-rempli à destination de{" "}
-          {site.email} — vous devez ensuite l'envoyer vous-même. Il ne s'agit pas d'une réservation : pour
-          réserver, appelez directement le <a href={site.phoneHref}>{site.phone}</a>.
-        </p>
-        <form class="contact-form" method="post" action={`mailto:${site.email}`} enctype="text/plain">
-          <div>
-            <label for="nom">Nom *</label>
-            <input type="text" id="nom" name="Nom" required>
-          </div>
-          <div>
-            <label for="email">E-mail *</label>
-            <input type="email" id="email" name="E-mail" required>
-          </div>
-          <div>
-            <label for="telephone">Téléphone</label>
-            <input type="tel" id="telephone" name="Telephone">
-          </div>
-          <div>
-            <label for="message">Message *</label>
-            <textarea id="message" name="Message" required rows="6"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Ouvrir mon client mail</button>
-        </form>
+        <div style="background:#fff;border:1px solid var(--color-border);border-radius:calc(var(--radius) + 2px);padding:28px;box-shadow:0 4px 14px rgba(59, 46, 36, 0.04);margin-top:20px;">
+          <p class="tarifs-note" style="margin-top:0;">
+            Ce formulaire ouvre votre logiciel de messagerie habituel avec un message pré-rédigé à destination de <strong>{site.email}</strong>.
+            <br><br>
+            <em>Rappel : les réservations effectives se valident par téléphone afin de vous garantir la disponibilité en temps réel.</em>
+          </p>
+
+          <form class="contact-form" method="post" action={`mailto:${site.email}`} enctype="text/plain">
+            <div>
+              <label for="nom">Votre nom &amp; prénom *</label>
+              <input type="text" id="nom" name="Nom" required placeholder="Ex : Marie & Jean Dupont">
+            </div>
+            <div>
+              <label for="email">Votre adresse e-mail *</label>
+              <input type="email" id="email" name="E-mail" required placeholder="exemple@domaine.fr">
+            </div>
+            <div>
+              <label for="telephone">Numéro de téléphone</label>
+              <input type="tel" id="telephone" name="Telephone" placeholder="Ex : 06 12 34 56 78">
+            </div>
+            <div>
+              <label for="message">Votre message ou questions *</label>
+              <textarea id="message" name="Message" required rows="5" placeholder="Indiquez les dates souhaitées, le nombre de personnes et la formule envisagée..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top:8px;">
+              ✉️ Ouvrir mon message e-mail
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- BANDEAU CTA DISPONIBILITÉS -->
   <section class="practical-band">
     <div class="container">
-      <h2>Envie de réserver ?</h2>
-      <p>La réservation se fait uniquement par téléphone, après vérification de la disponibilité adaptée à votre séjour.</p>
+      <h2>Consulter les disponibilités en direct</h2>
+      <p style="max-width:640px;margin:0 auto 20px;">
+        Vérifiez en quelques clics le calendrier officiel avant de nous téléphoner pour confirmer.
+      </p>
       <div class="hero-actions">
-        <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline-light" data-open-dispo>Voir les disponibilités</a>
-        <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>
+        <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-primary" data-open-dispo>
+          Voir les disponibilités en ligne
+        </a>
+        <a href={site.phoneHref} class="btn btn-outline-light">
+          📞 Appeler le {site.phone}
+        </a>
       </div>
     </div>
   </section>
@@ -101,8 +133,9 @@ import { site } from "../data/site";
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
+    align-items: flex-start;
   }
-  @media (max-width: 860px) {
+  @media (max-width: 880px) {
     .contact-layout { grid-template-columns: 1fr; }
   }
   .contact-info-list {
@@ -111,44 +144,55 @@ import { site } from "../data/site";
     margin: 20px 0 28px;
   }
   .contact-info-list li {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .contact-info-list strong {
     display: block;
     font-family: var(--font-title);
     color: var(--color-green-dark);
     margin-bottom: 2px;
+    font-size: 1.05rem;
   }
   .contact-info-list p { margin: 0; }
   .map-embed {
     width: 100%;
-    height: 280px;
+    height: 300px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
   .contact-form {
     display: grid;
-    gap: 14px;
-    margin-top: 16px;
+    gap: 16px;
   }
   .contact-form label {
     display: block;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     font-size: 0.9rem;
+    color: var(--color-text);
   }
   .contact-form input,
   .contact-form textarea {
     width: 100%;
-    padding: 10px 12px;
+    padding: 12px 14px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.95rem;
+    background: #faf7f2;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-rust);
+    background: #fff;
   }
   .tarifs-note {
-    font-size: 0.88rem;
-    opacity: 0.85;
-    margin: 12px 0 20px;
+    font-size: 0.9rem;
+    color: #665547;
+    line-height: 1.55;
+    margin-bottom: 20px;
   }
 </style>

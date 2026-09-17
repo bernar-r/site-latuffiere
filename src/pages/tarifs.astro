@@ -29,79 +29,135 @@ const wineSections = [
 ---
 <BaseLayout
   title="Tarifs 2026 — Gîte La Tuffière, Vuillafans (Doubs)"
-  description="Tarifs 2026 du gîte La Tuffière : nuit avec petit-déjeuner, table d'hôtes, tarifs groupes, cartes des boissons et des vins."
+  description="Consultez les tarifs 2026 du gîte La Tuffière : nuit avec petit-déjeuner compris, table d'hôtes, tarifs de groupe, cartes des boissons et des vins."
 >
   <PageHero
     image="/images/facade-moto.jpg"
     title="Tarifs 2026"
-    lead="Prix par personne. Réservation uniquement par téléphone."
+    lead="Prix par personne · Petit-déjeuner inclus · Réservation uniquement par téléphone"
   />
 
+  <!-- HÉBERGEMENT & DEMI-PENSION EN 2 COLONNES -->
   <section class="section">
     <div class="container">
-      <span class="eyebrow">Hébergement</span>
-      <h2>Nuit avec petit-déjeuner</h2>
-      <table class="price-table">
-        <tbody>
-          {nightRates.map((row) => (
-            <tr><td>{row.label}</td><td class="price-cell">{row.price}</td></tr>
-          ))}
-        </tbody>
-      </table>
-      <p class="tarifs-note">{childRate}</p>
-      <p class="tarifs-note">{touristTax}</p>
-      <p class="tarifs-note">
-        Composition détaillée des chambres : voir la page <a href="/gite/">Gîte</a>.
-      </p>
+      <div style="text-align:center;max-width:760px;margin:0 auto 36px;">
+        <span class="eyebrow">Formules individuelles &amp; familles</span>
+        <h2>Des tarifs clairs et transparents</h2>
+        <p>Toutes nos nuitées comprennent un petit-déjeuner copieux ainsi que l'accès aux sanitaires privatifs (douche et WC) dans chaque chambre.</p>
+      </div>
+
+      <div class="tarifs-grid-2">
+        <!-- CARTE NUITÉES -->
+        <div class="tarifs-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <span class="eyebrow" style="color:var(--color-rust-dark);">Hébergement</span>
+            <span class="room-tag">Petit-déjeuner inclus</span>
+          </div>
+          <h3 style="margin-bottom:12px;">Nuitée + Petit-Déjeuner</h3>
+          <p style="font-size:0.92rem;color:#5c4c3e;margin-bottom:20px;">
+            Tarifs par personne pour une nuit avec petit-déjeuner. Draps et serviettes fournis.
+          </p>
+
+          <table class="price-table">
+            <tbody>
+              {nightRates.map((row) => (
+                <tr>
+                  <td><strong>{row.label}</strong></td>
+                  <td class="price-cell">{row.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-border);font-size:0.88rem;color:#5a493b;display:flex;flex-direction:column;gap:6px;">
+            <p style="margin:0;">👶 <strong>Enfants :</strong> {childRate}</p>
+            <p style="margin:0;">ℹ️ <strong>Taxe :</strong> {touristTax}</p>
+            <p style="margin:0;">🛏️ Composition des lits : voir la page <a href="/gite/">Le Gîte &amp; Chambres</a></p>
+          </div>
+        </div>
+
+        <!-- CARTE DEMI-PENSION -->
+        <div class="tarifs-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <span class="eyebrow" style="color:var(--color-green-dark);">Table d'Hôtes</span>
+            <span class="room-tag">Fait maison</span>
+          </div>
+          <h3 style="margin-bottom:12px;">Demi-Pension &amp; Menus</h3>
+          <p style="font-size:0.92rem;color:#5c4c3e;margin-bottom:20px;">
+            Repas servis le soir au gîte (hors boissons). Table d'hôtes sans hébergement : +10%.
+          </p>
+
+          <table class="price-table">
+            <tbody>
+              {halfBoardMenus.map((row) => (
+                <tr>
+                  <td><strong>{row.label}</strong></td>
+                  <td class="price-cell">{row.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-border);font-size:0.88rem;color:#5a493b;display:flex;flex-direction:column;gap:6px;">
+            <p style="margin:0;">🎒 <strong>Randonneurs :</strong> {packedLunch}</p>
+            <p style="margin:0;">🍷 Boissons et vins de notre sélection en supplément</p>
+            <p style="margin:0;"><a href="/table-dhotes/" class="card-link">Consulter le détail de la table d'hôtes →</a></p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- FORMULES GROUPES -->
   <section class="section section-alt">
     <div class="container">
-      <span class="eyebrow">Table d'hôtes</span>
-      <h2>Demi-pension (hors boissons)</h2>
-      <p class="tarifs-note">Table d'hôtes sans hébergement : +10%.</p>
-      <table class="price-table">
-        <tbody>
-          {halfBoardMenus.map((row) => (
-            <tr><td>{row.label}</td><td class="price-cell">{row.price}</td></tr>
-          ))}
-        </tbody>
-      </table>
-      <p class="tarifs-note">{packedLunch}</p>
-      <p style="margin-top:16px;"><a href="/table-dhotes/" class="btn btn-outline">Voir le détail des menus</a></p>
-    </div>
-  </section>
+      <div style="text-align:center;max-width:760px;margin:0 auto 32px;">
+        <span class="eyebrow">Clubs, Familles &amp; Séminaires</span>
+        <h2>Tarifs Groupes — Formule Demi-Pension</h2>
+        <p>
+          Formule complète comprenant l'hébergement, le petit-déjeuner et le dîner Menu Tradition (entrée, plat, dessert du terroir).
+        </p>
+      </div>
 
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">Groupes</span>
-      <h2>Tarifs groupes — menu tradition (entrée, plat, dessert)</h2>
       <div class="group-rates">
         {groupRates.map((g) => (
           <div class="group-rate-card">
+            <span class="room-tag" style="margin-bottom:12px;width:fit-content;align-self:center;">Formule Groupe</span>
             <p class="group-rate-price">{g.price}</p>
-            <p>{g.label}</p>
-            <p class="tarifs-note">{g.note}</p>
+            <p style="font-weight:600;margin-bottom:6px;">{g.label}</p>
+            <p class="tarifs-note" style="margin:0;color:#6b5747;">{g.note}</p>
           </div>
         ))}
       </div>
-      <p class="tarifs-note">{touristTax}</p>
+
+      <div style="text-align:center;margin-top:24px;">
+        <p class="tarifs-note">
+          {touristTax} · Pour les séminaires avec salle de réunion ou événements particuliers, contactez-nous pour un devis personnalisé.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="section section-alt">
+  <!-- CARTES DES BOISSONS ET DES VINS -->
+  <section class="section">
     <div class="container">
-      <span class="eyebrow">Boissons &amp; vins</span>
-      <h2>Nos cartes</h2>
+      <div style="text-align:center;max-width:720px;margin:0 auto 36px;">
+        <span class="eyebrow">À l'apéritif ou à table</span>
+        <h2>Cartes des Boissons &amp; Vins du Terroir</h2>
+        <p>Une sélection de vins du Jura, bières régionales, apéritifs comtois et boissons fraîches à apprécier sur la terrasse ombragée.</p>
+      </div>
+
       <div class="drinks-grid">
         {drinkSections.map((section) => (
-          <div>
+          <div style="background:#fff;border:1px solid var(--color-border);border-radius:var(--radius);padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.02);">
             <h4>{section.title}</h4>
             <table class="price-table price-table-compact">
               <tbody>
                 {section.items.map((row) => (
-                  <tr><td>{row.label}</td><td class="price-cell">{row.price}</td></tr>
+                  <tr>
+                    <td>{row.label}</td>
+                    <td class="price-cell">{row.price}</td>
+                  </tr>
                 ))}
               </tbody>
             </table>
@@ -109,15 +165,18 @@ const wineSections = [
         ))}
       </div>
 
-      <h3 style="margin-top:36px;">Les vins</h3>
+      <h3 style="margin:48px 0 20px;text-align:center;">Vins d'Alsace, Jura &amp; Région</h3>
       <div class="drinks-grid">
         {wineSections.map((section) => (
-          <div>
+          <div style="background:#fff;border:1px solid var(--color-border);border-radius:var(--radius);padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.02);">
             <h4>{section.title}</h4>
             <table class="price-table price-table-compact">
               <tbody>
                 {section.items.map((row) => (
-                  <tr><td>{row.label}</td><td class="price-cell">{row.price}</td></tr>
+                  <tr>
+                    <td>{row.label}</td>
+                    <td class="price-cell">{row.price}</td>
+                  </tr>
                 ))}
               </tbody>
             </table>
@@ -127,13 +186,14 @@ const wineSections = [
     </div>
   </section>
 
+  <!-- BANDEAU CTA -->
   <section class="practical-band">
     <div class="container">
-      <h2>Une question sur nos tarifs ?</h2>
-      <p>Pour les groupes, séminaires, anniversaires ou repas de famille, appelez-nous pour un devis sur mesure.</p>
+      <h2>Une question sur nos formules ou un devis pour votre groupe ?</h2>
+      <p style="max-width:640px;margin:0 auto 20px;">Appelez directement Bénédicte et Christian pour réserver votre séjour ou organiser vos repas.</p>
       <div class="hero-actions">
-        <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>
-        <a href="/gite/" class="btn btn-outline-light">Découvrir le gîte</a>
+        <a href={site.phoneHref} class="btn btn-primary">📞 Appeler le {site.phone}</a>
+        <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline-light" data-open-dispo>Voir les disponibilités</a>
       </div>
     </div>
   </section>
@@ -142,62 +202,52 @@ const wineSections = [
 <style>
   .price-table {
     width: 100%;
-    max-width: 640px;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 12px 0;
   }
   .price-table td {
-    padding: 8px 10px;
+    padding: 9px 6px;
     border-bottom: 1px solid var(--color-border);
+    font-size: 0.94rem;
   }
   .price-cell {
     text-align: right;
     font-weight: 700;
     white-space: nowrap;
+    color: var(--color-rust-dark);
   }
-  .price-table-compact td { padding: 5px 8px; font-size: 0.92rem; }
+  .price-table-compact td {
+    padding: 6px 4px;
+    font-size: 0.9rem;
+  }
   .tarifs-note {
     font-size: 0.9rem;
-    opacity: 0.8;
+    opacity: 0.85;
     margin: 6px 0;
   }
   .group-rates {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin: 20px 0;
+    gap: 24px;
+    margin: 24px 0;
   }
   @media (max-width: 860px) {
     .group-rates { grid-template-columns: 1fr; }
   }
-  .group-rate-card {
-    background: #fff;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    padding: 20px;
-    text-align: center;
-  }
-  .group-rate-price {
-    font-family: var(--font-title);
-    font-size: 1.4rem;
-    color: var(--color-rust);
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
   .drinks-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px 40px;
+    gap: 20px;
   }
-  @media (max-width: 700px) {
+  @media (max-width: 760px) {
     .drinks-grid { grid-template-columns: 1fr; }
   }
   .drinks-grid h4 {
-    font-family: var(--font-body);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.9rem;
+    font-family: var(--font-title);
+    font-size: 1.15rem;
     color: var(--color-green-dark);
-    margin-bottom: 6px;
+    margin: 0 0 12px;
+    border-bottom: 2px solid var(--color-bg-alt);
+    padding-bottom: 6px;
   }
 </style>

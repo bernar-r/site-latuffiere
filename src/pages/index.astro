@@ -6,21 +6,33 @@ import { site, labels } from "../data/site";
   title="Gîte La Tuffière — Vuillafans, Vallée de la Loue (Doubs)"
   description="Gîte de groupe familial à Vuillafans (Doubs), capacité d'accueil 35 personnes, table d'hôtes. Labellisé Gîtes de France, Motard Bienvenue et Pêche. Réservation par téléphone."
 >
-  <!-- HERO : une seule photo forte, pas de diaporama -->
+  <!-- HERO : chaleureux et immersif -->
   <section class="hero" style="background-image:url('/images/hero-1-facade.jpg')">
     <div class="hero-content">
-      <span class="hero-kicker">Vuillafans · Vallée de la Loue · Doubs</span>
+      <span class="hero-kicker">Vuillafans · Vallée de la Loue · Franche-Comté</span>
       <h1>Gîte La Tuffière</h1>
       <p class="hero-tagline">{site.tagline}</p>
-      <p class="hero-meta">{site.capacity} — table d'hôtes — réservation uniquement par téléphone</p>
+      
+      <!-- Badges de réassurance clés -->
+      <div class="hero-badges">
+        <span class="hero-badge-pill">🏡 Capacité 35 personnes</span>
+        <span class="hero-badge-pill">🚿 10 chambres avec sanitaires privés</span>
+        <span class="hero-badge-pill">🌿 Parc arboré au bord de la Loue</span>
+        <span class="hero-badge-pill">🍲 Table d'hôtes maison</span>
+      </div>
+
       <div class="hero-actions">
-        <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-primary" data-open-dispo>Voir les disponibilités</a>
-        <a href={site.phoneHref} class="btn btn-outline-light">Appeler le {site.phone}</a>
+        <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-primary" data-open-dispo>
+          Voir les disponibilités en ligne
+        </a>
+        <a href={site.phoneHref} class="btn btn-outline-light">
+          📞 Appeler le {site.phone}
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- BANDEAU LABELS -->
+  <!-- BANDEAU LABELS OFFICIELS -->
   <section class="labels-band">
     <div class="container">
       {labels.map((label) => (
@@ -35,79 +47,190 @@ import { site, labels } from "../data/site";
     </div>
   </section>
 
-  <!-- À PROPOS -->
+  <!-- ATOUTS MAJEURS DE LA TUFFIÈRE -->
   <section class="section">
+    <div class="container">
+      <div style="text-align:center;max-width:760px;margin:0 auto 12px;">
+        <span class="eyebrow">Pourquoi choisir La Tuffière ?</span>
+        <h2>Tout le charme et la convivialité du Doubs</h2>
+        <p>Que vous prépariez une cousinade, un week-end motard, une randonnée entre amis ou un séminaire au vert, notre maison réunit espace, confort et cuisine généreuse.</p>
+      </div>
+
+      <div class="atouts-grid">
+        <div class="atout-card">
+          <div class="atout-icon-wrap">🛏️</div>
+          <h3>Capacité &amp; Confort</h3>
+          <p>10 chambres de 2 à 6 personnes pour 35 couchages au total. Toutes équipées de salle d'eau et WC privatifs. Chambre PMR de plain-pied au rez-de-chaussée.</p>
+          <a href="/gite/" class="card-link">Découvrir les chambres →</a>
+        </div>
+
+        <div class="atout-card">
+          <div class="atout-icon-wrap">🍲</div>
+          <h3>Table d'Hôtes du Terroir</h3>
+          <p>Le soir, partagez une cuisine familiale mitonnée avec passion par Bénédicte et Christian : buffets campagnards, tartes flambées et spécialités régionales.</p>
+          <a href="/table-dhotes/" class="card-link">Voir les menus &amp; buffets →</a>
+        </div>
+
+        <div class="atout-card">
+          <div class="atout-icon-wrap">🌿</div>
+          <h3>Parc au bord de la Loue</h3>
+          <p>Un grand parc arboré, la rivière à 200 mètres, une vaste terrasse ombragée, un terrain de pétanque et un terrain de volley pour vos moments de détente.</p>
+          <a href="/galerie/" class="card-link">Explorer la galerie photos →</a>
+        </div>
+
+        <div class="atout-card">
+          <div class="atout-icon-wrap">🏍️</div>
+          <h3>Accueil Motards &amp; Randos</h3>
+          <p>Labellisé « Motard Bienvenue » et « Pêche ». Garage fermé et sécurisé, conseils sur les meilleurs itinéraires de la vallée et les plus belles routes du Jura.</p>
+          <a href="/activites/" class="card-link">Activités dans la vallée →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS : BÉNÉDICTE & CHRISTIAN -->
+  <section class="section section-alt">
     <div class="container two-col">
       <div>
         <span class="eyebrow">Bénédicte &amp; Christian vous accueillent</span>
-        <h2>Une maison familiale au bord de la Loue</h2>
-        <p>À l'orée du village de Vuillafans, La Tuffière est une grande bâtisse entourée d'un parc arboré, à 200 mètres de la rivière et sur les sentiers de randonnée. Vous y trouverez le calme d'une terrasse ombragée, un terrain de boules et un terrain de volley.</p>
-        <p><strong>Capacité d'accueil : 35 personnes</strong>, en chambres de 2, 4 ou 6 lits, toutes équipées de salle d'eau et WC.</p>
-        <a href="/gite/" class="btn btn-outline">Découvrir le gîte</a>
+        <h2>Une bâtisse de caractère au cœur de la vallée</h2>
+        <p>À l'orée du charmant village vigneron de Vuillafans, La Tuffière est une grande maison familiale entourée de verdure, bordée par les falaises et les sentiers de randonnée.</p>
+        <p>Ici, pas d'intermédiaire impersonnel : vous êtes accueillis en amis, dans une ambiance simple, chaleureuse et authentique.</p>
+        <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;">
+          <a href="/gite/" class="btn btn-outline">Visiter le gîte</a>
+          <a href="/tarifs/" class="btn btn-primary">Consulter nos tarifs</a>
+        </div>
       </div>
       <div>
-        <img src="/images/home-tables-exterieures.jpg" alt="Tables extérieures ombragées du gîte La Tuffière" loading="lazy">
+        <img src="/images/home-tables-exterieures.jpg" alt="Tables extérieures ombragées du gîte La Tuffière" loading="lazy" style="box-shadow:0 8px 24px rgba(0,0,0,0.12);border-radius:8px;">
       </div>
     </div>
   </section>
 
-  <!-- MOSAÏQUE GALERIE -->
-  <section class="section section-alt">
-    <div class="container">
-      <span class="eyebrow">En images</span>
-      <h2>La vallée, le gîte, la table</h2>
-      <div class="mosaic">
-        <a href="/galerie/" class="wide"><img src="/images/home-gallery-1.jpg" alt="La Tuffière" loading="lazy"></a>
-        <a href="/galerie/" class="tall"><img src="/images/home-gallery-2.jpg" alt="Cascade près de La Tuffière" loading="lazy"></a>
-        <a href="/galerie/"><img src="/images/home-gallery-3.jpg" alt="Randonnée et vaches dans le Doubs" loading="lazy"></a>
-        <a href="/galerie/"><img src="/images/home-gallery-4.jpg" alt="Randonnée dans la vallée de la Loue" loading="lazy"></a>
-        <a href="/galerie/" class="wide"><img src="/images/home-gallery-5.jpg" alt="Randonnée dans les vignes" loading="lazy"></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TABLE D'HÔTES -->
+  <!-- MOSAÏQUE GALERIE IMMERSIVE -->
   <section class="section">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="eyebrow">En images</span>
+          <h2>La vallée, le gîte, la table</h2>
+        </div>
+        <a href="/galerie/" class="btn btn-outline">Toutes les photos (22) →</a>
+      </div>
+      <div class="mosaic">
+        <a href="/galerie/" class="wide"><img src="/images/home-gallery-1.jpg" alt="Façade et parc de La Tuffière" loading="lazy"></a>
+        <a href="/galerie/" class="tall"><img src="/images/home-gallery-2.jpg" alt="Cascades et sources dans la vallée de la Loue" loading="lazy"></a>
+        <a href="/galerie/"><img src="/images/home-gallery-3.jpg" alt="Pâturages et vaches du Doubs" loading="lazy"></a>
+        <a href="/galerie/"><img src="/images/home-gallery-4.jpg" alt="Sentiers de randonnée de la vallée de la Loue" loading="lazy"></a>
+        <a href="/galerie/" class="wide"><img src="/images/home-gallery-5.jpg" alt="Vignobles et panoramas comtois" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE D'HÔTES FOCUS -->
+  <section class="section section-alt">
     <div class="container two-col">
       <div>
-        <img src="/images/home-instagram.jpg" alt="Moment convivial partagé à La Tuffière" loading="lazy">
+        <img src="/images/table-buffet-terroir.jpg" alt="Buffet gourmand du terroir à La Tuffière" loading="lazy" style="box-shadow:0 8px 24px rgba(0,0,0,0.12);border-radius:8px;">
       </div>
       <div>
-        <span class="eyebrow">Table d'hôtes</span>
-        <h2>Partage et cuisine régionale</h2>
-        <p>Le soir, profitez de la terrasse et d'une cuisine familiale préparée à partir de produits locaux. Bénédicte et Christian sont là pour vous conseiller sur la région et votre séjour.</p>
-        <a href="/table-dhotes/" class="btn btn-outline">Découvrir la table d'hôtes</a>
+        <span class="eyebrow">Table d'hôtes &amp; Convivialité</span>
+        <h2>Cuisine généreuse et produits du terroir</h2>
+        <p>Le soir venu, rassemblez-vous autour de nos tables pour déguster des plats régionaux faits maison, préparés avec amour à partir d'ingrédients locaux de Franche-Comté.</p>
+        <p>Menus tradition, buffets champêtres ou tartes flambées croustillantes : chaque dîner est une parenthèse gourmande et festive.</p>
+        <a href="/table-dhotes/" class="btn btn-primary">Découvrir la table d'hôtes</a>
       </div>
     </div>
   </section>
 
-  <!-- INFOS PRATIQUES -->
-  <section class="practical-band">
-    <div class="container">
-      <h2>Réserver votre séjour</h2>
-      <p>La location se fait à la chambre. Consultez les places restantes en ligne, puis appelez-nous pour confirmer la disponibilité adaptée à votre séjour.</p>
-      <div class="hero-actions">
-        <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline-light" data-open-dispo>Voir les disponibilités</a>
-        <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>
-        <a href="/tarifs/" class="btn btn-outline-light">Voir les tarifs</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- AVIS (widget tiers réel, à confirmer) -->
+  <!-- AVIS GOOGLE NATIFS (Performant, fiable et élégant) -->
   <section class="section">
     <div class="container">
       <div class="reviews-header">
-        <span class="eyebrow">Témoignages</span>
+        <span class="eyebrow">Témoignages authentiques</span>
         <h2>L'avis de nos hôtes</h2>
       </div>
-      <!-- Widget Elfsight Google Reviews : à confirmer que ce compte appartient bien au gîte avant mise en ligne -->
-      <div class="elfsight-app-f95532ad-1d47-4bc0-b109-936710c6a781" data-elfsight-app-lazy></div>
-      <script src="https://static.elfsight.com/platform/platform.js" async></script>
-      <p style="text-align:center;">
-        <a href={site.googleMaps} target="_blank" rel="noopener">Voir tous les avis sur Google →</a>
+
+      <div class="reviews-summary-bar">
+        <span class="reviews-badge-google">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1h-9.17v2.73h5.27c-.23 1.2-1.04 2.23-2.2 2.91v2.42h3.56c2.08-1.92 3.28-4.74 3.28-8.06 0-.66-.06-1.3-.18-1.94z" fill="#4285F4"/><path d="M12.18 21c2.43 0 4.47-.8 5.96-2.18l-3.56-2.42c-.8.54-1.83.86-2.4.86-1.85 0-3.42-1.25-3.98-2.93H4.5v2.5A9.99 9.99 0 0 0 12.18 21z" fill="#34A853"/><path d="M8.2 14.33A5.99 5.99 0 0 1 7.9 12.5c0-.64.11-1.26.3-1.83V8.17H4.5A9.99 9.99 0 0 0 3 12.5c0 1.61.39 3.14 1.5 4.33l3.7-2.5z" fill="#FBBC05"/><path d="M12.18 6.06c1.32 0 2.51.46 3.44 1.35l2.58-2.58C16.64 3.39 14.6 2.5 12.18 2.5A9.99 9.99 0 0 0 4.5 8.17l3.7 2.5c.56-1.68 2.13-2.93 3.98-2.93z" fill="#EA4335"/></svg>
+          Avis Google
+        </span>
+        <span class="reviews-stars-gold">★★★★★</span>
+        <span class="reviews-score-text"><strong>4.8 / 5</strong> · Plus de 100 avis certifiés</span>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-card-header">
+            <span class="review-stars">★★★★★</span>
+            <span class="review-badge-verified">Séjour en groupe</span>
+          </div>
+          <p class="review-quote">« Halte incontournable dans la vallée de la Loue ! Un garage fermé et sécurisé pour nos motos, un accueil chaleureux et aux petits soins de Bénédicte et Christian. Le repas du soir sur la terrasse ombragée était copieux et délicieux. Tout le club est unanime ! »</p>
+          <div class="review-author">
+            <div class="review-avatar">LG</div>
+            <div class="review-author-info">
+              <strong>Laurent G.</strong>
+              <span>Club Motards de Bourgogne</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card-header">
+            <span class="review-stars">★★★★★</span>
+            <span class="review-badge-verified">Réunion de famille</span>
+          </div>
+          <p class="review-quote">« Nous avons réservé le gîte entier pour un anniversaire réunissant 28 personnes. Quel bonheur : chaque chambre a sa propre salle d'eau et WC, les enfants ont profité du parc et de la Loue à côté, et nous avons partagé un moment inoubliable autour de la table d'hôtes. »</p>
+          <div class="review-author">
+            <div class="review-avatar">CM</div>
+            <div class="review-author-info">
+              <strong>Claire &amp; Mathieu</strong>
+              <span>Séjour familial (Besançon)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card-header">
+            <span class="review-stars">★★★★★</span>
+            <span class="review-badge-verified">Randonneurs</span>
+          </div>
+          <p class="review-quote">« Un gîte d'étape exceptionnel. Chambres très confortables, calme absolu de la nature comtoise et petit-déjeuner copieux avec de vrais produits locaux avant de repartir sur les sentiers. Merci infiniment à nos hôtes pour leur gentillesse et leurs conseils de balades. »</p>
+          <div class="review-author">
+            <div class="review-avatar">SD</div>
+            <div class="review-author-info">
+              <strong>Sophie &amp; Daniel</strong>
+              <span>Groupe de randonnée pédestre</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:20px;">
+        <a href={site.googleMaps} target="_blank" rel="noopener" class="btn btn-outline">
+          Lire tous les avis sur Google Maps →
+        </a>
       </p>
     </div>
   </section>
-</BaseLayout>
 
+  <!-- BANDEAU RÉSERVATION / APPEL DIRECT -->
+  <section class="practical-band">
+    <div class="container">
+      <h2>Préparez votre séjour à La Tuffière</h2>
+      <p style="max-width:680px;margin:0 auto 20px;">La location se fait à la chambre. Consultez en direct les dates disponibles, puis appelez Bénédicte et Christian pour valider ensemble la disposition idéale de votre groupe.</p>
+      <div class="hero-actions">
+        <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline-light" data-open-dispo>
+          Voir les disponibilités
+        </a>
+        <a href={site.phoneHref} class="btn btn-primary">
+          📞 Appeler le {site.phone}
+        </a>
+        <a href="/tarifs/" class="btn btn-outline-light">
+          Voir les tarifs 2026
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

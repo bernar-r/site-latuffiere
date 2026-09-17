@@ -78,8 +78,9 @@ p { margin: 0 0 1em; }
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 12px 22px;
+  padding: 12px 24px;
   border-radius: var(--radius);
   font-weight: 600;
   text-decoration: none;
@@ -87,22 +88,33 @@ p { margin: 0 0 1em; }
   cursor: pointer;
   font-size: 0.95rem;
   font-family: var(--font-body);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+.btn:active {
+  transform: translateY(0);
 }
 .btn-primary {
   background: var(--color-rust-dark);
   color: #fff;
 }
-.btn-primary:hover { background: #7a3e1c; }
+.btn-primary:hover { background: #82411b; color: #fff; }
 
 .btn-outline {
-  background: transparent;
+  background: #fff;
   border-color: var(--color-green);
   color: var(--color-green-dark);
 }
 .btn-outline:hover { background: var(--color-green); color: #fff; }
 
 .btn-outline-light {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border-color: #fff;
   color: #fff;
 }
@@ -113,8 +125,12 @@ p { margin: 0 0 1em; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(251, 247, 241, 0.96);
+  background: rgba(251, 247, 241, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 4px 20px rgba(59, 46, 36, 0.04);
+  transition: background 0.3s ease;
 }
 .header-inner {
   max-width: var(--container-width);
@@ -412,3 +428,434 @@ p { margin: 0 0 1em; }
   opacity: 0.8;
 }
 .footer-bottom a { text-decoration: underline; }
+
+/* ==========================================================================
+   COMPOSANTS MODERNES & INTERACTIFS
+   ========================================================================== */
+
+/* ---------- Hero Badges & Reassurance ---------- */
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 16px 0 28px;
+}
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(20, 14, 10, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* ---------- Cartes Atouts (Homepage) ---------- */
+.atouts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+@media (max-width: 980px) {
+  .atouts-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .atouts-grid { grid-template-columns: 1fr; }
+}
+.atout-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) + 2px);
+  padding: 28px 24px;
+  box-shadow: 0 4px 12px rgba(59, 46, 36, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+.atout-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(59, 46, 36, 0.08);
+  border-color: var(--color-rust);
+}
+.atout-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--color-bg-alt);
+  color: var(--color-rust-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.atout-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+.atout-card p {
+  font-size: 0.94rem;
+  color: #5a493b;
+  margin-bottom: 18px;
+  flex: 1;
+}
+.atout-card a.card-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-rust-dark);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.atout-card a.card-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Avis Google Natifs ---------- */
+.reviews-summary-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding: 16px 24px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.reviews-badge-google {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #1a73e8;
+  font-size: 0.95rem;
+}
+.reviews-stars-gold {
+  color: #fbbc04;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+}
+.reviews-score-text {
+  font-weight: 600;
+  color: var(--color-text);
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 28px;
+}
+@media (max-width: 900px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+}
+.review-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) + 2px);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(59, 46, 36, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(59, 46, 36, 0.07);
+}
+.review-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.review-stars {
+  color: #fbbc04;
+  font-size: 0.95rem;
+}
+.review-badge-verified {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #137333;
+  background: #e6f4ea;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+.review-quote {
+  font-style: italic;
+  font-size: 0.94rem;
+  color: #4a3b30;
+  line-height: 1.55;
+  margin-bottom: 18px;
+  flex: 1;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 12px;
+}
+.review-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  color: var(--color-rust-dark);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+.review-author-info strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+.review-author-info span {
+  font-size: 0.78rem;
+  color: #7d6b5e;
+}
+
+/* ---------- Showcase Chambres (Gîte) ---------- */
+.rooms-filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 28px 0 32px;
+}
+.filter-chip {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filter-chip:hover,
+.filter-chip.active {
+  background: var(--color-rust-dark);
+  border-color: var(--color-rust-dark);
+  color: #fff;
+}
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1024px) {
+  .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .rooms-grid { grid-template-columns: 1fr; }
+}
+.room-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) + 2px);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(59, 46, 36, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.room-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(59, 46, 36, 0.08);
+  border-color: var(--color-green);
+}
+.room-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.room-name {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  margin: 0;
+  color: var(--color-text);
+}
+.room-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--color-bg-alt);
+  color: var(--color-green-dark);
+  white-space: nowrap;
+}
+.room-tag.pmr {
+  background: #e8f0fe;
+  color: #1967d2;
+}
+.room-desc {
+  font-size: 0.9rem;
+  color: #635243;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  flex: 1;
+}
+.room-meta-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 14px;
+  font-size: 0.88rem;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.room-meta-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.room-badge-icon {
+  font-size: 1rem;
+}
+
+/* Grille Équipements Moderne */
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+@media (max-width: 640px) {
+  .amenities-grid { grid-template-columns: 1fr; }
+}
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+.amenity-icon {
+  font-size: 1.25rem;
+  color: var(--color-green-dark);
+}
+
+/* ---------- Tarifs & Cartes ---------- */
+.tarifs-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) + 2px);
+  padding: 28px;
+  box-shadow: 0 4px 14px rgba(59, 46, 36, 0.04);
+  margin-bottom: 32px;
+}
+.tarifs-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+@media (max-width: 800px) {
+  .tarifs-grid-2 { grid-template-columns: 1fr; }
+}
+.group-rate-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) + 2px);
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(59, 46, 36, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+.group-rate-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-rust);
+}
+.group-rate-price {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-rust-dark);
+  margin-bottom: 8px;
+}
+
+/* ---------- Activités Cards ---------- */
+.activities-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+@media (max-width: 900px) {
+  .activities-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .activities-cards-grid { grid-template-columns: 1fr; }
+}
+.activity-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) + 2px);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(59, 46, 36, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.activity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(59, 46, 36, 0.08);
+}
+.activity-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.activity-card-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.activity-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-green-dark);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.activity-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+.activity-card p {
+  font-size: 0.92rem;
+  color: #554436;
+  margin-bottom: 16px;
+  flex: 1;
+}
+

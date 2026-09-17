@@ -3,114 +3,210 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import { site } from "../data/site";
 import { rooms, equipment } from "../data/rooms";
+
+const amenityIcons: Record<string, string> = {
+  users: "👥",
+  bath: "🚿",
+  wheelchair: "♿",
+  presentation: "📊",
+  sun: "☀️",
+  tree: "🌳",
+  ball: "🎯",
+  bike: "🏍️",
+  wifi: "📶",
+  utensils: "🍲",
+};
 ---
 <BaseLayout
-  title="Le gîte — Gîte La Tuffière, Vuillafans (Doubs)"
-  description="Capacité d'accueil de 35 personnes à La Tuffière : chambres avec sanitaires, accès PMR, salle de séminaire, terrasse et grand parc arboré au bord de la Loue."
+  title="Le Gîte & Les Chambres — Gîte La Tuffière, Vuillafans (Doubs)"
+  description="Découvrez les 10 chambres tout confort du gîte La Tuffière (35 personnes) : sanitaires privés, accès PMR, salle de séminaire, grand parc et terrasse au bord de la Loue."
 >
   <PageHero
     image="/images/gite-tables-exterieures.jpg"
-    title="Un gîte plein de charme au cœur de la Franche-Comté"
-    lead="Label Gîtes de France : hébergement de qualité dans le Doubs"
+    title="Le Gîte & Les Chambres"
+    lead="Capacité de 35 personnes · 10 chambres avec salle d'eau et WC privatifs"
   />
 
+  <!-- PRÉSENTATION GLOBALE -->
   <section class="section">
     <div class="container">
-      <span class="eyebrow">Votre gîte dans le Doubs</span>
-      <h2>Capacité d'accueil : 35 personnes</h2>
-      <p>La Tuffière vous offre un hébergement de qualité, labellisé Gîtes de France, au bord de la Loue. Que ce soit pour un week-end, une semaine ou une seule nuit, le gîte s'adapte aux groupes comme aux familles.</p>
-      <ul class="feature-list">
-        {equipment.map((item) => <li>{item}</li>)}
-      </ul>
+      <div style="max-width:820px;margin-bottom:32px;">
+        <span class="eyebrow">Hébergement labellisé Gîtes de France</span>
+        <h2>Une grande maison pensée pour le bien-être de votre groupe</h2>
+        <p>
+          Située à l'orée du village médiéval de Vuillafans dans la vallée de la Loue, <strong>La Tuffière</strong> allie la chaleur d'une demeure familiale comtoise au confort d'un hébergement de groupe moderne.
+        </p>
+        <p>
+          Nos <strong>10 chambres</strong> portent les noms poétiques des oiseaux de notre vallée. Chaque chambre dispose de sa <strong>propre salle d'eau (douche, lavabo) et de ses propres WC</strong>, vous garantissant calme et intimité.
+        </p>
+      </div>
 
-      <details class="rooms">
-        <summary>Voir le détail des chambres</summary>
-        <p style="margin-top:14px;">Toutes les chambres sont équipées d'une salle d'eau (lavabo, douche) et de WC.</p>
-        <ul>
-          {rooms.map((room) => <li><strong>{room.name}</strong> — {room.beds}</li>)}
-        </ul>
-      </details>
+      <!-- FILTRES DES CHAMBRES -->
+      <div class="rooms-filter-container" id="room-filters">
+        <button type="button" class="filter-chip active" data-filter="all">Toutes les chambres (10)</button>
+        <button type="button" class="filter-chip" data-filter="2">2 personnes (2)</button>
+        <button type="button" class="filter-chip" data-filter="3">3 personnes (3)</button>
+        <button type="button" class="filter-chip" data-filter="4">4 personnes (4)</button>
+        <button type="button" class="filter-chip" data-filter="6">6 personnes (1)</button>
+        <button type="button" class="filter-chip" data-filter="pmr">Accessible PMR (1)</button>
+      </div>
+
+      <!-- GRILLE DES 10 CHAMBRES -->
+      <div class="rooms-grid" id="rooms-grid">
+        {rooms.map((room) => (
+          <div
+            class="room-card"
+            data-capacity={room.capacity}
+            data-pmr={room.pmr ? "true" : "false"}
+          >
+            <div class="room-card-top">
+              <h3 class="room-name">{room.name}</h3>
+              <span class={`room-tag ${room.pmr ? "pmr" : ""}`}>{room.tag}</span>
+            </div>
+
+            <p class="room-desc">{room.description}</p>
+
+            <ul class="room-meta-list">
+              <li>
+                <span class="room-badge-icon">🛏️</span>
+                <span><strong>Lits :</strong> {room.beds}</span>
+              </li>
+              <li>
+                <span class="room-badge-icon">📍</span>
+                <span><strong>Situation :</strong> {room.floor}</span>
+              </li>
+              <li>
+                <span class="room-badge-icon">🚿</span>
+                <span><strong>Sanitaires :</strong> Douche, lavabo et WC privatifs</span>
+              </li>
+            </ul>
+
+            <div style="margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--color-border);">
+              <span style="font-size:0.85rem;color:var(--color-green-dark);font-weight:600;">
+                {room.capacity} couchages
+              </span>
+              <a href="/tarifs/" class="card-link" style="font-size:0.85rem;">Voir les tarifs →</a>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
+  <!-- ÉQUIPEMENTS DU GÎTE -->
   <section class="section section-alt">
+    <div class="container">
+      <div style="text-align:center;max-width:700px;margin:0 auto 28px;">
+        <span class="eyebrow">Espaces communs &amp; Confort</span>
+        <h2>Tous les équipements à votre disposition</h2>
+        <p>Un ensemble complet d'infrastructures pour vos réunions, vos repas et vos moments de détente.</p>
+      </div>
+
+      <div class="amenities-grid">
+        {equipment.map((item) => (
+          <div class="amenity-item">
+            <span class="amenity-icon">{amenityIcons[item.icon] || "✓"}</span>
+            <span>{item.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- UN ESPACE POUR TOUS -->
+  <section class="section">
     <div class="container two-col">
       <div>
-        <span class="eyebrow">Pour tous</span>
-        <h2>Un espace pour tous les voyageurs</h2>
-        <p>Motards, randonneurs, pêcheurs, familles, couples ou groupes : La Tuffière est pensée pour accueillir un grand nombre de profils différents, pour une nuit comme pour un séjour complet.</p>
-        <p>La location se fait à la chambre. Pour connaître la disponibilité adaptée à votre séjour, consultez le calendrier ci-dessous puis appelez-nous pour confirmer.</p>
-        <div class="hero-actions" style="justify-content:flex-start;">
-          <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline" data-open-dispo>Voir les disponibilités</a>
-          <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>
+        <span class="eyebrow">Groupes, Familles &amp; Clubs</span>
+        <h2>Un accueil pensé pour chaque profil de voyageur</h2>
+        <p>
+          Que vous veniez en famille pour fêter un événement, entre collègues pour un séminaire au calme, entre randonneurs pour arpenter la vallée de la Loue ou à moto pour profiter des superbes routes du Jura, La Tuffière s'adapte à votre rythme.
+        </p>
+        <p>
+          <strong>Comment réserver ?</strong> La location s'effectue à la chambre. Consultez les disponibilités en ligne pour avoir un premier aperçu, puis contactez directement Bénédicte ou Christian pour valider la meilleure formule.
+        </p>
+        <div class="hero-actions" style="justify-content:flex-start;margin-top:24px;">
+          <a href={site.dispoIframeUrl} target="_blank" rel="noopener" class="btn btn-outline" data-open-dispo>
+            Voir les disponibilités
+          </a>
+          <a href={site.phoneHref} class="btn btn-primary">
+            📞 Appeler le {site.phone}
+          </a>
         </div>
       </div>
       <div>
-        <img src="/images/gite-chambre-fauvette.jpg" alt="Chambre La Fauvette du gîte La Tuffière" loading="lazy">
+        <img
+          src="/images/gite-chambre-fauvette.jpg"
+          alt="Chambre La Fauvette du gîte La Tuffière"
+          loading="lazy"
+          style="box-shadow:0 8px 24px rgba(0,0,0,0.12);border-radius:8px;"
+        >
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- MOSAÏQUE EXTÉRIEURS -->
+  <section class="section section-alt">
     <div class="container">
-      <span class="eyebrow">Nos espaces</span>
-      <h2>Extérieurs et façade</h2>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span class="eyebrow">Cadre &amp; Détente</span>
+          <h2>Parc, terrasse et extérieurs</h2>
+        </div>
+        <a href="/galerie/" class="btn btn-outline">Toute la galerie →</a>
+      </div>
       <div class="mosaic" style="grid-auto-rows:220px;">
         <a href="/galerie/"><img src="/images/gite-ext-33.jpg" alt="Jardin et terrasse couverte du gîte La Tuffière" loading="lazy"></a>
         <a href="/galerie/"><img src="/images/gite-tables-exterieures.jpg" alt="Terrasse couverte et jardin du gîte" loading="lazy"></a>
-        <a href="/galerie/"><img src="/images/facade-moto.jpg" alt="Façade du gîte La Tuffière" loading="lazy"></a>
+        <a href="/galerie/"><img src="/images/facade-moto.jpg" alt="Façade du gîte La Tuffière et accueil moto" loading="lazy"></a>
       </div>
-      <p style="text-align:center;margin-top:24px;"><a href="/galerie/" class="btn btn-outline">Voir toute la galerie</a></p>
     </div>
   </section>
 
+  <!-- BANDEAU CTA -->
   <section class="practical-band">
     <div class="container">
-      <h2>On se voit quand ?</h2>
-      <p>Consultez nos tarifs ou appelez-nous directement pour organiser votre séjour.</p>
+      <h2>Organisons votre séjour ensemble</h2>
+      <p style="max-width:640px;margin:0 auto 20px;">Consultez nos tarifs ou appelez-nous directement pour toute demande de renseignement ou devis de groupe.</p>
       <div class="hero-actions">
-        <a href="/tarifs/" class="btn btn-outline-light">Voir les tarifs</a>
-        <a href={site.phoneHref} class="btn btn-primary">Appeler le {site.phone}</a>
+        <a href="/tarifs/" class="btn btn-outline-light">Consulter les tarifs</a>
+        <a href={site.phoneHref} class="btn btn-primary">📞 Appeler le {site.phone}</a>
       </div>
     </div>
   </section>
 </BaseLayout>
 
-<style>
-  .feature-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px 24px;
-    list-style: none;
-    padding: 0;
-    margin: 24px 0;
-  }
-  .feature-list li {
-    padding-left: 22px;
-    position: relative;
-  }
-  .feature-list li::before {
-    content: "•";
-    color: var(--color-rust);
-    position: absolute;
-    left: 0;
-    font-weight: 700;
-  }
-  @media (max-width: 600px) {
-    .feature-list { grid-template-columns: 1fr; }
-  }
-  .rooms {
-    margin-top: 32px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    background: #fff;
-  }
-  .rooms summary {
-    cursor: pointer;
-    font-weight: 600;
-    font-family: var(--font-title);
-    font-size: 1.1rem;
-  }
-  .rooms ul { margin-top: 10px; }
-</style>
+<script>
+  // Filtre interactif instantané des chambres
+  const filterButtons = document.querySelectorAll("#room-filters .filter-chip");
+  const roomCards = document.querySelectorAll("#rooms-grid .room-card");
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.getAttribute("data-filter");
+
+      roomCards.forEach((card) => {
+        const capacity = card.getAttribute("data-capacity");
+        const isPmr = card.getAttribute("data-pmr") === "true";
+
+        let shouldShow = false;
+        if (filter === "all") {
+          shouldShow = true;
+        } else if (filter === "pmr") {
+          shouldShow = isPmr;
+        } else if (filter === capacity) {
+          shouldShow = true;
+        }
+
+        if (shouldShow) {
+          (card as HTMLElement).style.display = "flex";
+        } else {
+          (card as HTMLElement).style.display = "none";
+        }
+      });
+    });
+  });
+</script>
