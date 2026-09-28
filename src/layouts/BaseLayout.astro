@@ -30,14 +30,14 @@ const faqStructuredData = faq && faq.length > 0 ? {
 } : null;
 
 const pageNames: Record<string, string> = {
-  "gite": "Le Gîte & Chambres",
-  "le-gite": "Le Gîte & Chambres",
-  "table-dhotes": "Table d'Hôtes",
-  "activites": "Activités & Région",
+  "gite": "Le GÃ®te & Chambres",
+  "le-gite": "Le GÃ®te & Chambres",
+  "table-dhotes": "Table d'HÃ´tes",
+  "activites": "ActivitÃ©s & RÃ©gion",
   "tarifs": "Tarifs",
   "galerie": "Galerie Photos",
-  "contact": "Contact & Accès",
-  "mentions-legales": "Mentions Légales"
+  "contact": "Contact & AccÃ¨s",
+  "mentions-legales": "Mentions LÃ©gales"
 };
 
 const cleanPath = Astro.url.pathname.replace(/^\/|\/$/g, "");
@@ -66,15 +66,15 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "BedAndBreakfast",
   "@id": "https://latuffiere.pro/#lodging",
-  "name": "Gîte La Tuffière",
-  "alternateName": ["Gîte La Tuffière Vuillafans", "La Tuffière"],
+  "name": "GÃ®te La TuffiÃ¨re",
+  "alternateName": ["GÃ®te La TuffiÃ¨re Vuillafans", "La TuffiÃ¨re"],
   "description": description,
   "url": "https://latuffiere.pro/",
   "telephone": "+33381609676",
   "email": "latuffiere2@wanadoo.fr",
-  "priceRange": "42€ - 67€",
+  "priceRange": "42â‚¬ - 67â‚¬",
   "currenciesAccepted": "EUR",
-  "paymentAccepted": "Espèces, Chèque, Virement bancaire",
+  "paymentAccepted": "EspÃ¨ces, ChÃ¨que, Virement bancaire",
   "image": [
     "https://latuffiere.pro/images/hero-1-facade.jpg",
     "https://latuffiere.pro/images/gite-tables-exterieures.jpg",
@@ -118,22 +118,26 @@ const structuredData = {
     "worstRating": "1"
   },
   "amenityFeature": [
-    { "@type": "LocationFeatureSpecification", "name": "Capacité 35 personnes", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "CapacitÃ© 35 personnes", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "10 chambres avec salle d'eau et WC privatifs", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Chambre PMR de plain-pied", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Table d'hôtes et cuisine du terroir", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Garage fermé et sécurisé motos et vélos", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Grand parc arboré au bord de la rivière Loue", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Table d'hÃ´tes et cuisine du terroir", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Garage fermÃ© et sÃ©curisÃ© motos et vÃ©los", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Grand parc arborÃ© au bord de la riviÃ¨re Loue", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Wi-Fi gratuit", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Label Gîtes de France 3 épis", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Label GÃ®tes de France 3 Ã©pis", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Label Motard Bienvenue", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Label Pêche Relais Saint-Pierre", "value": true }
+    { "@type": "LocationFeatureSpecification", "name": "Label PÃªche Relais Saint-Pierre", "value": true }
   ]
 };
 ---
 <!doctype html>
 <html lang="fr">
 <head>
+  <meta http-equiv="refresh" content="0; url=https://www.latuffiere.com/">
+  <script is:inline>
+    window.location.replace("https://www.latuffiere.com/");
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
@@ -143,17 +147,17 @@ const structuredData = {
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-  <!-- Référencement & Indexation Google -->
+  <!-- RÃ©fÃ©rencement & Indexation Google -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="author" content="Gîte La Tuffière — Bénédicte & Christian">
+  <meta name="author" content="GÃ®te La TuffiÃ¨re â€” BÃ©nÃ©dicte & Christian">
   <meta name="geo.region" content="FR-25">
   <meta name="geo.placename" content="Vuillafans">
   <meta name="geo.position" content="47.0655;6.2081">
   <meta name="ICBM" content="47.0655, 6.2081">
 
-  <!-- OpenGraph / Réseaux Sociaux -->
+  <!-- OpenGraph / RÃ©seaux Sociaux -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Gîte La Tuffière">
+  <meta property="og:site_name" content="GÃ®te La TuffiÃ¨re">
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:url" content={canonicalUrl}>
@@ -166,7 +170,7 @@ const structuredData = {
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={ogImageUrl}>
 
-  <!-- Données Structurées Schema.org JSON-LD pour Google Rich Results -->
+  <!-- DonnÃ©es StructurÃ©es Schema.org JSON-LD pour Google Rich Results -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   {breadcrumbStructuredData && (
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructuredData)} />
